@@ -1,15 +1,16 @@
 # 4Dogs
-<img src="https://github.com/angelcast2002/APP-Proyecto1-PlataformasMoviles/blob/main/APPLogo.png">
- 
+
+<p align="center"> <img src="https://github.com/angelcast2002/APP-Proyecto1-PlataformasMoviles/blob/main/APPLogo.png" width = "500"> </p>
+
 ## Servicios
 - [API razas de perros](https://api-ninjas.com/api/dogs)
 
-    - API para algo
+    - API para algo (Mario o Javier)
   
   ***
-- [API inicio de sesión](noche)
+- [API Firebase](https://firebase.google.com/docs/auth/android/google-signin?hl=es-419#kotlin+ktx)
   
-    - API para algo
+    - API que por medio de Google Authentication, nos permitirá llevar el control y manejo de las cuentas de los distintos usuarios.
   
   ***
 ## Librerías
