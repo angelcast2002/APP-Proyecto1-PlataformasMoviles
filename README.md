@@ -15,7 +15,7 @@
   ***
 ## Librerías
 
-- [Rrtrofit](https://square.github.io/retrofit/)
+- [Retrofit](https://square.github.io/retrofit/)
   
     - Librería dedicada al cosumo de APIs de tipo REST, esta librería nos permitirá la inclusión de la información que solicitemos a las APIs enlistadas en la sección de servicios, con el fin de contar con un login funcional de manera independiente al dispositivo, y para poder brindarle al usuario información acerca de su mascota.
 
