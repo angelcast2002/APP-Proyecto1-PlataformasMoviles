@@ -3,9 +3,9 @@
 <p align="center"> <img src="https://github.com/angelcast2002/APP-Proyecto1-PlataformasMoviles/blob/main/APPLogo.png" width = "500"> </p>
 
 ## Servicios
-- [API razas de perros](https://api-ninjas.com/api/dogs)
+- [API Dogs de: API Ninjas](https://api-ninjas.com/api/dogs)
 
-    - API para algo (Mario o Javier)
+    - API que obtiene información sobre más de 200 razas distintas de perros. Esta API nos permitirá brindarle al usuario recomendaciones sobre su perro dependiendo de la raza de este.
   
   ***
 - [API Firebase](https://firebase.google.com/docs/auth/android/google-signin?hl=es-419#kotlin+ktx)
