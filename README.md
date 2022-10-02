@@ -6,6 +6,7 @@
 - [API Dogs de: API Ninjas](https://api-ninjas.com/api/dogs)
 
     - API que obtiene información sobre más de 200 razas distintas de perros. Esta API nos permitirá brindarle al usuario recomendaciones sobre su perro dependiendo de la raza de este.
+    - Los resultados que se le brinden al usuario serán relacionados al cuidado del perro. Información como: qué tan propensa a ladrar es la raza, qué tan propensa a soltar pelo, qué tanto grooming requiere, etc. Esta información (basada en rankings del 1-5 en el API), nos permitirá recomendarle al usuario tips para cuidar de su mascota y evitar problemas. Recomendaciones para evitar que suelte tanto pelo, que tan seguido llevarlo al grooming, qué tan bien se lleva con otros perros, etc. 
   
   ***
 - [API Firebase](https://firebase.google.com/docs/auth/android/google-signin?hl=es-419#kotlin+ktx)
