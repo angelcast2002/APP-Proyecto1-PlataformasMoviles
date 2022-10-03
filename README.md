@@ -14,6 +14,12 @@
     - API que por medio de Google Authentication, nos permitirá llevar el control y manejo de las cuentas de los distintos usuarios.
   
   ***
+- [API Google Calendar](https://developers.google.com/calendar/api)
+  
+    - API que por medio de Google Calendar, nos permitirá usar el calendario de google para que los usuarios puedan calendarizar sus actividades.
+  
+  
+  ***
 ## Librerías
 
 - [Retrofit](https://square.github.io/retrofit/)
