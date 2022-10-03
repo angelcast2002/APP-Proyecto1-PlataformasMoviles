@@ -46,3 +46,10 @@
     ~~~
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3' 
     ~~~
+- [Jetpack](https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwiw1fPFh8P6AhWNwYYKHSkpB2MYABAAGgJ2dQ&ohost=www.google.com&cid=CAESauD2y4p03bSt6aznDs3RrCd-KxCg9m_nrU0KYST0gbZ9ywwt8EHge7t7kDpeknIjW51u002VQhySvNV_qruNJDCATVw8U3DLufaoYOnAbpV21eEWdSD0oRGopdcFTplSmZj_MN7EWzv_o8o&sig=AOD64_0MauLCLbYoCyG05LNrEJyj8p9Dgg&q&adurl&ved=2ahUKEwimx-3Fh8P6AhXHRjABHT84BkAQ0Qx6BAgHEAE)
+    - Componente de interfaz de usuario que le ayuda a crear diseños de dos paneles para dispositivos de doble pantalla, plegables y de pantalla grande.
+    ~~~
+    def nav_version = "2.5.1"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    ~~~
+    
