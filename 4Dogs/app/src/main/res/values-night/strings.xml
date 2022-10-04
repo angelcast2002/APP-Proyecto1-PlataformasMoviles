@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="textCorreo_inputCorreo_loginLayout">Correo</string>
+    <string name="text_title_registerLayout">Registrase</string>
+    <string name="text_btRegistrarse_registerLayout">Registrarse</string>
+    <string name="invalidPasswordOrEmail">Correo o contraseña incorrecto</string>
 </resources>

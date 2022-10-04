@@ -5,7 +5,10 @@
     <dimen name="marginSize_large">20dp</dimen>
     <dimen name="marginSize_extraLarge">25dp</dimen>
     <dimen name="ceroDp">0dp</dimen>
-    <dimen name="paddingVertical_bt_logIn_loginLayout">20dp</dimen>
+    <dimen name="paddingVertical_bt_logIn_loginLayout">15dp</dimen>
     <dimen name="paddingHorizontal_bt_logIn_loginLayout">70dp</dimen>
     <dimen name="textSize_loginLayout">13sp</dimen>
+    <dimen name="size_btRegresar">20dp</dimen>
+    <dimen name="size_generalTitle">36sp</dimen>
+    <dimen name="textSize_textInputText">15sp</dimen>
 </resources>

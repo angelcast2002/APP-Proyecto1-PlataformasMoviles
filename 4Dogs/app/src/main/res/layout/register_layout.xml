@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.registerFragment">
+
+    <Button
+        android:id="@+id/bt_regresar"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="@dimen/marginSize_small"
+        android:layout_marginTop="@dimen/marginSize_large"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+
+        app:icon="@drawable/ic_back"
+        app:iconTint="@color/color_morningBlue"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+
+        />
+
+    <TextView
+        android:id="@+id/text_registerLayoutTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_regresar"
+
+        android:layout_marginTop="@dimen/marginSize_extraLarge"
+        android:layout_marginHorizontal="@dimen/marginSize_small"
+
+        android:textColor="@color/color_feldgrau"
+        android:fontFamily="@font/krub_medium"
+        android:textSize="@dimen/size_generalTitle"
+        android:text="@string/text_title_registerLayout"
+
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInput_correoText_registerLayout"
+
+        android:layout_width="@dimen/ceroDp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="@dimen/marginSize_large"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_registerLayoutTitle"
+        app:layout_constraintBottom_toTopOf="@+id/textInput_passwordText_registerLayout"
+
+        android:hint="@string/textCorreo_inputCorreo_loginLayout"
+        app:boxStrokeColor="@color/color_morningBlue"
+        android:textColorHint="@color/color_feldgrau"
+        android:textSize="@dimen/textSize_loginLayout"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="@dimen/marginSize_extraLarge"
+        app:layout_constraintVertical_chainStyle="packed"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:textColor="@color/color_feldgrau"
+            android:id="@+id/textInput_correoText_registerLayout_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textSize="@dimen/textSize_textInputText"
+            android:fontFamily="@font/krub_medium"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInput_passwordText_registerLayout"
+
+        android:layout_width="@dimen/ceroDp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="@dimen/marginSize_large"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInput_correoText_registerLayout"
+        app:layout_constraintBottom_toTopOf="@+id/textInput_userText_registerLayout"
+
+        android:hint="@string/textPasword_inputPaswor_RegisterLayout"
+        app:boxStrokeColor="@color/color_morningBlue"
+        android:textColorHint="@color/color_feldgrau"
+        android:textSize="@dimen/textSize_loginLayout"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="@dimen/marginSize_extraLarge"
+        app:layout_constraintVertical_chainStyle="packed"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:textColor="@color/color_feldgrau"
+            android:id="@+id/textInput_passwordText_registerLayout_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textSize="@dimen/textSize_textInputText"
+            android:fontFamily="@font/krub_medium"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInput_userText_registerLayout"
+
+        android:layout_width="@dimen/ceroDp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="@dimen/marginSize_large"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInput_passwordText_registerLayout"
+
+
+        android:hint="@string/textUser_inputUser_RegisterLayout"
+        app:boxStrokeColor="@color/color_morningBlue"
+        android:textColorHint="@color/color_feldgrau"
+        android:textSize="@dimen/textSize_loginLayout"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="@dimen/marginSize_extraLarge"
+        app:layout_constraintVertical_chainStyle="packed"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:textColor="@color/color_feldgrau"
+            android:id="@+id/textInput_userText_registerLayout_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textSize="@dimen/textSize_textInputText"
+            android:fontFamily="@font/krub_medium"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        android:layout_marginHorizontal="@dimen/marginSize_large"
+        android:layout_marginBottom="@dimen/marginSize_extraLarge"
+
+        android:text="@string/text_btRegistrarse_registerLayout"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/color_feldgrau"
+        android:fontFamily="@font/krub_bold"
+        android:textSize="@dimen/textSize_loginLayout"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

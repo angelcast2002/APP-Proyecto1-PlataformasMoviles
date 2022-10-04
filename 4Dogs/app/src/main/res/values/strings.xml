@@ -4,4 +4,9 @@
     <string name="textPassword_inputPassword_loginLayout">Contraseña</string>
     <string name="bt_textIniciaSesion_loginLayout">Iniciar sesión</string>
     <string name="bt_textSignUp_loginLayout">¿Eres nuevo? Crea un usuario</string>
+    <string name="text_title_registerLayout">Registrase</string>
+    <string name="textPasword_inputPaswor_RegisterLayout">Crear contraseña</string>
+    <string name="textUser_inputUser_RegisterLayout">Crear usuario</string>
+    <string name="text_btRegistrarse_registerLayout">Registrarse</string>
+    <string name="invalidPasswordOrEmail">Correo o contraseña incorrecto</string>
 </resources>
