@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ForDogs</string>
+    <string name="textCorreo_inputCorreo_loginLayout">Dirección de correo electrónico</string>
+    <string name="textPassword_inputPassword_loginLayout">Contraseña</string>
+    <string name="bt_textIniciaSesion_loginLayout">Iniciar sesión</string>
+    <string name="bt_textSignUp_loginLayout">¿Eres nuevo? Crea un usuario</string>
 </resources>

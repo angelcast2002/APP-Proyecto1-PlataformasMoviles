@@ -1,4 +1,4 @@
 package com.example.fordogs.fragments
 
-class firstUse_fragment {
+class logIn_fragment {
 }

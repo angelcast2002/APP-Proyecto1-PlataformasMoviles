@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="marginSize_small">10dp</dimen>
+    <dimen name="marginSize_medium">15dp</dimen>
+    <dimen name="marginSize_large">20dp</dimen>
+    <dimen name="marginSize_extraLarge">25dp</dimen>
+    <dimen name="ceroDp">0dp</dimen>
+    <dimen name="paddingVertical_bt_logIn_loginLayout">20dp</dimen>
+    <dimen name="paddingHorizontal_bt_logIn_loginLayout">70dp</dimen>
+    <dimen name="textSize_loginLayout">13sp</dimen>
+</resources>
