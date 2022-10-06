@@ -9,8 +9,8 @@
     <ImageView
         android:id="@+id/img_logo4Dogs"
 
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="@dimen/size_imgLogo_loginLayout"
+        android:layout_height="@dimen/size_imgLogo_loginLayout"
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -9,4 +9,11 @@
     <string name="textUser_inputUser_RegisterLayout">Crear usuario</string>
     <string name="text_btRegistrarse_registerLayout">Registrarse</string>
     <string name="invalidPasswordOrEmail">Correo o contraseña incorrecto</string>
+    <string name="textRaza">Raza</string>
+    <string name="textPeso">Peso</string>
+    <string name="textColor">Color</string>
+    <string name="textAlto">Alto</string>
+    <string name="textLargo">Largo</string>
+    <string name="textComidaFavorita">Comida Favorita</string>
+    <string name="bt_saveChanges_editProfileLayout">save changes</string>
 </resources>
