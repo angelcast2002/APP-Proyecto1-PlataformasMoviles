@@ -1,4 +1,8 @@
 package com.example.fordogs.fragments
 
-class editProfileFragment {
+
+import androidx.fragment.app.Fragment
+
+class editProfileFragment: Fragment(){
+
 }
