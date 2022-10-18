@@ -11,4 +11,9 @@
     <string name="invalidPasswordOrEmail">Correo o contraseña incorrecto</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="borrar">Eliminar</string>
+    <string name="calendar_input_event">Introduzca el titulo del evento</string>
+    <string name="calendar_delete_dialog">Seguro que desea borrar el evento?</string>
 </resources>
