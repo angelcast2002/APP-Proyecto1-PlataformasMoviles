@@ -1,4 +1,4 @@
-package com.example.fordogs.fragments
+package com.example.fordogs.fragments.login
 
 import android.os.Bundle
 import android.view.View
@@ -8,7 +8,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.fordogs.R
-import com.google.android.material.textfield.TextInputLayout
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class loginFragment: Fragment(R.layout.login_layout) {
 
@@ -31,7 +33,15 @@ class loginFragment: Fragment(R.layout.login_layout) {
 
         }
 
+        hideNavBar()
         setListeners()
+    }
+
+    private fun hideNavBar(){
+        val navBar : BottomAppBar = requireActivity().findViewById(R.id.bottomAppBar)
+        val fab : FloatingActionButton = requireActivity().findViewById(R.id.mainActivityFAB)
+        navBar.visibility = View.GONE
+        fab.visibility = View.GONE
     }
 
     private fun setListeners() {

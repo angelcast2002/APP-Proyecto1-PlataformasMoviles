@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_nav_calendar"
+        android:icon="@drawable/ic_outline_calendar"
+        android:title="Calendario" />
+
+    <item
+        android:id="@+id/bottom_nav_dogs"
+        android:icon="@drawable/ic_outline_pie_chart_24"
+        android:title="Analytics" />
+
+    <item
+        android:id="@+id/placeholder"
+        android:title=""/>
+
+    <item
+        android:id="@+id/bottom_nav_profile"
+        android:icon="@drawable/ic_outline_user"
+        android:title="Perfil" />
+
+    <item
+        android:id="@+id/bottom_nav_settings"
+        android:icon="@drawable/ic_baseline_power_settings_new_24"
+        android:title="Log Out" />
+
+</menu>

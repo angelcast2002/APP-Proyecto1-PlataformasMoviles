@@ -9,4 +9,6 @@
     <string name="textUser_inputUser_RegisterLayout">Crear usuario</string>
     <string name="text_btRegistrarse_registerLayout">Registrarse</string>
     <string name="invalidPasswordOrEmail">Correo o contraseña incorrecto</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
