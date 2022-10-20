@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.fordogs.R
 import com.example.fordogs.databinding.LoginLayoutBinding
+import com.example.fordogs.ui.util.BaseFragment
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.flow.collectLatest
@@ -73,6 +74,5 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
                 LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
             )
         }
-
     }
 }
