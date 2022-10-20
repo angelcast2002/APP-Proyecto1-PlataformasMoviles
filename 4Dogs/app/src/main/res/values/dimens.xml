@@ -11,6 +11,7 @@
     <dimen name="size_btRegresar">20dp</dimen>
     <dimen name="size_generalTitle">36sp</dimen>
     <dimen name="textSize_textInputText">15sp</dimen>
+    <dimen name="pawIconSize">40dp</dimen>
     <dimen name="size_imgLogo_loginLayout">200dp</dimen>
     <dimen name="sizeText_petName">24sp</dimen>
 </resources>

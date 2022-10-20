@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.fordogs"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -66,6 +66,9 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
     implementation 'androidx.datastore:datastore-preferences:1.0.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+
+    def calendar_version = "2.0.0"
+    implementation "com.kizitonwose.calendar:view:$calendar_version"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

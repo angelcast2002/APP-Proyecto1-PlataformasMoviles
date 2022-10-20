@@ -9,4 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="color_morningBlue">#8AA39B</color>
     <color name="color_feldgrau">#5C6F68</color>
+
+    <color name="magic_mint">#95D9C3</color>
+    <color name="dark_magic_mint">#70A393</color>
+    <color name="light_magic_mint">#A4F9C8</color>
+    <color name="magic_blue_mint">#A6FCDF</color>
+    <color name="celeste">#A7FFF6</color>
+    <color name="cafe_au_lait">#A18262</color>
+    <color name="light_feldgrau">#CBE2DB</color>
 </resources>

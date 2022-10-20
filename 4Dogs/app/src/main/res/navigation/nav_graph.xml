@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/calendarFragment">
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.fordogs.fragments.loginFragment"
+        android:name="com.example.fordogs.ui.fragments.login.loginFragment"
         android:label="loginFragment"
         tools:layout="@layout/login_layout">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.fordogs.fragments.registerFragment"
+        android:name="com.example.fordogs.ui.fragments.register.registerFragment"
         android:label="register_layout"
         tools:layout="@layout/register_layout" >
         <action
@@ -25,4 +25,9 @@
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.fordogs.ui.fragments.calendar.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" />
 </navigation>

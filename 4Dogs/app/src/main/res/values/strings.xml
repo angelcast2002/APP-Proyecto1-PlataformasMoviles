@@ -9,6 +9,21 @@
     <string name="textUser_inputUser_RegisterLayout">Crear usuario</string>
     <string name="text_btRegistrarse_registerLayout">Registrarse</string>
     <string name="invalidPasswordOrEmail">Correo o contraseña incorrecto</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="borrar">Eliminar</string>
+    <string name="calendar_input_event">Introduzca el titulo del evento</string>
+    <string name="calendar_delete_dialog">Seguro que desea borrar el evento?</string>
+    <string name="mesPlaceholder">Octubre 2022</string>
+    <string name="domingo">D</string>
+    <string name="lunes">L</string>
+    <string name="martes">M</string>
+    <string name="miercoles">M</string>
+    <string name="jueves">J</string>
+    <string name="viernes">V</string>
+    <string name="sabado">S</string>
     <string name="textRaza">Raza</string>
     <string name="textPeso">Peso</string>
     <string name="textColor">Color</string>
