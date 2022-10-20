@@ -7,18 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fordogs.databinding.FragmentCalendarBinding
-import com.example.fordogs.ui.util.CalendarConstants
 import com.example.fordogs.ui.util.CalendarConstants.Companion.selectedDate
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
+import kotlin.collections.ArrayList
 
-class CalendarFragment : Fragment(), CalendarAdapter.onItemListener {
+class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
 
     private lateinit var binding: FragmentCalendarBinding
     private lateinit var recyclerView: RecyclerView
@@ -66,21 +65,27 @@ class CalendarFragment : Fragment(), CalendarAdapter.onItemListener {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun daysInMonthArray(date: LocalDate): ArrayList<String> {
+    private fun daysInMonthArray(date: LocalDate?): ArrayList<LocalDate?> {
 
-        val daysInMonthArray = arrayListOf<String>()
+        val daysInMonthArray = arrayListOf<LocalDate?>()
         val yearMonth = YearMonth.from(date)
         val daysInMonth = yearMonth.lengthOfMonth()
 
-        val firstOfMonth = selectedDate.withDayOfMonth(1)
-        val dayOfWeek = firstOfMonth.dayOfWeek.value
+        val firstOfMonth = selectedDate?.withDayOfMonth(1)
+        val dayOfWeek = firstOfMonth?.dayOfWeek?.value
 
         for (i in 1..42) {
 
-            if (i <= dayOfWeek || i > daysInMonth + dayOfWeek) {
-                daysInMonthArray.add("")
+            if (i <= dayOfWeek!! || i > daysInMonth + dayOfWeek) {
+                daysInMonthArray.add(null)
             } else {
-                daysInMonthArray.add((i - dayOfWeek).toString())
+                daysInMonthArray.add(selectedDate?.let {
+                    LocalDate.of(
+                        it.year,
+                        selectedDate?.month,
+                        i - dayOfWeek
+                    )
+                })
             }
 
         }
@@ -89,11 +94,11 @@ class CalendarFragment : Fragment(), CalendarAdapter.onItemListener {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun monthYearFromDate(date: LocalDate): String {
+    private fun monthYearFromDate(date: LocalDate?): String {
 
         val formatter = DateTimeFormatter.ofPattern("MMMM yyyy")
 
-        return date.format(formatter)
+        return date!!.format(formatter)
     }
 
     private fun initWidgets() {
@@ -103,23 +108,22 @@ class CalendarFragment : Fragment(), CalendarAdapter.onItemListener {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun nextMonthAction(view: View) {
-        selectedDate = selectedDate.plusMonths(1)
+        selectedDate = selectedDate?.plusMonths(1)
         setMonthView()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun previousMonthAction(view: View) {
-        selectedDate = selectedDate.minusMonths(1)
+        selectedDate = selectedDate?.minusMonths(1)
         setMonthView()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun onItemClick(dayText: String, position: Int) {
+    override fun onItemClick(date: LocalDate?, position: Int) {
 
-        if (dayText != "") {
-            val message = "Fecha seleccionada $dayText ${monthYearFromDate(selectedDate)}"
-
-            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        if (date != null) {
+            selectedDate = date
+            setMonthView()
         }
 
     }
