@@ -1,4 +1,4 @@
-package com.example.fordogs.fragments.calendar
+package com.example.fordogs.ui.fragments.calendar
 
 import android.os.Build
 import android.os.Bundle
@@ -12,15 +12,16 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fordogs.databinding.FragmentCalendarBinding
+import com.example.fordogs.ui.util.CalendarConstants
+import com.example.fordogs.ui.util.CalendarConstants.Companion.selectedDate
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 
-class CalendarFragment : Fragment(), CalendarAdapter.onItemListener{
+class CalendarFragment : Fragment(), CalendarAdapter.onItemListener {
 
     private lateinit var binding: FragmentCalendarBinding
     private lateinit var recyclerView: RecyclerView
-    private lateinit var selectedDate: LocalDate
     private lateinit var monthYearText: TextView
 
 
@@ -38,7 +39,6 @@ class CalendarFragment : Fragment(), CalendarAdapter.onItemListener{
         super.onViewCreated(view, savedInstanceState)
 
         initWidgets()
-        selectedDate = LocalDate.now()
         setMonthView()
         setListeners()
     }

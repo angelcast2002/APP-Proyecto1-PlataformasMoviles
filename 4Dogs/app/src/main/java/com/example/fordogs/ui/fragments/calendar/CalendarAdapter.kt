@@ -1,4 +1,4 @@
-package com.example.fordogs.fragments.calendar
+package com.example.fordogs.ui.fragments.calendar
 
 import android.view.LayoutInflater
 import android.view.View

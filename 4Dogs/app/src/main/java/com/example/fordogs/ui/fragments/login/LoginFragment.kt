@@ -1,4 +1,4 @@
-package com.example.fordogs.fragments.login
+package com.example.fordogs.ui.fragments.login
 
 import android.os.Bundle
 import android.view.View

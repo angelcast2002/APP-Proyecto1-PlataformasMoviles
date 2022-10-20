@@ -16,4 +16,12 @@
     <string name="borrar">Eliminar</string>
     <string name="calendar_input_event">Introduzca el titulo del evento</string>
     <string name="calendar_delete_dialog">Seguro que desea borrar el evento?</string>
+    <string name="mesPlaceholder">Octubre 2022</string>
+    <string name="domingo">D</string>
+    <string name="lunes">L</string>
+    <string name="martes">M</string>
+    <string name="miercoles">M</string>
+    <string name="jueves">J</string>
+    <string name="viernes">V</string>
+    <string name="sabado">S</string>
 </resources>

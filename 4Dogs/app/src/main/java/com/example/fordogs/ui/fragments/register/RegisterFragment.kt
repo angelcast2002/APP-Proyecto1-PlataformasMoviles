@@ -1,4 +1,4 @@
-package com.example.fordogs.fragments.register
+package com.example.fordogs.ui.fragments.register
 
 import android.os.Bundle
 import android.view.View
