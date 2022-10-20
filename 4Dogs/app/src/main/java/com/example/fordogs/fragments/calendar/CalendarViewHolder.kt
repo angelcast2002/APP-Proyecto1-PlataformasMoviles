@@ -6,8 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fordogs.R
 
 
-class CalendarViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class CalendarViewHolder(itemView: View,
+                         private val listener: CalendarAdapter.onItemListener
+) : RecyclerView.ViewHolder(itemView) {
 
     val dayOfMonth : TextView = itemView.findViewById(R.id.cellDayText)
+
+    fun onClick(view: View) {
+        listener.onItemClick(dayOfMonth.text.toString(), absoluteAdapterPosition)
+    }
 
 }
