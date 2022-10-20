@@ -45,7 +45,9 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
     private fun handleStatus(status: LoginViewModel.Status) {
         when(status){
             LoginViewModel.Status.Default -> {
-                TODO()
+                binding.apply {
+
+                }
             }
             is LoginViewModel.Status.Error -> TODO()
             LoginViewModel.Status.Loading -> TODO()
