@@ -26,12 +26,12 @@
         android:label="register_layout"
         tools:layout="@layout/register_layout" >
         <action
-            app:popUpTo="@id/registerFragment"
+            app:popUpTo="@id/editProfileFragment"
             app:popUpToInclusive="true"
             android:id="@+id/action_registerFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
         <action
-            app:popUpTo="@id/registerFragment"
+            app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true"
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
