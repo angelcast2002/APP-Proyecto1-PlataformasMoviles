@@ -11,27 +11,18 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fordogs.databinding.FragmentCalendarBinding
+import com.example.fordogs.ui.util.BaseFragment
 import com.example.fordogs.ui.util.CalendarConstants.Companion.selectedDate
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 import kotlin.collections.ArrayList
 
-class CalendarFragment : Fragment(), CalendarAdapter.OnItemListener {
+class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), CalendarAdapter.OnItemListener {
 
-    private lateinit var binding: FragmentCalendarBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var monthYearText: TextView
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentCalendarBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override fun getViewBinding() = FragmentCalendarBinding.inflate(layoutInflater)
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
