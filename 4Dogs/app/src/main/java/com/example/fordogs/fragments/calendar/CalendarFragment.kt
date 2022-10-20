@@ -116,7 +116,7 @@ class CalendarFragment : Fragment(), CalendarAdapter.onItemListener{
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onItemClick(dayText: String, position: Int) {
 
-        if (dayText == "") {
+        if (dayText != "") {
             val message = "Fecha seleccionada $dayText ${monthYearFromDate(selectedDate)}"
 
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
