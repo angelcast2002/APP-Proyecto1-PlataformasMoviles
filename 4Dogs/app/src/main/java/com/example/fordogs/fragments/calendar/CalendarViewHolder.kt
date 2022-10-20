@@ -14,8 +14,7 @@ class CalendarViewHolder(itemView: View,
     private val layoutCell : ConstraintLayout = itemView.findViewById(R.id.calendar_cell_layout)
     val dayOfMonth : TextView = itemView.findViewById(R.id.cellDayText)
 
-
-    fun onClick(view: View) {
+    init {
         layoutCell.setOnClickListener {
             listener.onItemClick(dayOfMonth.text.toString(), absoluteAdapterPosition)
         }
