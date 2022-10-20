@@ -33,7 +33,7 @@ class loginFragment: Fragment(R.layout.login_layout) {
 
         }
 
-        //hideNavBar()
+        hideNavBar()
         setListeners()
     }
 
