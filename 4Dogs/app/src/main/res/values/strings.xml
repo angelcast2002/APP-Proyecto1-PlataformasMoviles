@@ -24,4 +24,11 @@
     <string name="jueves">J</string>
     <string name="viernes">V</string>
     <string name="sabado">S</string>
+    <string name="textRaza">Raza</string>
+    <string name="textPeso">Peso</string>
+    <string name="textColor">Color</string>
+    <string name="textAlto">Alto</string>
+    <string name="textLargo">Largo</string>
+    <string name="textComidaFavorita">Comida Favorita</string>
+    <string name="bt_saveChanges_editProfileLayout">save changes</string>
 </resources>
