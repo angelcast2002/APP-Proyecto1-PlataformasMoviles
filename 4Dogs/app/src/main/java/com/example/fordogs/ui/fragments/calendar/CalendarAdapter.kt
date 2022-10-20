@@ -1,14 +1,18 @@
 package com.example.fordogs.ui.fragments.calendar
 
+import android.os.Build
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fordogs.R
+import com.example.fordogs.ui.util.CalendarConstants.Companion.selectedDate
+import java.time.LocalDate
+import kotlin.collections.ArrayList
 
 class CalendarAdapter(
-    private val daysOfMonth: ArrayList<String>,
-    private val listener: onItemListener
+    private val days: ArrayList<LocalDate?>,
+    private val listener: OnItemListener
 ) : RecyclerView.Adapter<CalendarViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarViewHolder
@@ -18,22 +22,32 @@ class CalendarAdapter(
         val params = view.layoutParams
         params.height = parent.measuredHeight / 6
 
-        return CalendarViewHolder(view, listener)
+        return CalendarViewHolder(view, listener, days)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: CalendarViewHolder, position: Int)
     {
-        holder.dayOfMonth.text = daysOfMonth[position]
+        val date = days[position]
+
+        if (date == null) {
+            holder.dayOfMonth.text = ""
+        } else {
+            holder.dayOfMonth.text = date.dayOfMonth.toString()
+            if (date == selectedDate) {
+                holder.parentView.setBackgroundResource(R.drawable.calendar_selected_cell_background)
+            }
+        }
     }
 
     override fun getItemCount(): Int
     {
-        return daysOfMonth.size
+        return days.size
     }
 
-    interface onItemListener {
+    interface OnItemListener {
 
-        fun onItemClick(dayText: String, position: Int)
+        fun onItemClick(date: LocalDate?, position: Int)
 
     }
 
