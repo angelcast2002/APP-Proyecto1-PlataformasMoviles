@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.editProfileFragment">
+    tools:context=".ui.fragments.calendar.EditProfileFragment"
+    android:background="@drawable/app_background_with_gradient">
 
     <ImageView
         android:id="@+id/img_pet_editProfileLayout"

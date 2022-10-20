@@ -1,37 +1,39 @@
 package com.example.fordogs.ui.fragments.login
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.fordogs.R
+import com.example.fordogs.databinding.EditProfileLayoutBinding
+import com.example.fordogs.databinding.LoginLayoutBinding
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class loginFragment: Fragment(R.layout.login_layout) {
+class LoginFragment: Fragment(){
+    private lateinit var binding : LoginLayoutBinding
 
-    private lateinit var buttonIniciarSesion: Button
-    private lateinit var resultadoAPI: Any //Esto hay que cambiarlo al implementar la api
-    private lateinit var textCorreo: EditText
-    private lateinit var textPassword: EditText
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = LoginLayoutBinding.inflate(inflater, container, false)
+        return binding.root
+
+    }
+
     private lateinit var correo: String
     private lateinit var password: String
-    private lateinit var buttonNuevoUsuario: Button
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        view.apply {
-            buttonIniciarSesion = findViewById(R.id.bt_iniciarSesion_loginLayout)
-            textCorreo = findViewById(R.id.textInput_correoText_loginlayout_editText)
-            textPassword = findViewById(R.id.textInput_passwordText_loginLayout_editText)
-            buttonNuevoUsuario = findViewById(R.id.bt_signUp_loginLayout)
-
-        }
 
         hideNavBar()
         setListeners()
@@ -45,25 +47,25 @@ class loginFragment: Fragment(R.layout.login_layout) {
     }
 
     private fun setListeners() {
-        buttonIniciarSesion.setOnClickListener{
+        binding.btIniciarSesionLoginLayout.setOnClickListener{
 
-            correo = textCorreo.text.toString()
-            password = textPassword.text.toString()
+            correo = binding.textInputCorreoTextLoginlayoutEditText.text.toString()
+            password = binding.textInputPasswordTextLoginLayoutEditText.text.toString()
 
             if (correo == "ejemplo@uvg" && password == "ejemplo") { //hay que cambiarlo cuando tengamos el api
-                requireView().findNavController().navigate(
-                    loginFragmentDirections.actionLoginFragmentToRegisterFragment()
-                )
+                /*requireView().findNavController().navigate(
+                    LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
+                )*/
             }
             else {
                 Toast.makeText(activity, getString(R.string.invalidPasswordOrEmail), Toast.LENGTH_LONG)
                     .show()
             }
         }
-        buttonNuevoUsuario.setOnClickListener{
+        binding.btSignUpLoginLayout.setOnClickListener{
 
             requireView().findNavController().navigate(
-                loginFragmentDirections.actionLoginFragmentToRegisterFragment()
+                LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
             )
         }
 
