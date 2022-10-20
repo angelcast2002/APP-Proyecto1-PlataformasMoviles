@@ -12,38 +12,22 @@ import androidx.navigation.findNavController
 import com.example.fordogs.R
 import com.example.fordogs.databinding.EditProfileLayoutBinding
 import com.example.fordogs.databinding.LoginLayoutBinding
+import com.example.fordogs.ui.util.BaseFragment
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class LoginFragment: Fragment(){
-    private lateinit var binding : LoginLayoutBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = LoginLayoutBinding.inflate(inflater, container, false)
-        return binding.root
-
-    }
+class LoginFragment: BaseFragment<LoginLayoutBinding>(){
 
     private lateinit var correo: String
     private lateinit var password: String
+    override fun getViewBinding() = LoginLayoutBinding.inflate(layoutInflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         hideNavBar()
         setListeners()
-    }
-
-    private fun hideNavBar(){
-        val navBar : BottomAppBar = requireActivity().findViewById(R.id.bottomAppBar)
-        val fab : FloatingActionButton = requireActivity().findViewById(R.id.mainActivityFAB)
-        navBar.visibility = View.GONE
-        fab.visibility = View.GONE
     }
 
     private fun setListeners() {
@@ -62,12 +46,10 @@ class LoginFragment: Fragment(){
                     .show()
             }
         }
-        binding.btSignUpLoginLayout.setOnClickListener{
-
-            requireView().findNavController().navigate(
+        binding.btSignUpLoginLayout.setOnClickListener { view ->
+            view.findNavController().navigate(
                 LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
             )
         }
-
     }
 }
