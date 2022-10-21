@@ -1,8 +1,11 @@
 package com.example.fordogs
 
+import android.app.ProgressDialog.show
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.navigation.NavController
@@ -60,6 +63,23 @@ class MainActivity : AppCompatActivity() {
                 R.id.bottom_nav_dogs -> {
                     navController.navigate(R.id.eventsFragment)
                     true
+                }
+                R.id.bottom_nav_settings ->{
+
+                    val builder = AlertDialog.Builder(this)
+                    builder.apply {
+                        setTitle(getString(R.string.text_Advertencia))
+                        setMessage(getString(R.string.text_mensaje_cerrarSesion))
+                        setPositiveButton(getString(R.string.text_Eliminar)
+                        ) { _, _ ->
+                            navController.navigate(R.id.loginFragment)
+                            finishAffinity() //Finaliza la app
+                        }
+                        setNegativeButton(getString(R.string.text_Cancelar)) { _, _ -> }
+                        show()
+                    }
+                    true
+
                 }
             }
 
