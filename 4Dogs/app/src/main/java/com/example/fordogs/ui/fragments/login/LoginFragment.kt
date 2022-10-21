@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import com.example.fordogs.R
 import com.example.fordogs.databinding.LoginLayoutBinding
 import com.example.fordogs.ui.util.BaseFragment
+import com.example.fordogs.ui.fragments.login.LoginViewModel.*
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.flow.collectLatest
@@ -44,7 +45,7 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
 
     private fun handleStatus(status: LoginViewModel.Status) {
         when(status){
-            LoginViewModel.Status.Default -> {
+            Status.Default -> {
                 binding.apply {
                     textInputCorreoTextLoginLayout.visibility = View.VISIBLE
                     textInputPasswordTextLoginLayout.visibility = View.VISIBLE
@@ -53,7 +54,7 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
                     progressLoginLayout.visibility = View.GONE
                 }
             }
-            is LoginViewModel.Status.Error -> {
+            is Status.Error -> {
                 binding.apply {
                     textInputCorreoTextLoginLayout.visibility = View.VISIBLE
                     textInputPasswordTextLoginLayout.visibility = View.VISIBLE
@@ -68,7 +69,7 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
                 logInViewModel.setDefault()
 
             }
-            LoginViewModel.Status.Loading -> {
+            Status.Loading -> {
                 binding.apply {
                     textInputCorreoTextLoginLayout.visibility = View.GONE
                     textInputPasswordTextLoginLayout.visibility = View.GONE
@@ -77,7 +78,7 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
                     progressLoginLayout.visibility = View.VISIBLE
                 }
             }
-            LoginViewModel.Status.Succes -> {
+            Status.Succes -> {
 
                 requireView().findNavController().navigate(
                     LoginFragmentDirections.actionLoginFragmentToCalendarFragment()
