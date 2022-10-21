@@ -31,4 +31,5 @@
     <string name="textLargo">Largo</string>
     <string name="textComidaFavorita">Comida Favorita</string>
     <string name="bt_saveChanges_editProfileLayout">save changes</string>
+    <string name="nuevo_recordatorio">Nuevo Recordatorio</string>
 </resources>
