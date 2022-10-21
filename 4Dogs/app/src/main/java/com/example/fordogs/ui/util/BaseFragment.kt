@@ -39,4 +39,11 @@ abstract class BaseFragment<VB : ViewBinding>: Fragment() {
         fab.visibility = View.GONE
     }
 
+    fun showNavBar() {
+        val navBar : BottomAppBar = requireActivity().findViewById(R.id.bottomAppBar)
+        val fab : FloatingActionButton = requireActivity().findViewById(R.id.mainActivityFAB)
+        navBar.visibility = View.VISIBLE
+        fab.visibility = View.VISIBLE
+    }
+
 }
