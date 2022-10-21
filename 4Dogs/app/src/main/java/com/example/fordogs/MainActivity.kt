@@ -18,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,11 +31,25 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val navController = findNavController(R.id.main_fragment_view)
-        setListeners(navController)
+        navController = findNavController(R.id.main_fragment_view)
+        setListeners()
+        activeItem()
     }
 
-    private fun setListeners(navController: NavController) {
+    private fun activeItem() {
+        navController.addOnDestinationChangedListener() { _, destination, _ ->
+            when (destination.id) {
+                R.id.calendarFragment -> {
+                    binding.bottomNavigationView.menu.getItem(0).isChecked = true
+                }
+                R.id.eventsFragment -> {
+                    binding.bottomNavigationView.menu.getItem(1).isChecked = true
+                }
+            }
+        }
+    }
+
+    private fun setListeners() {
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
