@@ -31,6 +31,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), CalendarAdapte
         initWidgets()
         setMonthView()
         setListeners()
+        showNavBar()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
