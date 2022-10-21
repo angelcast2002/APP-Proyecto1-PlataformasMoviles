@@ -10,7 +10,11 @@
         android:id="@+id/calendarFragment"
         android:name="com.example.fordogs.ui.fragments.calendar.CalendarFragment"
         android:label="fragment_calendar"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_calendarFragment_to_addEventFragment"
+            app:destination="@id/addEventFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.fordogs.ui.fragments.login.LoginFragment"
@@ -42,4 +46,13 @@
         android:name="com.example.fordogs.ui.fragments.calendar.EditProfileFragment"
         android:label="edit_profile_layout"
         tools:layout="@layout/edit_profile_layout" />
+    <fragment
+        android:id="@+id/addEventFragment"
+        android:name="com.example.fordogs.ui.fragments.events.AddEventFragment"
+        android:label="fragment_add_event"
+        tools:layout="@layout/fragment_add_event" >
+        <action
+            android:id="@+id/action_addEventFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
+    </fragment>
 </navigation>
