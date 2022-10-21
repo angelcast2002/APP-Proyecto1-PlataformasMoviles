@@ -10,7 +10,11 @@
         android:id="@+id/calendarFragment"
         android:name="com.example.fordogs.ui.fragments.calendar.CalendarFragment"
         android:label="fragment_calendar"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_calendarFragment_to_addEventFragment"
+            app:destination="@id/addEventFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.fordogs.ui.fragments.login.LoginFragment"
