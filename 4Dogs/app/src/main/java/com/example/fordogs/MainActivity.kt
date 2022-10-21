@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.fordogs.databinding.ActivityMainBinding
 import com.example.fordogs.ui.fragments.addevents.AddEventFragment
@@ -24,23 +26,35 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.background = null
         binding.bottomNavigationView.menu.getItem(2).isEnabled = false
-        setListeners()
     }
 
-    private fun setListeners() {
+    override fun onStart() {
+        super.onStart()
+        val navController = findNavController(R.id.main_fragment_view)
+        setListeners(navController)
+    }
+
+    private fun setListeners(navController: NavController) {
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
-                R.id.bottom_nav_calendar -> replaceFragment(CalendarFragment())
-                R.id.bottom_nav_dogs -> replaceFragment(EventsFragment())
+                R.id.bottom_nav_calendar -> {
+                    navController.navigate(R.id.calendarFragment)
+                    true
+                }
+                R.id.bottom_nav_dogs -> {
+                    navController.navigate(R.id.eventsFragment)
+                    true
+                }
             }
 
             true
         }
 
         binding.mainActivityFAB.setOnClickListener {
-            replaceFragment(AddEventFragment())
+            navController.navigate(R.id.addEventFragment)
         }
+
     }
 
     private fun replaceFragment(fragment: Fragment) {
