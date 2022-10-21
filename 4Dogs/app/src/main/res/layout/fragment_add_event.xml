@@ -4,11 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.events.AddEventFragment"
+    tools:context=".ui.fragments.addevents.AddEventFragment"
     >
 
     <ImageButton
-        android:id="@+id/backButton_eventFragment"
+        android:id="@+id/backButton_addEventFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/backbutton"
@@ -29,7 +29,8 @@
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/backButton_eventFragment"/>
+        app:layout_constraintTop_toBottomOf="@id/backButton_addEventFragment"
+        />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/eventTitle_text_input_layout"

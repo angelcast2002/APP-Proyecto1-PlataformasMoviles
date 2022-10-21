@@ -14,4 +14,7 @@
     <dimen name="pawIconSize">40dp</dimen>
     <dimen name="size_imgLogo_loginLayout">200dp</dimen>
     <dimen name="sizeText_petName">24sp</dimen>
+    <dimen name="margin8">8dp</dimen>
+    <dimen name="cardHeight">100dp</dimen>
+    <dimen name="consejosSize">30sp</dimen>
 </resources>
