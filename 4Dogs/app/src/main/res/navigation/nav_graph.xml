@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/addEventFragment">
+    app:startDestination="@id/loginFragment">
 
 
     <fragment
@@ -50,6 +50,15 @@
             app:popUpTo="@id/editProfileFragment"
             app:popUpToInclusive="true"
             android:id="@+id/action_editProfileFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEventFragment"
+        android:name="com.example.fordogs.ui.fragments.events.AddEventFragment"
+        android:label="fragment_add_event"
+        tools:layout="@layout/fragment_add_event" >
+        <action
+            android:id="@+id/action_addEventFragment_to_calendarFragment"
             app:destination="@id/calendarFragment" />
     </fragment>
 </navigation>
