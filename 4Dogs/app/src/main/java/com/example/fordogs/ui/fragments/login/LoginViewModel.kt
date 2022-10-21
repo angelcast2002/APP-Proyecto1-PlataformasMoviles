@@ -30,7 +30,7 @@ class LoginViewModel: ViewModel() {
         }
     }
 
-    private fun logIn(User: String,Password: String) {
+     private fun logIn(User: String, Password: String) {
         if (User == USER && Password == PASSWORD) {
             _status.value = Status.Succes
         }
@@ -38,6 +38,9 @@ class LoginViewModel: ViewModel() {
         else {
             _status.value = Status.Error(ERROR)
         }
+    }
 
+    fun setDefault(){
+        _status.value = Status.Default
     }
 }
