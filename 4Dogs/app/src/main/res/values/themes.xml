@@ -6,15 +6,41 @@
         <item name="colorPrimaryVariant">@color/dark_magic_mint</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/cafe_au_lait</item>
+        <item name="colorSecondary">@color/color_feldgrau</item>
         <item name="colorSecondaryVariant">@color/magic_blue_mint</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-
         <item
             name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView.Colored</item>
-
     </style>
+
+    <style name="MyHintStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/color_feldgrau</item>
+        <item name="android:textColorHint">@color/color_feldgrau</item>
+    </style>
+
+    <style name="Widget.Button.Toggle.Check" parent="android:Widget">
+        <item name="android:background">@drawable/check_btn_toggle_bg</item>
+        <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
+    </style>
+
+    <style name="Widget.Button.Toggle.AmPm" parent="android:Widget">
+        <item name="android:background">@drawable/ampm_toggle_bg</item>
+        <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
+    </style>
+
+    <style name="toggleButton.check"  parent="Widget.Button.Toggle.Check">
+        <item name="android:buttonStyleToggle">@style/Widget.Button.Toggle.Check</item>
+        <item name="android:textOn" />
+        <item name="android:textOff" />
+    </style>
+
+    <style name="toggleButton.ampm" parent="Widget.Button.Toggle.AmPm">
+        <item name="android:buttonStyleToggle">@style/Widget.Button.Toggle.AmPm</item>
+        <item name="android:textOn" />
+        <item name="android:textOff" />
+    </style>
+
 </resources>

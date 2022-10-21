@@ -52,4 +52,13 @@
             android:id="@+id/action_editProfileFragment_to_calendarFragment"
             app:destination="@id/calendarFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/addEventFragment"
+        android:name="com.example.fordogs.ui.fragments.events.AddEventFragment"
+        android:label="fragment_add_event"
+        tools:layout="@layout/fragment_add_event" >
+        <action
+            android:id="@+id/action_addEventFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
+    </fragment>
 </navigation>

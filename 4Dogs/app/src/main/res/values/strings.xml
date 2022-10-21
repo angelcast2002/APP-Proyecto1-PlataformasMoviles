@@ -32,4 +32,10 @@
     <string name="textComidaFavorita">Comida Favorita</string>
     <string name="bt_saveChanges_editProfileLayout">save changes</string>
     <string name="nuevo_recordatorio">Nuevo Recordatorio</string>
+    <string name="tituloEvento">Título</string>
+    <string name="eventDate">Fecha</string>
+    <string name="amTime">AM</string>
+    <string name="pmTime">PM</string>
+    <string name="description">Descripción...</string>
+    <string name="hora">Hora</string>
 </resources>
