@@ -23,6 +23,11 @@
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <action
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_loginFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
     </fragment>
 
     <fragment
@@ -31,28 +36,20 @@
         android:label="register_layout"
         tools:layout="@layout/register_layout" >
         <action
-            app:popUpTo="@id/editProfileFragment"
+            app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true"
             android:id="@+id/action_registerFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
-        <action
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true"
-            android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.example.fordogs.ui.fragments.calendar.EditProfileFragment"
         android:label="edit_profile_layout"
-        tools:layout="@layout/edit_profile_layout" />
-    <fragment
-        android:id="@+id/addEventFragment"
-        android:name="com.example.fordogs.ui.fragments.events.AddEventFragment"
-        android:label="fragment_add_event"
-        tools:layout="@layout/fragment_add_event" >
+        tools:layout="@layout/edit_profile_layout" >
         <action
-            android:id="@+id/action_addEventFragment_to_calendarFragment"
+            app:popUpTo="@id/editProfileFragment"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_editProfileFragment_to_calendarFragment"
             app:destination="@id/calendarFragment" />
     </fragment>
 </navigation>

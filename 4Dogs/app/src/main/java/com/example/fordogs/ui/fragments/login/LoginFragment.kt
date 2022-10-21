@@ -46,12 +46,46 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
         when(status){
             LoginViewModel.Status.Default -> {
                 binding.apply {
-
+                    textInputCorreoTextLoginLayout.visibility = View.VISIBLE
+                    textInputPasswordTextLoginLayout.visibility = View.VISIBLE
+                    btIniciarSesionLoginLayout.visibility = View.VISIBLE
+                    btSignUpLoginLayout.visibility = View.VISIBLE
+                    progressLoginLayout.visibility = View.GONE
                 }
             }
-            is LoginViewModel.Status.Error -> TODO()
-            LoginViewModel.Status.Loading -> TODO()
-            LoginViewModel.Status.Succes -> TODO()
+            is LoginViewModel.Status.Error -> {
+                binding.apply {
+                    textInputCorreoTextLoginLayout.visibility = View.VISIBLE
+                    textInputPasswordTextLoginLayout.visibility = View.VISIBLE
+                    btIniciarSesionLoginLayout.visibility = View.VISIBLE
+                    btSignUpLoginLayout.visibility = View.VISIBLE
+                    progressLoginLayout.visibility = View.GONE
+                    Toast.makeText(activity, status.message,
+                        Toast.LENGTH_LONG)
+                        .show()
+                }
+
+                logInViewModel.setDefault()
+
+            }
+            LoginViewModel.Status.Loading -> {
+                binding.apply {
+                    textInputCorreoTextLoginLayout.visibility = View.GONE
+                    textInputPasswordTextLoginLayout.visibility = View.GONE
+                    btIniciarSesionLoginLayout.visibility = View.GONE
+                    btSignUpLoginLayout.visibility = View.GONE
+                    progressLoginLayout.visibility = View.VISIBLE
+                }
+            }
+            LoginViewModel.Status.Succes -> {
+
+                requireView().findNavController().navigate(
+                    LoginFragmentDirections.actionLoginFragmentToCalendarFragment()
+                )
+
+                logInViewModel.setDefault()
+
+            }
         }
     }
 
@@ -60,19 +94,11 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
 
             correo = binding.textInputCorreoTextLoginlayoutEditText.text.toString()
             password = binding.textInputPasswordTextLoginLayoutEditText.text.toString()
-
-            if (correo == "a" && password == "a") { //hay que cambiarlo cuando tengamos el api
-                /*requireView().findNavController().navigate(
-                    LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
-                )*/
-            }
-            else {
-                Toast.makeText(activity, getString(R.string.invalidPasswordOrEmail), Toast.LENGTH_LONG)
-                    .show()
-            }
+            logInViewModel.loading(correo, password)
         }
-        binding.btSignUpLoginLayout.setOnClickListener { view ->
-            view.findNavController().navigate(
+
+        binding.btSignUpLoginLayout.setOnClickListener {
+            requireView().findNavController().navigate(
                 LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
             )
         }
