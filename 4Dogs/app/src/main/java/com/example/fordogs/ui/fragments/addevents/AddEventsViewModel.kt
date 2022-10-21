@@ -1,4 +1,4 @@
-package com.example.fordogs.ui.fragments.events
+package com.example.fordogs.ui.fragments.addevents
 
 import androidx.lifecycle.ViewModel
 

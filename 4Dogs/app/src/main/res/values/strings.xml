@@ -38,4 +38,5 @@
     <string name="pmTime">PM</string>
     <string name="description">Descripción...</string>
     <string name="hora">Hora</string>
+    <string name="consejos">Consejos:</string>
 </resources>
