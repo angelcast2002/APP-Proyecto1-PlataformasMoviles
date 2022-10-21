@@ -18,6 +18,7 @@ import kotlinx.coroutines.launch
 
 class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
     private val RegisterToLoginViewModel: RegisterToLoginViewModel by activityViewModels()
+    
     lateinit var name: String
 
     override fun getViewBinding() = EditProfileLayoutBinding.inflate(layoutInflater)

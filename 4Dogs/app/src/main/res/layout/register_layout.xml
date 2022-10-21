@@ -100,6 +100,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginTop="@dimen/marginSize_extraLarge"
         app:layout_constraintVertical_chainStyle="packed"
+        app:endIconCheckable="true"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/black"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -110,6 +113,7 @@
 
             android:textSize="@dimen/textSize_textInputText"
             android:fontFamily="@font/krub_medium"
+            android:inputType="textPassword"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -135,6 +139,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginTop="@dimen/marginSize_extraLarge"
         app:layout_constraintVertical_chainStyle="packed"
+
         >
 
         <com.google.android.material.textfield.TextInputEditText
