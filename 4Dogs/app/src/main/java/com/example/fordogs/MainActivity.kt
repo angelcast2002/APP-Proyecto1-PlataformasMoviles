@@ -8,6 +8,7 @@ import androidx.fragment.app.commit
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.fordogs.databinding.ActivityMainBinding
+import com.example.fordogs.ui.fragments.addevents.AddEventFragment
 import com.example.fordogs.ui.fragments.calendar.CalendarFragment
 import com.example.fordogs.ui.fragments.events.EventsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -35,6 +36,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             true
+        }
+
+        binding.mainActivityFAB.setOnClickListener {
+            replaceFragment(AddEventFragment())
         }
     }
 
