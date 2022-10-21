@@ -147,10 +147,10 @@
         android:layout_height="wrap_content"
         android:text="@string/consejos"
         android:fontFamily="@font/krub_bold"
+        android:textColor="@color/color_feldgrau"
         android:textSize="@dimen/consejosSize"
         app:layout_constraintTop_toBottomOf="@id/divisionLine"
         app:layout_constraintStart_toStartOf="@id/divisionLine"
         />
-
-
+    
 </androidx.constraintlayout.widget.ConstraintLayout>
