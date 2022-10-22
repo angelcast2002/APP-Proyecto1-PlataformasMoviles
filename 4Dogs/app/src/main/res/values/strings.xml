@@ -41,6 +41,6 @@
     <string name="consejos">Consejos:</string>
     <string name="text_Advertencia">Advertencia</string>
     <string name="text_mensaje_cerrarSesion">¿Está seguro que desea salir?</string>
-    <string name="text_Eliminar">Eliminar</string>
+    <string name="text_Si">Ok</string>
     <string name="text_Cancelar">Cancelar</string>
 </resources>
