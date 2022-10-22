@@ -10,10 +10,10 @@
 
     <ImageView
         android:id="@+id/profilepic_calendar_fragment"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/calendarPFPSize"
+        android:layout_height="@dimen/calendarPFPSize"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/margin20"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -22,7 +22,7 @@
         android:id="@+id/welcomeTV_calendar_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="@dimen/margin20"
         android:fontFamily="@font/krub_bold"
         android:text="Bienvenido %s"
         android:textColor="@color/color_feldgrau"
@@ -33,7 +33,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/margin20"
         app:layout_constraintBottom_toBottomOf="@id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +67,7 @@
                 android:text="@string/mesPlaceholder"
                 android:textAlignment="center"
                 android:textColor="@color/color_feldgrau"
-                android:textSize="20sp" />
+                android:textSize="@dimen/defaultTitleSize" />
 
             <ImageButton
                 android:id="@+id/next_month_button"

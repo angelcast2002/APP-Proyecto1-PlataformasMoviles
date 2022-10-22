@@ -38,4 +38,12 @@
     <string name="pmTime">PM</string>
     <string name="description">Descripción...</string>
     <string name="hora">Hora</string>
+    <string name="consejos">Consejos:</string>
+    <string name="text_Advertencia">Advertencia</string>
+    <string name="text_mensaje_cerrarSesion">¿Está seguro que desea salir?</string>
+    <string name="text_Si">Ok</string>
+    <string name="text_Cancelar">Cancelar</string>
+    <string name="fecha_eventCard">NOVIEMBRE 10</string>
+    <string name="proximosEventos">PRÓXIMOS:</string>
+    <string name="calendarCellText">1</string>
 </resources>

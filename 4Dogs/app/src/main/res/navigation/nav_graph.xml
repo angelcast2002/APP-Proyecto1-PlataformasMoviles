@@ -54,11 +54,31 @@
     </fragment>
     <fragment
         android:id="@+id/addEventFragment"
-        android:name="com.example.fordogs.ui.fragments.events.AddEventFragment"
+        android:name="com.example.fordogs.ui.fragments.addevents.AddEventFragment"
         android:label="fragment_add_event"
         tools:layout="@layout/fragment_add_event" >
         <action
             android:id="@+id/action_addEventFragment_to_calendarFragment"
             app:destination="@id/calendarFragment" />
+        <action
+            android:id="@+id/action_addEventFragment_to_eventsFragment"
+            app:destination="@id/eventsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventsFragment"
+        android:name="com.example.fordogs.ui.fragments.events.EventsFragment"
+        android:label="fragment_events"
+        tools:layout="@layout/fragment_events" >
+        <action
+            android:id="@+id/action_eventsFragment_to_addEventFragment"
+            app:destination="@id/addEventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.fordogs.ui.fragments.profile.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
 </navigation>

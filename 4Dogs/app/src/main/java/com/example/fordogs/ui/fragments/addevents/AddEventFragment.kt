@@ -1,4 +1,4 @@
-package com.example.fordogs.ui.fragments.events
+package com.example.fordogs.ui.fragments.addevents
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
