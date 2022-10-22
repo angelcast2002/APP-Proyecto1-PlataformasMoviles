@@ -29,6 +29,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(){
         setObservables()
         setListeners()
         setName()
+        showNavBar()
         //setdata()
 
     }
