@@ -21,9 +21,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(){
     private val RegisterToLoginViewModel: RegisterToLoginViewModel by activityViewModels()
     private val viewModel: EditProfileViewModel by activityViewModels()
 
-
-
-
     override fun getViewBinding() = FragmentProfileBinding.inflate(layoutInflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,6 +29,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(){
         setObservables()
         setListeners()
         setName()
+        //setdata()
 
     }
 
@@ -72,6 +70,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(){
             }
         }
     }
+
+
 
 
 }

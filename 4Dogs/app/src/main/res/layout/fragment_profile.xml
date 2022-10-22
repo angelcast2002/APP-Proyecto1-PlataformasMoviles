@@ -7,22 +7,11 @@
     tools:context=".ui.fragments.calendar.EditProfileFragment"
     android:background="@drawable/app_background_with_gradient">
 
-    <ImageButton
-        android:id="@+id/bt_regresar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/backbutton"
-        android:background="@null"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
     <Button
         android:id="@+id/bt_editarPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Editar"
+        android:text="@string/bt_editarPerfil"
         android:fontFamily="@font/krub_bold"
         android:textColor="@color/color_feldgrau"
         android:layout_marginTop="20dp"
@@ -77,7 +66,7 @@
         android:layout_marginStart="125dp"
         app:layout_constraintStart_toEndOf="@+id/text_razaText_ProfileLayout"
         app:layout_constraintTop_toBottomOf="@+id/petName_ProfileLayout"
-        tools:text="Chispa"
+        android:text="Chispa"
         android:fontFamily="@font/krub_bold"/>
 
     <TextView
@@ -99,7 +88,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="@+id/text_dato_razaText_ProfileLayout"
         app:layout_constraintTop_toBottomOf="@+id/text_dato_razaText_ProfileLayout"
-        tools:text="35 lb"
+        android:text="35 lb"
         android:fontFamily="@font/krub_bold"/>
 
     <TextView
@@ -107,7 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/krub_bold"
-        android:text="Color:"
+        android:text="@string/text_colorText_ProfileLayout"
         android:layout_marginTop="10dp"
         android:layout_marginStart="80dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -120,7 +109,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="@+id/text_dato_pesoText_ProfileLayout"
         app:layout_constraintTop_toBottomOf="@+id/text_dato_pesoText_ProfileLayout"
-        tools:text="Cafe"
+        android:text="Cafe"
         android:fontFamily="@font/krub_bold"/>
 
     <TextView
@@ -128,7 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/krub_bold"
-        android:text="Largo:"
+        android:text="@string/text_largoText_ProfileLayout"
         android:layout_marginTop="10dp"
         android:layout_marginStart="80dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -141,14 +130,14 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:text="35cm"
+        android:text="35cm"
         android:fontFamily="@font/krub_bold"/>
 
     <TextView
         android:id="@+id/text_altoText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alto:"
+        android:text="@string/text_altoText_ProfileLayout"
         android:layout_marginTop="10dp"
         android:layout_marginStart="80dp"
         android:fontFamily="@font/krub_bold"
@@ -162,14 +151,14 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        tools:text="25cm"
+        android:text="25cm"
         android:fontFamily="@font/krub_bold"/>
 
     <TextView
         android:id="@+id/text_comidaFavText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Comida Favorita:"
+        android:text="@string/text_comidaFavText_ProfileLayout"
         android:fontFamily="@font/krub_bold"
         android:layout_marginTop="10dp"
         android:layout_marginStart="80dp"
@@ -183,14 +172,14 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
-        tools:text="Pizza"
+        android:text="Pizza"
         android:fontFamily="@font/krub_bold"/>
 
     <TextView
         android:id="@+id/text_conductaText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Conducta:"
+        android:text="@string/text_conductaText_ProfileLayout"
         android:fontFamily="@font/krub_bold"
         android:layout_marginTop="10dp"
         android:layout_marginStart="80dp"
@@ -204,14 +193,14 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
-        tools:text="agresivo"
+        android:text="agresivo"
         android:fontFamily="@font/krub_bold"/>
 
     <TextView
         android:id="@+id/text_jugueteFavText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Juguete Favorito:"
+        android:text="@string/text_jugueteFavText_ProfileLayout"
         android:fontFamily="@font/krub_bold"
         android:layout_marginTop="10dp"
         android:layout_marginStart="80dp"
@@ -225,7 +214,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView12"
-        tools:text="Pelota de tenis"
+        android:text="Pelota de tenis"
         android:fontFamily="@font/krub_bold"/>
 
 
