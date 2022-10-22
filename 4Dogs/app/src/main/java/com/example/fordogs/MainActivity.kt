@@ -55,6 +55,10 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.eventsFragment)
                     true
                 }
+                R.id.bottom_nav_profile -> {
+                    navController.navigate(R.id.profileFragment)
+                    true
+                }
                 R.id.bottom_nav_logout ->{
 
                     val builder = AlertDialog.Builder(this)

@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 
 class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
     private val RegisterToLoginViewModel: RegisterToLoginViewModel by activityViewModels()
-    private val EditProfileViewModel: EditProfileViewModel by viewModels()
+    private val EditProfileViewModel: EditProfileViewModel by activityViewModels()
 
     lateinit var name: String
 
