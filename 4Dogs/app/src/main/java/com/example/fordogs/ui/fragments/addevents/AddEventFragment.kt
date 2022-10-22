@@ -18,7 +18,14 @@ class AddEventFragment : BaseFragment<FragmentAddEventBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         hideNavBar()
+        setListeners()
 
+    }
+
+    private fun setListeners() {
+        binding.backButtonAddEventFragment.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
     }
 
 }
