@@ -70,7 +70,11 @@ class MainActivity : AppCompatActivity() {
                             navController.navigate(R.id.loginFragment)
                             finishAffinity() //Finaliza la app
                         }
-                        setNegativeButton(getString(R.string.text_Cancelar)) { _, _ -> }
+                        setNegativeButton(getString(R.string.text_Cancelar)) { _, _ ->
+                            navController.navigate(R.id.calendarFragment)
+                            true
+
+                        }
                         show()
                     }
                     true
