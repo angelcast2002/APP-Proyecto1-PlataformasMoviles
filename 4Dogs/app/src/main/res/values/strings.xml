@@ -46,4 +46,11 @@
     <string name="fecha_eventCard">NOVIEMBRE 10</string>
     <string name="proximosEventos">PRÓXIMOS:</string>
     <string name="calendarCellText">1</string>
+    <string name="bt_editarPerfil">Editar</string>
+    <string name="text_colorText_ProfileLayout">Color:</string>
+    <string name="text_largoText_ProfileLayout">Largo:</string>
+    <string name="text_altoText_ProfileLayout">Alto:</string>
+    <string name="text_comidaFavText_ProfileLayout">Comida Favorita:</string>
+    <string name="text_conductaText_ProfileLayout">Conducta:</string>
+    <string name="text_jugueteFavText_ProfileLayout">Juguete Favorito:</string>
 </resources>
