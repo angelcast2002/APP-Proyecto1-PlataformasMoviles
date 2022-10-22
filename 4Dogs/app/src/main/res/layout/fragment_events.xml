@@ -6,29 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.events.EventsFragment">
 
-
-    <ImageButton
-        android:id="@+id/backButton_eventsFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/backbutton"
-        android:background="@null"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
     <TextView
         android:id="@+id/eventsFragment_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/proximosEventos"
-        android:textSize="20sp"
+        android:textSize="@dimen/defaultTitleSize"
         android:textColor="@color/color_feldgrau"
         android:fontFamily="@font/krub_bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/backButton_eventsFragment"
-        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/margin20"
         android:layout_marginHorizontal="@dimen/margin8"
         />
 
@@ -181,7 +169,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/divisionline"
         android:layout_marginHorizontal="@dimen/margin8"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/margin20"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_eventFragment_thirdEvent"

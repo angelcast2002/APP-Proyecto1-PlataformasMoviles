@@ -45,4 +45,5 @@
     <string name="text_Cancelar">Cancelar</string>
     <string name="fecha_eventCard">NOVIEMBRE 10</string>
     <string name="proximosEventos">PRÓXIMOS:</string>
+    <string name="calendarCellText">1</string>
 </resources>
