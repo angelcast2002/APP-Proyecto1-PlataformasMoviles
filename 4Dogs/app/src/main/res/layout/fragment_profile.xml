@@ -24,11 +24,11 @@
         android:id="@+id/img_pet_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_editarPerfil"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/petName_ProfileLayout"
-        android:layout_marginTop="@dimen/marginSize_extraLarge"
+        android:layout_marginTop="@dimen/marginSize_medium"
         tools:srcCompat="@tools:sample/avatars"
         />
 
