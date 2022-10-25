@@ -119,7 +119,7 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
             }
             Succes -> {
                 requireView().findNavController().navigate(
-                    EditProfileFragmentDirections.actionEditProfileFragmentToCalendarFragment()
+                    EditProfileFragmentDirections.actionEditProfileFragmentToProfileFragment()
                 )
                 EditProfileViewModel.setDefaul()
             }
