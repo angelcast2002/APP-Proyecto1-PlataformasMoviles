@@ -11,14 +11,13 @@ import coil.transform.CircleCropTransformation
 import com.example.fordogs.R
 import com.example.fordogs.databinding.FragmentProfileBinding
 import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel
-import com.example.fordogs.ui.fragments.viewModelActivity.RegisterToLoginViewModel
 import com.example.fordogs.ui.util.BaseFragment
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>(){
-    private val RegisterToLoginViewModel: RegisterToLoginViewModel by activityViewModels()
+
     private val viewModel: EditProfileViewModel by activityViewModels()
 
     override fun getViewBinding() = FragmentProfileBinding.inflate(layoutInflater)
@@ -36,7 +35,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(){
 
     private fun setObservables() {
         lifecycleScope.launch {
-            RegisterToLoginViewModel.name.collectLatest {
+            viewModel.nombre.collectLatest {
                 setName()
             }
         }
@@ -66,8 +65,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(){
     }
     private fun setName() {
         lifecycleScope.launch{
-            RegisterToLoginViewModel.name.collectLatest {
-                binding.petNameProfileLayout.text = RegisterToLoginViewModel.name.value
+            viewModel.nombre.collectLatest { nombre ->
+                binding.petNameProfileLayout.text = nombre
             }
         }
     }

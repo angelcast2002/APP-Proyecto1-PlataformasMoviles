@@ -9,6 +9,8 @@ import com.example.fordogs.ui.util.EditProfileConstants.Companion.IMG_PERRO
 import com.example.fordogs.ui.util.EditProfileConstants.Companion.LARGO
 import com.example.fordogs.ui.util.EditProfileConstants.Companion.PESO
 import com.example.fordogs.ui.util.EditProfileConstants.Companion.RAZA
+import com.example.fordogs.ui.util.RegisterConstants
+import com.example.fordogs.ui.util.RegisterConstants.Companion.DEFAULT_USER_NAME
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,6 +19,9 @@ import kotlinx.coroutines.launch
 class EditProfileViewModel: ViewModel() {
     private val _imagen = MutableStateFlow<String>(IMG_PERRO)
     val imagen : StateFlow<String> = _imagen
+
+    val _nombre = MutableStateFlow<String>(DEFAULT_USER_NAME)
+    val nombre : StateFlow<String> = _nombre
 
     private val _raza = MutableStateFlow<String>(RAZA)
     val raza : StateFlow<String> = _raza
@@ -64,8 +69,11 @@ class EditProfileViewModel: ViewModel() {
         }
     }
 
-    fun setDefaul(){
+    fun setDefault(){
         _status.value = Status.Editing
     }
 
+    fun nameUser(Name: String){
+        _nombre.value = Name
+    }
 }
