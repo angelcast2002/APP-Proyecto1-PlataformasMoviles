@@ -53,4 +53,14 @@
     <string name="text_comidaFavText_ProfileLayout">Comida Favorita:</string>
     <string name="text_conductaText_ProfileLayout">Conducta:</string>
     <string name="text_jugueteFavText_ProfileLayout">Juguete Favorito:</string>
+    <string name="text_raza_profileLayout">Raza:</string>
+    <string name="text_chispa_editLayout">Chispa</string>
+    <string name="text_peso_editLayout">Peso:</string>
+    <string name="text_35lb_editLayout">35 lb</string>
+    <string name="text_cafe_editLayout">Cafe</string>
+    <string name="text_35cm_editLayout">35cm</string>
+    <string name="text_25cm_editLayout">25cm</string>
+    <string name="text_pizza_editLayout">Pizza</string>
+    <string name="text_agresivo_profileLayout">agresivo</string>
+    <string name="text_pelotaDeTennis_profileLayout">Pelota de tenis</string>
 </resources>
