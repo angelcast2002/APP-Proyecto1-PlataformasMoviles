@@ -1,29 +1,19 @@
 package com.example.fordogs.ui.fragments.register
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import com.example.fordogs.R
-import com.example.fordogs.databinding.EditProfileLayoutBinding
-import com.example.fordogs.databinding.LoginLayoutBinding
 import com.example.fordogs.databinding.RegisterLayoutBinding
-import com.example.fordogs.ui.fragments.viewModelActivity.RegisterToLoginViewModel
+import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel
 import com.example.fordogs.ui.util.BaseFragment
-import com.google.android.material.bottomappbar.BottomAppBar
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
 
-    private val RegisterToLoginViewModel: RegisterToLoginViewModel by activityViewModels()
+    private val EditProfileViewModel: EditProfileViewModel by activityViewModels()
     private lateinit var name: String
 
     override fun getViewBinding() = RegisterLayoutBinding.inflate(layoutInflater)
@@ -43,8 +33,8 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
 
     private fun setObservables() {
         lifecycleScope.launch{
-            RegisterToLoginViewModel.name.collectLatest {
-                name = RegisterToLoginViewModel.name.value
+            EditProfileViewModel.nombre.collectLatest {
+                name = EditProfileViewModel.nombre.value
             }
         }
     }
@@ -56,7 +46,7 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
 
         binding.btRegistraseRegisterLayout.setOnClickListener{
             name = binding.textInputUserTextRegisterLayoutEditText.text.toString()
-            RegisterToLoginViewModel.nameUser(name)
+            EditProfileViewModel.nameUser(name)
             requireView().findNavController().navigate(
                 RegisterFragmentDirections.actionRegisterFragmentToEditProfileFragment()
             )

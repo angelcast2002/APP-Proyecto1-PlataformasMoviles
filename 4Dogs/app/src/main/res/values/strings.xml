@@ -63,4 +63,5 @@
     <string name="text_pizza_editLayout">Pizza</string>
     <string name="text_agresivo_profileLayout">agresivo</string>
     <string name="text_pelotaDeTennis_profileLayout">Pelota de tenis</string>
+    <string name="text_bienvenido_calendarLayout">Bienvenido:</string>
 </resources>

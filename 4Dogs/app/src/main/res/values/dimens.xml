@@ -29,4 +29,7 @@
     <dimen name="checkBoxesHeight">40dp</dimen>
     <dimen name="margin125">125dp</dimen>
     <dimen name="margin10">10dp</dimen>
+    <dimen name="begin_guideLine2_calendarLayout">395dp</dimen>
+    <dimen name="textSize_bienvenido_calendarFragment">20sp</dimen>
+    <dimen name="marginSize_extraSmall">5dp</dimen>
 </resources>
