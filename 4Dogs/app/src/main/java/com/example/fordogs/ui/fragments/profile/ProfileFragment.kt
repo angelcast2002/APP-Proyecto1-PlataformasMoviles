@@ -29,12 +29,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(){
         setListeners()
         setName()
         showNavBar()
-        //setDataProfile()
+        setDataProfile()
 
     }
-
-    ///private fun setDataProfile(){}
-
 
     private fun setObservables() {
         lifecycleScope.launch {
@@ -73,6 +70,44 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(){
                 binding.petNameProfileLayout.text = nombre
             }
         }
+    }
+    private fun setDataProfile(){
+
+        lifecycleScope.launch {
+            viewModel.raza.collectLatest { raza ->
+                binding.textDatoRazaTextProfileLayout.text = raza
+            }
+        }
+        lifecycleScope.launch {
+            viewModel.peso.collectLatest { peso ->
+                binding.textDatoPesoTextProfileLayout.text = peso.toString()
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.color.collectLatest { color ->
+                binding.textDatoColorTextProfileLayout.text = color
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.largo.collectLatest { largo ->
+                binding.textDatoLargoTextProfileLayout.text = largo.toString()
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.comidaFav.collectLatest { comidaFav ->
+                binding.textDatoColorTextProfileLayout.text = comidaFav
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.conducta.collectLatest { conducta ->
+                binding.textDatoConductaTextProfileLayout.text = conducta
+            }
+        }
+
     }
 
 

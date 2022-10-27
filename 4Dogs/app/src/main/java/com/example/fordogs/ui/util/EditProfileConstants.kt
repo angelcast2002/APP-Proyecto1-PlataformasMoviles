@@ -9,6 +9,8 @@ class EditProfileConstants {
         const val ALTO = 10
         const val LARGO = 25
         const val COMIDA_FAV = "Pizza"
+        const val CONDUCTA = "Agresivo"
+        const val JUGUETE_FAV = "Pelota de Tenis"
         const val IMG_PERRO = "https://www.petdarling.com/wp-content/uploads/2020/11/razas-de-perros.jpg"
     }
 }
