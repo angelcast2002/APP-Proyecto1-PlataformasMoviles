@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +31,7 @@ import kotlin.collections.ArrayList
 class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), CalendarAdapter.OnItemListener {
 
     private val EditProfileViewModel: EditProfileViewModel by activityViewModels()
+    private val calendarVM: CalendarViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
     private lateinit var monthYearText: TextView
     private lateinit var name: String
@@ -77,51 +79,14 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), CalendarAdapte
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setMonthView() {
-        monthYearText.text = monthYearFromDate(selectedDate)
+        monthYearText.text = calendarVM.monthYearFromDate(selectedDate)
 
-        val daysOfMonth = daysInMonthArray(selectedDate)
+        val daysOfMonth = calendarVM.daysInMonthArray(selectedDate)
 
         val calendarAdapter = CalendarAdapter(daysOfMonth, this)
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 7)
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = calendarAdapter
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun daysInMonthArray(date: LocalDate?): ArrayList<LocalDate?> {
-
-        val daysInMonthArray = arrayListOf<LocalDate?>()
-        val yearMonth = YearMonth.from(date)
-        val daysInMonth = yearMonth.lengthOfMonth()
-
-        val firstOfMonth = selectedDate?.withDayOfMonth(1)
-        val dayOfWeek = firstOfMonth?.dayOfWeek?.value
-
-        for (i in 1..42) {
-
-            if (i <= dayOfWeek!! || i > daysInMonth + dayOfWeek) {
-                daysInMonthArray.add(null)
-            } else {
-                daysInMonthArray.add(selectedDate?.let {
-                    LocalDate.of(
-                        it.year,
-                        selectedDate?.month,
-                        i - dayOfWeek
-                    )
-                })
-            }
-
-        }
-
-        return daysInMonthArray
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun monthYearFromDate(date: LocalDate?): String {
-
-        val formatter = DateTimeFormatter.ofPattern("MMMM yyyy")
-
-        return date!!.format(formatter)
     }
 
     private fun initWidgets() {
