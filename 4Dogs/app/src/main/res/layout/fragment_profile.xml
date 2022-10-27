@@ -24,13 +24,11 @@
         android:id="@+id/img_pet_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/petName_ProfileLayout"
-        android:layout_marginTop="@dimen/marginSize_extraLarge"
-        tools:srcCompat="@tools:sample/avatars"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_editarPerfil"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/petName_ProfileLayout"
@@ -50,7 +48,7 @@
         android:id="@+id/text_razaText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="30dp"
+        android:layout_marginVertical="40dp"
         android:layout_marginStart="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/petName_ProfileLayout"
@@ -64,10 +62,12 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="30dp"
         android:layout_marginStart="125dp"
-        app:layout_constraintStart_toEndOf="@+id/text_razaText_ProfileLayout"
-        app:layout_constraintTop_toBottomOf="@+id/petName_ProfileLayout"
+        android:fontFamily="@font/krub_bold"
+        android:layout_marginEnd="@dimen/margin80"
         android:text="Chispa"
-        android:fontFamily="@font/krub_bold"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_razaText_ProfileLayout"
+        app:layout_constraintTop_toBottomOf="@+id/petName_ProfileLayout" />
 
     <TextView
         android:id="@+id/text_pesoText_ProfileLayout"

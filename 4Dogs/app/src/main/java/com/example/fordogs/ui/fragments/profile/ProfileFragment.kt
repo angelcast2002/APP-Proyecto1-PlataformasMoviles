@@ -30,9 +30,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(){
         setListeners()
         setName()
         showNavBar()
-        //setdata()
+        //setDataProfile()
 
     }
+
+    ///private fun setDataProfile(){}
+
 
     private fun setObservables() {
         lifecycleScope.launch {
@@ -64,6 +67,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(){
                 ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment())
         }
     }
+
     private fun setName() {
         lifecycleScope.launch{
             RegisterToLoginViewModel.name.collectLatest {
