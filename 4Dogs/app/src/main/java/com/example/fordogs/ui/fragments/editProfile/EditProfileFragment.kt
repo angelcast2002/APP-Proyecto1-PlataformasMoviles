@@ -2,12 +2,8 @@ package com.example.fordogs.ui.fragments.calendar
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import coil.load
@@ -15,19 +11,17 @@ import coil.request.CachePolicy
 import coil.transform.CircleCropTransformation
 import com.example.fordogs.R
 import com.example.fordogs.databinding.EditProfileLayoutBinding
-import com.example.fordogs.databinding.RegisterLayoutBinding
 import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel
 import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel.Status.*
-import com.example.fordogs.ui.fragments.viewModelActivity.RegisterToLoginViewModel
 import com.example.fordogs.ui.util.BaseFragment
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
-    private val RegisterToLoginViewModel: RegisterToLoginViewModel by activityViewModels()
+
     private val EditProfileViewModel: EditProfileViewModel by activityViewModels()
 
-    lateinit var name: String
+    private lateinit var name: String
 
     override fun getViewBinding() = EditProfileLayoutBinding.inflate(layoutInflater)
 
@@ -45,8 +39,8 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
 
     private fun setObservables() {
         lifecycleScope.launch{
-            RegisterToLoginViewModel.name.collectLatest {
-                name = RegisterToLoginViewModel.name.value
+            EditProfileViewModel.nombre.collectLatest { nombre ->
+                name = nombre
             }
         }
 
@@ -84,7 +78,7 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
         }
     }
 
-    fun handleStatus(status: EditProfileViewModel.Status) {
+    private fun handleStatus(status: EditProfileViewModel.Status) {
         when(status){
             Editing -> {
                 binding.apply {
@@ -119,9 +113,9 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
             }
             Succes -> {
                 requireView().findNavController().navigate(
-                    EditProfileFragmentDirections.actionEditProfileFragmentToCalendarFragment()
+                    EditProfileFragmentDirections.actionEditProfileFragmentToProfileFragment()
                 )
-                EditProfileViewModel.setDefaul()
+                EditProfileViewModel.setDefault()
             }
         }
     }

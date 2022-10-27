@@ -49,8 +49,8 @@
         <action
             app:popUpTo="@id/editProfileFragment"
             app:popUpToInclusive="true"
-            android:id="@+id/action_editProfileFragment_to_calendarFragment"
-            app:destination="@id/calendarFragment" />
+            android:id="@+id/action_editProfileFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEventFragment"

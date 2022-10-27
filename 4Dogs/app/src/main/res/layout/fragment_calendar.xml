@@ -12,7 +12,7 @@
         android:id="@+id/profilepic_calendar_fragment"
         android:layout_width="@dimen/calendarPFPSize"
         android:layout_height="@dimen/calendarPFPSize"
-        android:layout_marginHorizontal="30dp"
+        android:layout_marginHorizontal="@dimen/margin30"
         android:layout_marginTop="@dimen/margin20"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,15 +24,31 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin20"
         android:fontFamily="@font/krub_bold"
-        android:text="Bienvenido %s"
+        android:text="@string/text_bienvenido_calendarLayout"
         android:textColor="@color/color_feldgrau"
         app:layout_constraintBottom_toBottomOf="@id/profilepic_calendar_fragment"
         app:layout_constraintStart_toEndOf="@id/profilepic_calendar_fragment"
-        app:layout_constraintTop_toTopOf="@id/profilepic_calendar_fragment" />
+        app:layout_constraintTop_toTopOf="@id/profilepic_calendar_fragment"
+        android:textSize="@dimen/textSize_bienvenido_calendarFragment"/>
+
+    <TextView
+        android:id="@+id/userName_calendarFragment"
+        android:layout_width="@dimen/ceroDp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/marginSize_extraSmall"
+        app:layout_constraintStart_toEndOf="@id/welcomeTV_calendar_fragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/welcomeTV_calendar_fragment"
+        app:layout_constraintBottom_toBottomOf="@id/welcomeTV_calendar_fragment"
+        android:fontFamily="@font/krub_bold"
+        android:textColor="@color/color_feldgrau"
+        android:textSize="@dimen/textSize_bienvenido_calendarFragment"
+
+        tools:text="Chispa"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/ceroDp"
+        android:layout_height="@dimen/ceroDp"
         android:layout_marginTop="@dimen/margin20"
         app:layout_constraintBottom_toBottomOf="@id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,11 +99,11 @@
 
         <LinearLayout
             android:id="@+id/calendarDays_linearLayout"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/ceroDp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/margin10"
             android:orientation="horizontal"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginHorizontal="@dimen/margin10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/calendarHeader_linearLayout">
@@ -166,9 +182,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/calendarRecyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="10dp"
+            android:layout_width="@dimen/ceroDp"
+            android:layout_height="@dimen/ceroDp"
+            android:layout_marginHorizontal="@dimen/margin10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/calendarDays_linearLayout"
@@ -182,6 +198,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="395dp" />
+        app:layout_constraintGuide_begin="@dimen/begin_guideLine2_calendarLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

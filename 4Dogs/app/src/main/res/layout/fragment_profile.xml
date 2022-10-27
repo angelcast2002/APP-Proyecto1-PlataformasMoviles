@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.calendar.EditProfileFragment"
+    tools:context=".ui.fragments.profile.ProfileFragment"
     android:background="@drawable/app_background_with_gradient">
 
     <Button
@@ -24,11 +24,13 @@
         android:id="@+id/img_pet_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/petName_ProfileLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bt_editarPerfil"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/petName_ProfileLayout"
+        android:layout_marginTop="@dimen/marginSize_medium"
+        tools:srcCompat="@tools:sample/avatars"
+        />
 
     <TextView
         android:id="@+id/petName_ProfileLayout"
@@ -48,48 +50,50 @@
         android:id="@+id/text_razaText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="40dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginVertical="@dimen/margin30"
+        android:layout_marginStart="@dimen/margin80"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/petName_ProfileLayout"
-        android:text="Raza:"
+        android:text="@string/text_raza_profileLayout"
         android:fontFamily="@font/krub_bold"
+        android:textColor="@color/color_feldgrau"
         />
 
     <TextView
         android:id="@+id/text_dato_razaText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="30dp"
-        android:layout_marginStart="125dp"
-        android:fontFamily="@font/krub_bold"
-        android:layout_marginEnd="@dimen/margin80"
-        android:text="Chispa"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginVertical="@dimen/margin30"
+        android:layout_marginStart="@dimen/margin125"
         app:layout_constraintStart_toEndOf="@+id/text_razaText_ProfileLayout"
-        app:layout_constraintTop_toBottomOf="@+id/petName_ProfileLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/petName_ProfileLayout"
+        android:text="@string/text_chispa_editLayout"
+        android:fontFamily="@font/krub_bold"
+        android:textColor="@color/color_feldgrau"/>
 
     <TextView
         android:id="@+id/text_pesoText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_marginStart="@dimen/margin80"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_razaText_ProfileLayout"
-        android:text="Peso:"
-        android:fontFamily="@font/krub_bold" />
+        android:text="@string/text_peso_editLayout"
+        android:fontFamily="@font/krub_bold"
+        android:textColor="@color/color_feldgrau"/>
 
 
     <TextView
         android:id="@+id/text_dato_pesoText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/margin10"
         app:layout_constraintStart_toStartOf="@+id/text_dato_razaText_ProfileLayout"
         app:layout_constraintTop_toBottomOf="@+id/text_dato_razaText_ProfileLayout"
-        android:text="35 lb"
-        android:fontFamily="@font/krub_bold"/>
+        android:text="@string/text_35lb_editLayout"
+        android:fontFamily="@font/krub_bold"
+        android:textColor="@color/color_feldgrau"/>
 
     <TextView
         android:id="@+id/text_colorText_ProfileLayout"
@@ -97,20 +101,22 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/krub_bold"
         android:text="@string/text_colorText_ProfileLayout"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_marginStart="@dimen/margin80"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_pesoText_ProfileLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/text_pesoText_ProfileLayout"
+        android:textColor="@color/color_feldgrau"/>
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/margin10"
         app:layout_constraintStart_toStartOf="@+id/text_dato_pesoText_ProfileLayout"
         app:layout_constraintTop_toBottomOf="@+id/text_dato_pesoText_ProfileLayout"
-        android:text="Cafe"
-        android:fontFamily="@font/krub_bold"/>
+        android:text="@string/text_cafe_editLayout"
+        android:fontFamily="@font/krub_bold"
+        android:textColor="@color/color_feldgrau"/>
 
     <TextView
         android:id="@+id/text_largoText_ProfileLayout"
@@ -118,41 +124,45 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/krub_bold"
         android:text="@string/text_largoText_ProfileLayout"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_marginStart="@dimen/margin80"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_colorText_ProfileLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/text_colorText_ProfileLayout"
+        android:textColor="@color/color_feldgrau"/>
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/margin10"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        android:text="35cm"
-        android:fontFamily="@font/krub_bold"/>
+        android:text="@string/text_35cm_editLayout"
+        android:fontFamily="@font/krub_bold"
+        android:textColor="@color/color_feldgrau"/>
 
     <TextView
         android:id="@+id/text_altoText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/text_altoText_ProfileLayout"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_marginStart="@dimen/margin80"
         android:fontFamily="@font/krub_bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_largoText_ProfileLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/text_largoText_ProfileLayout"
+        android:textColor="@color/color_feldgrau"/>
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/margin10"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        android:text="25cm"
-        android:fontFamily="@font/krub_bold"/>
+        android:text="@string/text_25cm_editLayout"
+        android:fontFamily="@font/krub_bold"
+        android:textColor="@color/color_feldgrau"/>
 
     <TextView
         android:id="@+id/text_comidaFavText_ProfileLayout"
@@ -160,20 +170,22 @@
         android:layout_height="wrap_content"
         android:text="@string/text_comidaFavText_ProfileLayout"
         android:fontFamily="@font/krub_bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_marginStart="@dimen/margin80"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_altoText_ProfileLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/text_altoText_ProfileLayout"
+        android:textColor="@color/color_feldgrau"/>
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/margin10"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
-        android:text="Pizza"
-        android:fontFamily="@font/krub_bold"/>
+        android:text="@string/text_pizza_editLayout"
+        android:fontFamily="@font/krub_bold"
+        android:textColor="@color/color_feldgrau"/>
 
     <TextView
         android:id="@+id/text_conductaText_ProfileLayout"
@@ -181,20 +193,22 @@
         android:layout_height="wrap_content"
         android:text="@string/text_conductaText_ProfileLayout"
         android:fontFamily="@font/krub_bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_marginStart="@dimen/margin80"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_comidaFavText_ProfileLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/text_comidaFavText_ProfileLayout"
+        android:textColor="@color/color_feldgrau"/>
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/margin10"
         app:layout_constraintStart_toStartOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
-        android:text="agresivo"
-        android:fontFamily="@font/krub_bold"/>
+        android:text="@string/text_agresivo_profileLayout"
+        android:fontFamily="@font/krub_bold"
+        android:textColor="@color/color_feldgrau"/>
 
     <TextView
         android:id="@+id/text_jugueteFavText_ProfileLayout"
@@ -202,20 +216,22 @@
         android:layout_height="wrap_content"
         android:text="@string/text_jugueteFavText_ProfileLayout"
         android:fontFamily="@font/krub_bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_marginStart="@dimen/margin80"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_conductaText_ProfileLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/text_conductaText_ProfileLayout"
+        android:textColor="@color/color_feldgrau"/>
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/margin10"
         app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView12"
-        android:text="Pelota de tenis"
-        android:fontFamily="@font/krub_bold"/>
+        android:text="@string/text_pelotaDeTennis_profileLayout"
+        android:fontFamily="@font/krub_bold"
+        android:textColor="@color/color_feldgrau"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
