@@ -39,6 +39,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.eventsFragment -> {
                     binding.bottomNavigationView.menu.getItem(1).isChecked = true
                 }
+                R.id.profileFragment -> {
+                    binding.bottomNavigationView.menu.getItem(3).isChecked = true
+                }
             }
         }
     }
@@ -48,14 +51,17 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.bottom_nav_calendar -> {
+                    navController.popBackStack(R.id.calendarFragment, true)
                     navController.navigate(R.id.calendarFragment)
                     true
                 }
                 R.id.bottom_nav_dogs -> {
+                    navController.popBackStack(R.id.eventsFragment, true)
                     navController.navigate(R.id.eventsFragment)
                     true
                 }
                 R.id.bottom_nav_profile -> {
+                    navController.popBackStack(R.id.profileFragment, true)
                     navController.navigate(R.id.profileFragment)
                     true
                 }
@@ -67,8 +73,8 @@ class MainActivity : AppCompatActivity() {
                         setMessage(getString(R.string.text_mensaje_cerrarSesion))
                         setPositiveButton(getString(R.string.text_Si)
                         ) { _, _ ->
+                            navController.popBackStack()
                             navController.navigate(R.id.loginFragment)
-                            finishAffinity() //Finaliza la app
                         }
                         setNegativeButton(getString(R.string.text_Cancelar)) { _, _ ->
                             navController.navigate(R.id.calendarFragment)
