@@ -1,6 +1,11 @@
-package com.example.fordogs.ui
+package com.example.fordogs.data.local.entity
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class userPerro (
+
     var nombre: String = "Nombre",
     var raza: String = "Raza",
     var peso: Int = 0,
