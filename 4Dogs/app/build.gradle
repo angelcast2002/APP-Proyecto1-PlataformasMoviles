@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -44,8 +45,13 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.room:room-common:2.3.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.4'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+    implementation 'androidx.datastore:datastore-preferences:1.0.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 
-    def nav_version = "2.5.1"
+    def nav_version = "2.5.3"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
@@ -61,14 +67,14 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.4'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
-    implementation 'androidx.datastore:datastore-preferences:1.0.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
-
     def calendar_version = "2.0.0"
     implementation "com.kizitonwose.calendar:view:$calendar_version"
+
+    def hilt_Version = "2.44"
+    implementation "com.google.dagger:hilt-android:$hilt_Version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_Version"
+
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

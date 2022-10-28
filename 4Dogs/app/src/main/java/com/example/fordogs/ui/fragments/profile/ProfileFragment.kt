@@ -25,28 +25,28 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setObservables()
+//        setObservables()
         setListeners()
-        setName()
+//        setName()
         showNavBar()
-        setDataProfile()
+//        setDataProfile()
 
     }
 
-    private fun setObservables() {
-        lifecycleScope.launch {
-            viewModel.nombre.collectLatest {
-                setName()
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.imagen.collectLatest { img ->
-                setImgUser(img)
-            }
-        }
-
-    }
+//    private fun setObservables() {
+//        lifecycleScope.launch {
+//            viewModel.nombre.collectLatest {
+//                setName()
+//            }
+//        }
+//
+//        lifecycleScope.launch {
+//            viewModel.imagen.collectLatest { img ->
+//                setImgUser(img)
+//            }
+//        }
+//
+//    }
 
     private fun setImgUser(img: String) {
         binding.imgPetProfileLayout.load(img){
@@ -64,51 +64,51 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(){
         }
     }
 
-    private fun setName() {
-        lifecycleScope.launch{
-            viewModel.nombre.collectLatest { nombre ->
-                binding.petNameProfileLayout.text = nombre
-            }
-        }
-    }
-    private fun setDataProfile(){
-
-        lifecycleScope.launch {
-            viewModel.raza.collectLatest { raza ->
-                binding.textDatoRazaTextProfileLayout.text = raza
-            }
-        }
-        lifecycleScope.launch {
-            viewModel.peso.collectLatest { peso ->
-                binding.textDatoPesoTextProfileLayout.text = peso.toString()
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.color.collectLatest { color ->
-                binding.textDatoColorTextProfileLayout.text = color
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.largo.collectLatest { largo ->
-                binding.textDatoLargoTextProfileLayout.text = largo.toString()
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.comidaFav.collectLatest { comidaFav ->
-                binding.textDatoColorTextProfileLayout.text = comidaFav
-            }
-        }
-
-        lifecycleScope.launch {
-            viewModel.conducta.collectLatest { conducta ->
-                binding.textDatoConductaTextProfileLayout.text = conducta
-            }
-        }
-
-    }
+//    private fun setName() {
+//        lifecycleScope.launch{
+//            viewModel.nombre.collectLatest { nombre ->
+//                binding.petNameProfileLayout.text = nombre
+//            }
+//        }
+//    }
+//    private fun setDataProfile(){
+//
+//        lifecycleScope.launch {
+//            viewModel.raza.collectLatest { raza ->
+//                binding.textDatoRazaTextProfileLayout.text = raza
+//            }
+//        }
+//        lifecycleScope.launch {
+//            viewModel.peso.collectLatest { peso ->
+//                binding.textDatoPesoTextProfileLayout.text = peso.toString()
+//            }
+//        }
+//
+//        lifecycleScope.launch {
+//            viewModel.color.collectLatest { color ->
+//                binding.textDatoColorTextProfileLayout.text = color
+//            }
+//        }
+//
+//        lifecycleScope.launch {
+//            viewModel.largo.collectLatest { largo ->
+//                binding.textDatoLargoTextProfileLayout.text = largo.toString()
+//            }
+//        }
+//
+//        lifecycleScope.launch {
+//            viewModel.comidaFav.collectLatest { comidaFav ->
+//                binding.textDatoColorTextProfileLayout.text = comidaFav
+//            }
+//        }
+//
+//        lifecycleScope.launch {
+//            viewModel.conducta.collectLatest { conducta ->
+//                binding.textDatoConductaTextProfileLayout.text = conducta
+//            }
+//        }
+//
+//    }
 
 
 

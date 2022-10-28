@@ -17,27 +17,43 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/petName_edtiProfileLayout"
 
-        android:layout_marginTop="@dimen/marginSize_extraLarge"
+        android:layout_marginTop="@dimen/marginSize_large"
         tools:srcCompat="@tools:sample/avatars"
         />
 
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/petName_edtiProfileLayout"
 
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/ceroDp"
         android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="@dimen/marginSize_large"
 
         app:layout_constraintTop_toBottomOf="@+id/img_pet_editProfileLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
-        android:layout_marginTop="@dimen/marginSize_medium"
+        android:hint="@string/petName_EditProfile"
+        app:boxStrokeColor="@color/color_morningBlue"
+        android:textColorHint="@color/color_feldgrau"
+        android:textSize="@dimen/textSize_loginLayout"
 
-        android:textColor="@color/color_feldgrau"
-        android:textSize="@dimen/sizeText_petName"
-        android:fontFamily="@font/krub_bold"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="@dimen/marginSize_small"
+        app:layout_constraintVertical_chainStyle="packed"
+        >
 
-        tools:text="CHISPA"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:textColor="@color/color_feldgrau"
+            android:id="@+id/textInput_nombreText_editProfilelayout_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textSize="@dimen/textSize_textInputText"
+            android:fontFamily="@font/krub_medium"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInput_razaText_editProfileLayout"
