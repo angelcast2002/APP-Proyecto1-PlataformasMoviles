@@ -41,31 +41,31 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), CalendarAdapte
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setObservables()
+//        setObservables()
         initWidgets()
         setMonthView()
         setListeners()
         showNavBar()
-        setName()
+//        setName()
     }
 
-    private fun setObservables() {
-        lifecycleScope.launch {
-            EditProfileViewModel.imagen.collectLatest { img ->
-                setImgUser(img)
-            }
-        }
+//    private fun setObservables() {
+//        lifecycleScope.launch {
+//            EditProfileViewModel.imagen.collectLatest { img ->
+//                setImgUser(img)
+//            }
+//        }
+//
+//        lifecycleScope.launch{
+//            EditProfileViewModel.nombre.collectLatest { nombre ->
+//                name = nombre
+//            }
+//        }
+//    }
 
-        lifecycleScope.launch{
-            EditProfileViewModel.nombre.collectLatest { nombre ->
-                name = nombre
-            }
-        }
-    }
-
-    private fun setName() {
-        binding.userNameCalendarFragment.text = name
-    }
+//    private fun setName() {
+//        binding.userNameCalendarFragment.text = name
+//    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setListeners() {

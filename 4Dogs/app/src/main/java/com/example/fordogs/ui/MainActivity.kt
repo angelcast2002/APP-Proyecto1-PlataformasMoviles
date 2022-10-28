@@ -1,4 +1,4 @@
-package com.example.fordogs
+package com.example.fordogs.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,8 +7,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.example.fordogs.R
 import com.example.fordogs.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

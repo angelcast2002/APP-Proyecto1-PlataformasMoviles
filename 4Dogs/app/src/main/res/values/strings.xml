@@ -64,4 +64,5 @@
     <string name="text_agresivo_profileLayout">agresivo</string>
     <string name="text_pelotaDeTennis_profileLayout">Pelota de tenis</string>
     <string name="text_bienvenido_calendarLayout">Bienvenido:</string>
+    <string name="petName_EditProfile">Nombre</string>
 </resources>

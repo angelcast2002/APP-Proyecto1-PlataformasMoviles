@@ -3,52 +3,47 @@ package com.example.fordogs.ui.fragments.calendar
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import coil.load
 import coil.request.CachePolicy
 import coil.transform.CircleCropTransformation
 import com.example.fordogs.R
+import com.example.fordogs.data.local.entity.userPerro
 import com.example.fordogs.databinding.EditProfileLayoutBinding
 import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel
 import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel.Status.*
 import com.example.fordogs.ui.util.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
 
-    private val EditProfileViewModel: EditProfileViewModel by activityViewModels()
-
-    private lateinit var name: String
+    private val EditProfileViewModel: EditProfileViewModel by viewModels()
+    private lateinit var userPerroInfo: userPerro
 
     override fun getViewBinding() = EditProfileLayoutBinding.inflate(layoutInflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        getData()
         setObservables()
         hideNavBar()
         setListeners()
-        setNameEditText()
-
-
 
     }
 
-    private fun setObservables() {
-        lifecycleScope.launch{
-            EditProfileViewModel.nombre.collectLatest { nombre ->
-                name = nombre
-            }
-        }
+    private fun getData() {
+        EditProfileViewModel.getData()
+    }
 
-        lifecycleScope.launch {
-            EditProfileViewModel.imagen.collectLatest { img ->
-                setImgUser(img)
-            }
-        }
+    private fun setObservables() {
 
         lifecycleScope.launch {
             EditProfileViewModel.status.collectLatest{ status ->
@@ -68,34 +63,69 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
         }
     }
 
-    private fun setNameEditText() {
-        binding.petNameEdtiProfileLayout.text = name
-    }
-
     private fun setListeners() {
         binding.btSaveDataEditProfale.setOnClickListener{
-            EditProfileViewModel.saveChanges()
+            savedChanges()
+            EditProfileViewModel.saveChanges(userPerroInfo)
         }
+    }
+
+    private fun savedChanges(){
+        userPerroInfo = userPerro(
+                "0",
+                binding.textInputNombreTextEditProfilelayoutEditText.text.toString(),
+                binding.textInputRazaTextEditProfilelayoutEditText.text.toString(),
+                binding.textInputPesoTextEditProfilelayoutEditText.text.toString().toInt(),
+                binding.textInputColorTextEditProfilelayoutEditText.text.toString(),
+                binding.textInputAlturaTextEditProfilelayoutEditText.text.toString().toInt(),
+                binding.textInputLargoTextEditProfilelayoutEditText.text.toString().toInt(),
+                binding.textInputComidaFavTextEditProfilelayoutEditText.text.toString()
+         //""//Hay que cambiarlo
+        )
+
     }
 
     private fun handleStatus(status: EditProfileViewModel.Status) {
         when(status){
-            Editing -> {
+            is Editing -> {
+                val datos = status.data
                 binding.apply {
                     imgPetEditProfileLayout.visibility = View.VISIBLE
+                    setImgUser(datos.imagen)
+
                     petNameEdtiProfileLayout.visibility = View.VISIBLE
+                    textInputNombreTextEditProfilelayoutEditText.setText(datos.nombre)
+
                     textInputRazaTextEditProfileLayout.visibility = View.VISIBLE
+                    textInputRazaTextEditProfilelayoutEditText.setText(datos.raza)
+
                     textInputPesoTextEditProfileLayout.visibility = View.VISIBLE
+                    textInputPesoTextEditProfilelayoutEditText.setText(datos.peso.toString())
+
                     textInputColorTextEditProfileLayout.visibility = View.VISIBLE
+                    textInputColorTextEditProfilelayoutEditText.setText(datos.color)
+
                     textInputAlturaTextEditProfileLayout.visibility = View.VISIBLE
+                    textInputAlturaTextEditProfilelayoutEditText.setText(datos.alto.toString())
+
                     textInputLargoTextEditProfileLayout.visibility = View.VISIBLE
+                    textInputLargoTextEditProfilelayoutEditText.setText(datos.largo.toString())
+
                     textInputComidaFavTextEditProfileLayout.visibility  = View.VISIBLE
+                    textInputComidaFavTextEditProfilelayoutEditText.setText(datos.comidaFav)
+
                     btSaveDataEditProfale.visibility = View.VISIBLE
+
                     progressEditLayout.visibility = View.GONE
                 }
             }
             is Error -> {
-                TODO()
+                Toast.makeText(
+                    requireContext(),
+                    status.message,
+                    Toast.LENGTH_LONG
+                ).show()
+                EditProfileViewModel.setEditing()
             }
             Loading -> {
                 binding.apply {
@@ -111,11 +141,21 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
                     progressEditLayout.visibility = View.VISIBLE
                 }
             }
-            Succes -> {
+            is Succes -> {
+                Toast.makeText(
+                    requireContext(),
+                    status.message,
+                    Toast.LENGTH_LONG
+                ).show()
+
                 requireView().findNavController().navigate(
                     EditProfileFragmentDirections.actionEditProfileFragmentToProfileFragment()
                 )
+
                 EditProfileViewModel.setDefault()
+            }
+            Default -> {
+
             }
         }
     }
