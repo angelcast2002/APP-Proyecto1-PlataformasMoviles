@@ -26,4 +26,13 @@ class UserPerroRepositoryImpl (
         }
     }
 
+    override suspend fun updateUserPerroInfo(data: userPerro): Resource<String> {
+        return try {
+            userPerroDao.update(data)
+            Resource.Succes(data = "Guardado con exito")
+        } catch (ex: Exception){
+            Resource.Error(message = "Error al guardar datos")
+        }
+    }
+
 }

@@ -58,7 +58,7 @@ class EditProfileViewModel @Inject constructor(
     fun saveChanges(data: userPerro){
         viewModelScope.launch {
             _status.value = Status.Loading
-            when(val perroInfoResult = repository.setUserPerroInfo(data)){
+            when(val perroInfoResult = repository.updateUserPerroInfo(data)){
                 is Resource.Succes -> {
                     _status.value = Status.Succes(perroInfoResult.data!!)
                 }

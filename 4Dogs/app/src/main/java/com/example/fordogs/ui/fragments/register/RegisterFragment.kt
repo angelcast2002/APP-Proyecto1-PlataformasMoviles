@@ -97,7 +97,7 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
 
     private fun savedChanges() {
         userPerroInfo = userPerro(
-            "",
+            "0",
             binding.textInputUserTextRegisterLayoutEditText.text.toString(),
             "",
             0,

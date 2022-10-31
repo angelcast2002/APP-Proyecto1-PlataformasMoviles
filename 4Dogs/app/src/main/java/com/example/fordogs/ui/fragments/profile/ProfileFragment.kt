@@ -12,10 +12,11 @@ import coil.transform.CircleCropTransformation
 import com.example.fordogs.R
 import com.example.fordogs.databinding.FragmentProfileBinding
 import com.example.fordogs.ui.util.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class ProfileFragment : BaseFragment<FragmentProfileBinding>(){
 
     private val viewModel: ProfileViewModel by viewModels()
@@ -87,31 +88,42 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(){
                 }
             }
             is ProfileViewModel.Status.Succes -> {
-                
+                val data = status.data
+                setImgUser(data.imagen)
                 binding.apply {
 
                     progressProfileLayout.visibility = View.GONE
 
                     btEditarPerfil.visibility = View.VISIBLE
+
                     imgPetProfileLayout.visibility = View.VISIBLE
+
+                    petNameProfileLayout.visibility = View.VISIBLE
+                    petNameProfileLayout.text = data.nombre
 
                     textRazaTextProfileLayout.visibility = View.VISIBLE
                     textDatoRazaTextProfileLayout.visibility = View.VISIBLE
+                    textDatoRazaTextProfileLayout.text = data.raza
 
                     textPesoTextProfileLayout.visibility = View.VISIBLE
                     textDatoPesoTextProfileLayout.visibility = View.VISIBLE
+                    textDatoPesoTextProfileLayout.text = data.peso.toString()
 
                     textColorTextProfileLayout.visibility = View.VISIBLE
                     textDatoColorTextProfileLayout.visibility = View.VISIBLE
+                    textDatoColorTextProfileLayout.text = data.color
 
                     textLargoTextProfileLayout.visibility = View.VISIBLE
                     textDatoLargoTextProfileLayout.visibility = View.VISIBLE
+                    textDatoLargoTextProfileLayout.text = data.largo.toString()
 
                     textAltoTextProfileLayout.visibility = View.VISIBLE
-                    textDatoLargoTextProfileLayout.visibility = View.VISIBLE
+                    textDatoAltoTextProfileLayout.visibility = View.VISIBLE
+                    textDatoAltoTextProfileLayout.text = data.alto.toString()
 
                     textComidaFavTextProfileLayout.visibility = View.VISIBLE
                     textDatoComidaFavTextProfileLayout.visibility = View.VISIBLE
+                    textDatoComidaFavTextProfileLayout.text = data.comidaFav
 
 
                 }
