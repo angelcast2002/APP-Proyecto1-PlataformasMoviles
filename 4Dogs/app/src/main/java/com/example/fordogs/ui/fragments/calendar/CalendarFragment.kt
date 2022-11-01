@@ -4,24 +4,30 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.request.CachePolicy
 import coil.transform.CircleCropTransformation
 import com.example.fordogs.R
+import com.example.fordogs.data.local.entity.userPerro
 import com.example.fordogs.databinding.FragmentCalendarBinding
 import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel
 import com.example.fordogs.ui.util.BaseFragment
 import com.example.fordogs.ui.fragments.calendar.CalendarConstants.Companion.selectedDate
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 
+@AndroidEntryPoint
 class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), CalendarAdapter.OnItemListener {
 
-    private val EditProfileViewModel: EditProfileViewModel by activityViewModels()
     private val calendarVM: CalendarViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
     private lateinit var monthYearText: TextView
@@ -32,31 +38,47 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), CalendarAdapte
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        setObservables()
+        calendarVM.getData()
+        setObservables()
         initWidgets()
         setMonthView()
         setListeners()
         showNavBar()
-//        setName()
     }
 
-//    private fun setObservables() {
-//        lifecycleScope.launch {
-//            EditProfileViewModel.imagen.collectLatest { img ->
-//                setImgUser(img)
-//            }
-//        }
-//
-//        lifecycleScope.launch{
-//            EditProfileViewModel.nombre.collectLatest { nombre ->
-//                name = nombre
-//            }
-//        }
-//    }
+    //Implementar estados
+    private fun setObservables() {
+        lifecycleScope.launchWhenStarted {
+            calendarVM.status.collectLatest { status ->
+                handleState(status)
+            }
+        }
+    }
 
-//    private fun setName() {
-//        binding.userNameCalendarFragment.text = name
-//    }
+    private fun handleState(status: CalendarViewModel.Status) {
+        when(status) { //implementar stados
+            is CalendarViewModel.Status.Error -> {
+                Toast.makeText(
+                    requireContext(),
+                    status.message,
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+            CalendarViewModel.Status.Loading -> {
+                //dummy
+                binding.userNameCalendarFragment.visibility = View.GONE
+                //dummy
+            }
+            is CalendarViewModel.Status.Succes -> {
+                val data = status.data
+                setImgUser(data.imagen)
+                binding.apply {
+                    binding.userNameCalendarFragment.visibility = View.VISIBLE
+                    userNameCalendarFragment.text = data.nombre
+                }
+            }
+        }
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setListeners() {
