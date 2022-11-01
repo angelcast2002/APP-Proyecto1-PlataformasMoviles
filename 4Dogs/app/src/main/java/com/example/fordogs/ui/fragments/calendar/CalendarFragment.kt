@@ -2,15 +2,11 @@ package com.example.fordogs.ui.fragments.calendar
 
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -20,13 +16,8 @@ import com.example.fordogs.R
 import com.example.fordogs.databinding.FragmentCalendarBinding
 import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel
 import com.example.fordogs.ui.util.BaseFragment
-import com.example.fordogs.ui.util.CalendarConstants.Companion.selectedDate
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import com.example.fordogs.ui.fragments.calendar.CalendarConstants.Companion.selectedDate
 import java.time.LocalDate
-import java.time.YearMonth
-import java.time.format.DateTimeFormatter
-import kotlin.collections.ArrayList
 
 class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), CalendarAdapter.OnItemListener {
 

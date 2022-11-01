@@ -41,4 +41,7 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
+    fun setLoading(){
+        _status.value = Status.Loading
+    }
 }

@@ -3,7 +3,6 @@ package com.example.fordogs.ui.fragments.calendar
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
-import com.example.fordogs.ui.util.CalendarConstants
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter

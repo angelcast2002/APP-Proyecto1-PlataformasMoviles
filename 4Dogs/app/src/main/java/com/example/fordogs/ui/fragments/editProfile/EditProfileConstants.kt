@@ -1,4 +1,4 @@
-package com.example.fordogs.ui.util
+package com.example.fordogs.ui.fragments.editProfile
 
 class EditProfileConstants {
 
