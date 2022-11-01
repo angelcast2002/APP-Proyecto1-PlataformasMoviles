@@ -7,4 +7,6 @@ interface UserPerroRepository {
 
     suspend fun getUserPerroInfo(): Resource<userPerro>
     suspend fun setUserPerroInfo(data: userPerro): Resource<String>
+    suspend fun updateUserPerroInfo(data: userPerro): Resource<String>
+    suspend fun logOut(data: userPerro): Resource<String>
 }

@@ -5,19 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.entity.userPerro
 import com.example.fordogs.data.repository.UserPerroRepository
-import com.example.fordogs.ui.util.EditProfileConstants.Companion.ALTO
-import com.example.fordogs.ui.util.EditProfileConstants.Companion.COLOR
-import com.example.fordogs.ui.util.EditProfileConstants.Companion.COMIDA_FAV
-import com.example.fordogs.ui.util.EditProfileConstants.Companion.CONDUCTA
-import com.example.fordogs.ui.util.EditProfileConstants.Companion.IMG_PERRO
-import com.example.fordogs.ui.util.EditProfileConstants.Companion.JUGUETE_FAV
-import com.example.fordogs.ui.util.EditProfileConstants.Companion.LARGO
-import com.example.fordogs.ui.util.EditProfileConstants.Companion.PESO
-import com.example.fordogs.ui.util.EditProfileConstants.Companion.RAZA
-import com.example.fordogs.ui.util.RegisterConstants
-import com.example.fordogs.ui.util.RegisterConstants.Companion.DEFAULT_USER_NAME
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -58,7 +46,7 @@ class EditProfileViewModel @Inject constructor(
     fun saveChanges(data: userPerro){
         viewModelScope.launch {
             _status.value = Status.Loading
-            when(val perroInfoResult = repository.setUserPerroInfo(data)){
+            when(val perroInfoResult = repository.updateUserPerroInfo(data)){
                 is Resource.Succes -> {
                     _status.value = Status.Succes(perroInfoResult.data!!)
                 }

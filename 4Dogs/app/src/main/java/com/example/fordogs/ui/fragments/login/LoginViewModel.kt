@@ -2,9 +2,9 @@ package com.example.fordogs.ui.fragments.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.fordogs.ui.util.LogInConstants.Companion.ERROR
-import com.example.fordogs.ui.util.LogInConstants.Companion.PASSWORD
-import com.example.fordogs.ui.util.LogInConstants.Companion.USER
+import com.example.fordogs.ui.fragments.login.LogInConstants.Companion.ERROR
+import com.example.fordogs.ui.fragments.login.LogInConstants.Companion.PASSWORD
+import com.example.fordogs.ui.fragments.login.LogInConstants.Companion.USER
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

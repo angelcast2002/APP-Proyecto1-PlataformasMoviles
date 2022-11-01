@@ -17,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
 
-    private val RegisterFragmentViewModel: RegisterFragmentViewModel by viewModels()
+    private val registerFragmentViewModel: RegisterFragmentViewModel by viewModels()
     private lateinit var userPerroInfo: userPerro
 
     override fun getViewBinding() = RegisterLayoutBinding.inflate(layoutInflater)
@@ -32,7 +32,7 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
 
     private fun setObservables() {
         lifecycleScope.launch{
-            RegisterFragmentViewModel.status.collectLatest { status ->
+            registerFragmentViewModel.status.collectLatest { status ->
                 handleStatus(status)
             }
         }
@@ -57,7 +57,7 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
                     status.message,
                     Toast.LENGTH_LONG
                 ).show()
-                RegisterFragmentViewModel.setDefault()
+                registerFragmentViewModel.setDefault()
             }
             Status.Loading -> {
                 binding.apply {
@@ -76,7 +76,7 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
                     status.message,
                     Toast.LENGTH_LONG
                 ).show()
-                RegisterFragmentViewModel.setDefault()
+                registerFragmentViewModel.setDefault()
             }
         }
     }
@@ -88,7 +88,7 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
 
         binding.btRegistraseRegisterLayout.setOnClickListener{
             savedChanges()
-            RegisterFragmentViewModel.saveChanges(userPerroInfo)
+            registerFragmentViewModel.saveChanges(userPerroInfo)
             requireView().findNavController().navigate(
                 RegisterFragmentDirections.actionRegisterFragmentToEditProfileFragment()
             )
@@ -97,7 +97,7 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
 
     private fun savedChanges() {
         userPerroInfo = userPerro(
-            "",
+            "0",
             binding.textInputUserTextRegisterLayoutEditText.text.toString(),
             "",
             0,

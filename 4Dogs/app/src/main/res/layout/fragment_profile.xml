@@ -182,49 +182,18 @@
         android:fontFamily="@font/krub_bold"
         android:textColor="@color/color_feldgrau"/>
 
-    <TextView
-        android:id="@+id/text_conductaText_ProfileLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin10"
-        android:fontFamily="@font/krub_bold"
-        android:text="@string/text_conductaText_ProfileLayout"
-        android:textColor="@color/color_feldgrau"
-        app:layout_constraintStart_toStartOf="@+id/text_comidaFavText_ProfileLayout"
-        app:layout_constraintTop_toBottomOf="@+id/text_comidaFavText_ProfileLayout" />
+    <ProgressBar
+        android:id="@+id/progress_profileLayout"
 
-    <TextView
-        android:id="@+id/text_dato_conductaText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin10"
-        app:layout_constraintStart_toStartOf="@+id/text_dato_comidaFavText_ProfileLayout"
-        app:layout_constraintTop_toBottomOf="@+id/text_dato_comidaFavText_ProfileLayout"
-        android:text="@string/text_agresivo_profileLayout"
-        android:fontFamily="@font/krub_bold"
-        android:textColor="@color/color_feldgrau"/>
 
-    <TextView
-        android:id="@+id/text_jugueteFavText_ProfileLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin10"
-        android:fontFamily="@font/krub_bold"
-        android:text="@string/text_jugueteFavText_ProfileLayout"
-        android:textColor="@color/color_feldgrau"
-        app:layout_constraintStart_toStartOf="@+id/text_conductaText_ProfileLayout"
-        app:layout_constraintTop_toBottomOf="@+id/text_conductaText_ProfileLayout" />
-
-    <TextView
-        android:id="@+id/text_dato_jugueteFavText_ProfileLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin10"
-        app:layout_constraintStart_toStartOf="@+id/text_dato_conductaText_ProfileLayout"
-        app:layout_constraintTop_toBottomOf="@+id/text_dato_conductaText_ProfileLayout"
-        android:text="@string/text_pelotaDeTennis_profileLayout"
-        android:fontFamily="@font/krub_bold"
-        android:textColor="@color/color_feldgrau"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="visible"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,9 @@
-package com.example.fordogs.ui.fragments.calendar
+package com.example.fordogs.ui.fragments.editProfile
 
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
@@ -14,7 +13,6 @@ import coil.transform.CircleCropTransformation
 import com.example.fordogs.R
 import com.example.fordogs.data.local.entity.userPerro
 import com.example.fordogs.databinding.EditProfileLayoutBinding
-import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel
 import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel.Status.*
 import com.example.fordogs.ui.util.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -130,7 +128,7 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
             Loading -> {
                 binding.apply {
                     imgPetEditProfileLayout.visibility = View.VISIBLE
-                    petNameEdtiProfileLayout.visibility = View.VISIBLE
+                    petNameEdtiProfileLayout.visibility = View.GONE
                     textInputRazaTextEditProfileLayout.visibility = View.GONE
                     textInputPesoTextEditProfileLayout.visibility = View.GONE
                     textInputColorTextEditProfileLayout.visibility = View.GONE
