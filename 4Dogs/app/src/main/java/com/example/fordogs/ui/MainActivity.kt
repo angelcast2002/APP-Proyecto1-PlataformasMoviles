@@ -9,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.fordogs.R
-import com.example.fordogs.data.repository.UserPerroRepository
+import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
 import com.example.fordogs.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

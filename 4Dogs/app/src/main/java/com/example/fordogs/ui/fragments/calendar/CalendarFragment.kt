@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -15,14 +14,11 @@ import coil.load
 import coil.request.CachePolicy
 import coil.transform.CircleCropTransformation
 import com.example.fordogs.R
-import com.example.fordogs.data.local.entity.userPerro
 import com.example.fordogs.databinding.FragmentCalendarBinding
-import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel
 import com.example.fordogs.ui.util.BaseFragment
 import com.example.fordogs.ui.fragments.calendar.CalendarConstants.Companion.selectedDate
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 @AndroidEntryPoint

@@ -3,8 +3,8 @@ package com.example.fordogs.ui.fragments.editProfile
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fordogs.data.Resource
-import com.example.fordogs.data.local.entity.userPerro
-import com.example.fordogs.data.repository.UserPerroRepository
+import com.example.fordogs.data.local.entity.UserPerro
+import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -23,7 +23,7 @@ class EditProfileViewModel @Inject constructor(
 
     sealed class Status{
         object Default: Status()
-        class Editing(val data: userPerro): Status()
+        class Editing(val data: UserPerro): Status()
         object Loading: Status()
         class Succes(val message: String): Status()
         class Error(val message: String): Status()
@@ -43,7 +43,7 @@ class EditProfileViewModel @Inject constructor(
         }
     }
 
-    fun saveChanges(data: userPerro){
+    fun saveChanges(data: UserPerro){
         viewModelScope.launch {
             _status.value = Status.Loading
             when(val perroInfoResult = repository.updateUserPerroInfo(data)){
