@@ -6,4 +6,5 @@ import com.example.fordogs.data.local.entity.PerroTips
 interface PerroTipsRepository {
 
     suspend fun getPerroTips(): Resource<List<PerroTips>?>
+    suspend fun savePerroTips(data: List<PerroTips>?): Resource<String>
 }
