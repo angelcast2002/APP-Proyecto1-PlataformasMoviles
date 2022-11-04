@@ -34,7 +34,6 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
         setObservables()
         hideNavBar()
         setListeners()
-
     }
 
     private fun getData() {
@@ -49,6 +48,35 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
             }
         }
 
+        lifecycleScope.launch{
+            EditProfileViewModel.statusTips.collectLatest { status ->
+                handleStatusTips(status)
+            }
+        }
+
+    }
+
+    private fun handleStatusTips(status: EditProfileViewModel.StatusTips) {
+        when (status) {
+            com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel.StatusTips.Default -> {
+
+            }
+            is EditProfileViewModel.StatusTips.Error -> {
+                Toast.makeText(
+                    requireContext(),
+                    status.message,
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+            is EditProfileViewModel.StatusTips.Succes -> {
+                Toast.makeText(
+                    requireContext(),
+                    status.data.name,
+                    Toast.LENGTH_LONG
+                ).show()
+                println(status.data)
+            }
+        }
     }
 
     private fun setImgUser(img: String) {
@@ -81,6 +109,8 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
          //""//Hay que cambiarlo
         )
 
+        EditProfileViewModel.prueba(binding.textInputRazaTextEditProfilelayoutEditText.text.toString())
+        EditProfileViewModel.pruebaToDefault()
     }
 
     private fun handleStatus(status: EditProfileViewModel.Status) {

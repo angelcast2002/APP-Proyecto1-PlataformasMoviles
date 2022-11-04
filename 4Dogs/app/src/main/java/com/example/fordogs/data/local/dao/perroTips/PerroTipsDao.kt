@@ -10,8 +10,8 @@ import com.example.fordogs.data.local.entity.PerroTips
 interface PerroTipsDao {
 
     @Query("SELECT * FROM PerroTips")
-    suspend fun getPerroTips(): List<PerroTips>?
+    suspend fun getPerroTips(): PerroTips
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllPerroTips(data: List<PerroTips>?)
+    suspend fun insertAllPerroTips(data: PerroTips)
 }
