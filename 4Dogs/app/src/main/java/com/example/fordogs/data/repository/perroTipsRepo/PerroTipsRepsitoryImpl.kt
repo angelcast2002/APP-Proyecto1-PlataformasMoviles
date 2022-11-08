@@ -27,7 +27,6 @@ class PerroTipsRepsitoryImpl(
                 Resource.Succes(data = localTips)
             }
         }catch (e: Exception) {
-            e
             Resource.Error(message = "Error inesperado")
         }
     }

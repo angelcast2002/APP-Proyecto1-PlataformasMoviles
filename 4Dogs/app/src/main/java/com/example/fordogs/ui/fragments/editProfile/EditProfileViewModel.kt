@@ -24,8 +24,6 @@ class EditProfileViewModel @Inject constructor(
     private val _status = MutableStateFlow<Status>(Status.Default)
     val status : StateFlow<Status> = _status
 
-    private val _statusTips = MutableStateFlow<StatusTips>(StatusTips.Default)
-    val statusTips: StateFlow<StatusTips> = _statusTips
 
 
     sealed class Status{
@@ -34,12 +32,6 @@ class EditProfileViewModel @Inject constructor(
         object Loading: Status()
         class Succes(val message: String): Status()
         class Error(val message: String): Status()
-    }
-
-    sealed class StatusTips{
-        object Default: StatusTips()
-        class Error(val message: String): StatusTips()
-        class Succes(val data: PerroTips): StatusTips()
     }
 
     fun getData(){
@@ -76,23 +68,5 @@ class EditProfileViewModel @Inject constructor(
     }
     fun setEditing(){
         getData()
-    }
-
-    fun prueba(name:String){
-        viewModelScope.launch {
-
-            when(val resultado = tips.getPerroTips(name)) {
-                is Resource.Error -> {
-                    _statusTips.value = StatusTips.Error(resultado.message!!)
-                }
-                is Resource.Succes -> {
-                    _statusTips.value = StatusTips.Succes(resultado.data!!)
-                }
-            }
-        }
-    }
-
-    fun pruebaToDefault(){
-        _statusTips.value = StatusTips.Default
     }
 }
