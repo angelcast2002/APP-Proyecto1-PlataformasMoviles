@@ -11,7 +11,7 @@ import coil.load
 import coil.request.CachePolicy
 import coil.transform.CircleCropTransformation
 import com.example.fordogs.R
-import com.example.fordogs.data.local.entity.userPerro
+import com.example.fordogs.data.local.entity.UserPerro
 import com.example.fordogs.databinding.EditProfileLayoutBinding
 import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel.Status.*
 import com.example.fordogs.ui.util.BaseFragment
@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
 
     private val EditProfileViewModel: EditProfileViewModel by viewModels()
-    private lateinit var userPerroInfo: userPerro
+    private lateinit var userPerroInfo: UserPerro
 
     override fun getViewBinding() = EditProfileLayoutBinding.inflate(layoutInflater)
 
@@ -34,7 +34,6 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
         setObservables()
         hideNavBar()
         setListeners()
-
     }
 
     private fun getData() {
@@ -69,7 +68,7 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
     }
 
     private fun savedChanges(){
-        userPerroInfo = userPerro(
+        userPerroInfo = UserPerro(
                 "0",
                 binding.textInputNombreTextEditProfilelayoutEditText.text.toString(),
                 binding.textInputRazaTextEditProfilelayoutEditText.text.toString(),
