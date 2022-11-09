@@ -46,158 +46,44 @@
 
         tools:text="Chispa"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+        android:id="@+id/month_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin20"
+        android:text="Month"
+        android:textSize="30sp"
+        android:fontFamily="@font/krub_bold"
+        android:textColor="@color/color_feldgrau"
+        app:layout_constraintTop_toBottomOf="@id/welcomeTV_calendar_fragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.github.sundeepk.compactcalendarview.CompactCalendarView
+        android:id="@+id/compactcalendar_view"
         android:layout_width="@dimen/ceroDp"
         android:layout_height="@dimen/ceroDp"
-        android:layout_marginTop="@dimen/margin20"
-        app:layout_constraintBottom_toBottomOf="@id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/margin10"
+        android:layout_marginHorizontal="@dimen/margin10"
+        app:layout_constraintTop_toBottomOf="@id/month_textView"
+        app:layout_constraintBottom_toTopOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcomeTV_calendar_fragment">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:compactCalendarTargetHeight="300dp"
+        app:compactCalendarTextSize="15sp"
+        app:compactCalendarBackgroundColor="@color/light_feldgrau"
+        app:compactCalendarTextColor="@color/color_feldgrau"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="@color/magic_mint"
+        app:compactCalendarCurrentDayBackgroundColor="#FFFFFF"
+        app:compactCalendarMultiEventIndicatorColor="#FFFFFF"
+        />
 
-        <LinearLayout
-            android:id="@+id/calendarHeader_linearLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageButton
-                android:id="@+id/previous_month_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@null"
-                android:src="@drawable/ic_baseline_arrow_back"
-                app:tint="@color/color_feldgrau" />
-
-            <TextView
-                android:id="@+id/month_nameHeader_calendar_fragment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/krub_bold"
-                android:text="@string/mesPlaceholder"
-                android:textAlignment="center"
-                android:textColor="@color/color_feldgrau"
-                android:textSize="@dimen/defaultTitleSize" />
-
-            <ImageButton
-                android:id="@+id/next_month_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@null"
-                android:src="@drawable/ic_baseline_arrow_forward"
-                app:tint="@color/color_feldgrau" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/calendarDays_linearLayout"
-            android:layout_width="@dimen/ceroDp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin10"
-            android:orientation="horizontal"
-            android:layout_marginHorizontal="@dimen/margin10"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/calendarHeader_linearLayout">
-
-            <TextView
-                android:id="@+id/sunday_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/krub_bold"
-                android:text="@string/domingo"
-                android:textAlignment="center"
-                android:textColor="@color/color_feldgrau" />
-
-            <TextView
-                android:id="@+id/monday_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/krub_bold"
-                android:text="@string/lunes"
-                android:textAlignment="center"
-                android:textColor="@color/color_feldgrau" />
-
-            <TextView
-                android:id="@+id/tuesday_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/krub_bold"
-                android:text="@string/martes"
-                android:textAlignment="center"
-                android:textColor="@color/color_feldgrau" />
-
-            <TextView
-                android:id="@+id/wednesday_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/krub_bold"
-                android:text="@string/miercoles"
-                android:textAlignment="center"
-                android:textColor="@color/color_feldgrau" />
-
-            <TextView
-                android:id="@+id/thursday_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/krub_bold"
-                android:text="@string/jueves"
-                android:textAlignment="center"
-                android:textColor="@color/color_feldgrau" />
-
-            <TextView
-                android:id="@+id/friday_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/krub_bold"
-                android:text="@string/viernes"
-                android:textAlignment="center"
-                android:textColor="@color/color_feldgrau" />
-
-            <TextView
-                android:id="@+id/saturday_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/krub_bold"
-                android:text="@string/sabado"
-                android:textAlignment="center"
-                android:textColor="@color/color_feldgrau" />
-
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/calendarRecyclerView"
-            android:layout_width="@dimen/ceroDp"
-            android:layout_height="@dimen/ceroDp"
-            android:layout_marginHorizontal="@dimen/margin10"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/calendarDays_linearLayout"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="@dimen/begin_guideLine2_calendarLayout" />
+        app:layout_constraintGuide_begin="436dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
