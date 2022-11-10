@@ -16,8 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EditProfileViewModel @Inject constructor(
-    private val repository: UserPerroRepository,
-    private val tips: PerroTipsRepository,
+    private val repository: UserPerroRepository
 ) : ViewModel() {
 
 
@@ -53,7 +52,6 @@ class EditProfileViewModel @Inject constructor(
             _status.value = Status.Loading
             when(val perroInfoResult = repository.updateUserPerroInfo(data)){
                 is Resource.Succes -> {
-                    delay(5000L)
                     _status.value = Status.Succes(perroInfoResult.data!!)
                 }
                 is Resource.Error ->{

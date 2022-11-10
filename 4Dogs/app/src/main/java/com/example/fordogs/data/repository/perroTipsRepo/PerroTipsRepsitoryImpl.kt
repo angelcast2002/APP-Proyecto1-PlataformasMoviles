@@ -16,7 +16,7 @@ class PerroTipsRepsitoryImpl(
         val localTips = perroTipsDao.getPerroTips()
         return try {
             if (localTips == null) {
-                val remoteTips = api.getDogsTips(name)
+                val remoteTips = api.getDogsTips(name)[0]
                 if (remoteTips == null) {
                     Resource.Error(message = "No hay información de la raza")
                 } else {
