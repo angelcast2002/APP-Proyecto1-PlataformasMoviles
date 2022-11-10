@@ -32,7 +32,7 @@ import retrofit2.Retrofit
 import java.time.LocalDate
 
 @AndroidEntryPoint
-class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
+class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), CalendarAdapter.OnItemListener {
 
     private val calendarVM: CalendarViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
@@ -46,6 +46,9 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
 
         calendarVM.getData()
         setObservables()
+        initWidgets()
+        setMonthView()
+        setListeners()
         showNavBar()
     }
 
@@ -82,6 +85,55 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
                 }
             }
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setListeners() {
+        binding.nextMonthButton.setOnClickListener {
+            nextMonthAction(monthYearText)
+        }
+        binding.previousMonthButton.setOnClickListener {
+            previousMonthAction(monthYearText)
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setMonthView() {
+        monthYearText.text = calendarVM.monthYearFromDate(selectedDate)
+
+        val daysOfMonth = calendarVM.daysInMonthArray(selectedDate)
+
+        val calendarAdapter = CalendarAdapter(daysOfMonth, this)
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 7)
+        recyclerView.setHasFixedSize(true)
+        recyclerView.adapter = calendarAdapter
+    }
+
+    private fun initWidgets() {
+        recyclerView = binding.calendarRecyclerView
+        monthYearText = binding.monthNameHeaderCalendarFragment
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun nextMonthAction(view: View) {
+        selectedDate = selectedDate?.plusMonths(1)
+        setMonthView()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun previousMonthAction(view: View) {
+        selectedDate = selectedDate?.minusMonths(1)
+        setMonthView()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onItemClick(date: LocalDate?, position: Int) {
+
+        if (date != null) {
+            selectedDate = date
+            setMonthView()
+        }
+
     }
 
     private fun setImgUser(img: String) {
