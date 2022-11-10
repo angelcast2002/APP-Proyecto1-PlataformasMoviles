@@ -3,9 +3,9 @@ package com.example.fordogs.di
 import android.content.Context
 import androidx.room.Room
 import com.example.fordogs.data.local.UserPerroDb
-import com.example.fordogs.data.local.dao.userPerroInfo.UserPerroDao
-import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
-import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepositoryImpl
+import com.example.fordogs.data.local.dao.UserPerroDao
+import com.example.fordogs.data.repository.UserPerroRepository
+import com.example.fordogs.data.repository.UserPerroRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,7 +42,7 @@ object UserPerroModule {
     fun provideRepository(
         dao: UserPerroDao
         //API
-    ): UserPerroRepository {
+    ): UserPerroRepository{
         return UserPerroRepositoryImpl(
             userPerroDao = dao
         )

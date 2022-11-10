@@ -5,8 +5,8 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fordogs.data.Resource
-import com.example.fordogs.data.local.entity.UserPerro
-import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
+import com.example.fordogs.data.local.entity.userPerro
+import com.example.fordogs.data.repository.UserPerroRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -26,7 +26,7 @@ class CalendarViewModel @Inject constructor(
 
     sealed class Status{
         object Loading: Status()
-        class Succes(val data: UserPerro): Status()
+        class Succes(val data: userPerro): Status()
         class Error(val message: String): Status()
     }
 

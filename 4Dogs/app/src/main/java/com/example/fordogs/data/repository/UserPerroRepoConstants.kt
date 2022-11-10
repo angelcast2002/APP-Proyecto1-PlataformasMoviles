@@ -1,4 +1,4 @@
-package com.example.fordogs.data.repository.userPerroRepo
+package com.example.fordogs.data.repository
 
 class UserPerroRepoConstants {
 
