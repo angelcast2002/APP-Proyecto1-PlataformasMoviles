@@ -27,7 +27,7 @@ class PerroTipsRepsitoryImpl(
                 Resource.Succes(data = localTips)
             }
         }catch (e: Exception) {
-            Resource.Error(message = "Error inesperado")
+            Resource.Error(message = "No hay información de la raza")
         }
     }
 
