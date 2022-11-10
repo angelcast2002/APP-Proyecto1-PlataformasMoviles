@@ -286,19 +286,71 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ampm_Constraint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin20"
+        app:layout_constraintTop_toBottomOf="@id/eventDate_text_input_layout"
+        app:layout_constraintEnd_toEndOf="@id/daily_event_toggle_constraint"
+        app:layout_constraintStart_toStartOf="@id/daily_event_toggle_constraint"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hora"
+            android:textColor="@color/color_feldgrau"
+            android:textSize="@dimen/defaultTitleSize"
+            android:fontFamily="@font/krub_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <RadioGroup
+            android:id="@+id/ampm_radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+
+            <RadioButton
+                android:id="@+id/toggle_amHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/amTime"
+                android:textColor="@color/color_feldgrau"
+                />
+
+            <RadioButton
+                android:id="@+id/toggle_pmHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pmTime"
+                android:textColor="@color/color_feldgrau"
+                />
+
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/eventHour_text_input_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin30"
-        android:hint="@string/hora"
         android:textColorHint="@color/color_feldgrau"
 
         style="@style/Widget.Design.TextInputLayout"
         app:hintTextAppearance="@style/MyHintStyle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/eventDate_text_input_layout">
+        app:layout_constraintTop_toBottomOf="@id/ampm_Constraint">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/eventHour_edit_text"
