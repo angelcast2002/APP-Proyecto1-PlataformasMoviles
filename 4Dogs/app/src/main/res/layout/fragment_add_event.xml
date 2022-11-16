@@ -7,29 +7,18 @@
     tools:context=".ui.fragments.addevents.AddEventFragment"
     >
 
-    <ImageButton
-        android:id="@+id/backButton_addEventFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/backbutton"
-        android:background="@null"
-        android:layout_marginTop="@dimen/margin20"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
     <TextView
         android:id="@+id/add_event_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small10marginSize"
+        android:layout_marginTop="@dimen/margin20"
         android:fontFamily="@font/krub_medium"
         android:text="@string/nuevo_recordatorio"
         android:textColor="@color/color_feldgrau"
         android:textSize="@dimen/size_generalTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/backButton_addEventFragment"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -57,210 +46,6 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/daily_event_toggle_constraint"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/eventTitle_text_input_layout"
-        app:layout_constraintTop_toBottomOf="@id/eventTitle_text_input_layout"
-        app:layout_constraintEnd_toEndOf="@id/eventTitle_text_input_layout"
-        >
-
-        <ImageView
-            android:id="@+id/eventHour_image_eventFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_outline_hour"
-            app:tint="@color/color_feldgrau"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
-
-        <TextView
-            android:id="@+id/daily_text_dailyToggleConstraint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Diario"
-            android:textColor="@color/color_feldgrau"
-            android:textSize="@dimen/defaultTitleSize"
-            android:layout_marginHorizontal="@dimen/small10marginSize"
-            android:fontFamily="@font/krub_medium"
-            app:layout_constraintStart_toEndOf="@id/eventHour_image_eventFragment"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
-
-        <ToggleButton
-            android:id="@+id/toggle_allDays"
-            android:layout_width="@dimen/clockMargin25"
-            android:layout_height="@dimen/clockMargin25"
-            style="@style/toggleButton.check"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@drawable/check_btn_toggle_bg"
-            android:backgroundTint="@color/color_feldgrau"
-            />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:id="@+id/days_LinearLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin20"
-        app:layout_constraintTop_toBottomOf="@id/daily_event_toggle_constraint"
-        app:layout_constraintEnd_toEndOf="@id/daily_event_toggle_constraint"
-        app:layout_constraintStart_toStartOf="@id/daily_event_toggle_constraint"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/domingo"
-            android:textSize="@dimen/defaultTitleSize"
-            android:textColor="@color/color_feldgrau"
-            android:fontFamily="@font/krub_bold"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lunes"
-            android:textSize="@dimen/defaultTitleSize"
-            android:textColor="@color/color_feldgrau"
-            android:fontFamily="@font/krub_bold"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/martes"
-            android:textSize="@dimen/defaultTitleSize"
-            android:textColor="@color/color_feldgrau"
-            android:fontFamily="@font/krub_bold"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/miercoles"
-            android:textSize="@dimen/defaultTitleSize"
-            android:textColor="@color/color_feldgrau"
-            android:fontFamily="@font/krub_bold"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/jueves"
-            android:textSize="@dimen/defaultTitleSize"
-            android:textColor="@color/color_feldgrau"
-            android:fontFamily="@font/krub_bold"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/viernes"
-            android:textSize="@dimen/defaultTitleSize"
-            android:textColor="@color/color_feldgrau"
-            android:fontFamily="@font/krub_bold"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sabado"
-            android:textSize="@dimen/defaultTitleSize"
-            android:textColor="@color/color_feldgrau"
-            android:fontFamily="@font/krub_bold"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/daysChecks_LinearLayout"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/checkBoxesHeight"
-        app:layout_constraintTop_toBottomOf="@id/days_LinearLayout"
-        app:layout_constraintEnd_toEndOf="@id/daily_event_toggle_constraint"
-        app:layout_constraintStart_toStartOf="@id/daily_event_toggle_constraint"
-        >
-
-        <CheckBox
-            android:id="@+id/sunday_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            />
-
-        <CheckBox
-            android:id="@+id/monday_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            />
-
-        <CheckBox
-            android:id="@+id/tuesday_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            />
-
-        <CheckBox
-            android:id="@+id/wednesday_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            />
-
-        <CheckBox
-            android:id="@+id/thursday_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            />
-
-        <CheckBox
-            android:id="@+id/friday_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            />
-
-        <CheckBox
-            android:id="@+id/saturday_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            />
-
-    </LinearLayout>
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/eventDate_text_input_layout"
         android:layout_width="0dp"
@@ -273,7 +58,7 @@
         app:hintTextAppearance="@style/MyHintStyle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/daysChecks_LinearLayout"
+        app:layout_constraintTop_toBottomOf="@id/eventTitle_text_input_layout"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -286,71 +71,20 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ampm_Constraint"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin20"
-        app:layout_constraintTop_toBottomOf="@id/eventDate_text_input_layout"
-        app:layout_constraintEnd_toEndOf="@id/daily_event_toggle_constraint"
-        app:layout_constraintStart_toStartOf="@id/daily_event_toggle_constraint"
-        >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hora"
-            android:textColor="@color/color_feldgrau"
-            android:textSize="@dimen/defaultTitleSize"
-            android:fontFamily="@font/krub_medium"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
-
-        <RadioGroup
-            android:id="@+id/ampm_radio_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            >
-
-            <RadioButton
-                android:id="@+id/toggle_amHour"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/amTime"
-                android:textColor="@color/color_feldgrau"
-                />
-
-            <RadioButton
-                android:id="@+id/toggle_pmHour"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pmTime"
-                android:textColor="@color/color_feldgrau"
-                />
-
-        </RadioGroup>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/eventHour_text_input_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin30"
+        android:hint="@string/hora"
         android:textColorHint="@color/color_feldgrau"
 
         style="@style/Widget.Design.TextInputLayout"
         app:hintTextAppearance="@style/MyHintStyle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ampm_Constraint">
+        app:layout_constraintTop_toBottomOf="@id/eventDate_text_input_layout"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/eventHour_edit_text"
