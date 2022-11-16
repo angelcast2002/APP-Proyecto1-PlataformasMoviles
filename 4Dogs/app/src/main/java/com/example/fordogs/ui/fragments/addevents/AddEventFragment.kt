@@ -23,9 +23,6 @@ class AddEventFragment : BaseFragment<FragmentAddEventBinding>() {
     }
 
     private fun setListeners() {
-        binding.backButtonAddEventFragment.setOnClickListener {
-            requireActivity().onBackPressed()
-        }
     }
 
 }
