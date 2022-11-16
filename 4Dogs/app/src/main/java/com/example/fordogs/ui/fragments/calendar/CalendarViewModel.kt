@@ -44,42 +44,5 @@ class CalendarViewModel @Inject constructor(
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun daysInMonthArray(date: LocalDate?): ArrayList<LocalDate?> {
-
-        val daysInMonthArray = arrayListOf<LocalDate?>()
-        val yearMonth = YearMonth.from(date)
-        val daysInMonth = yearMonth.lengthOfMonth()
-
-        val firstOfMonth = CalendarConstants.selectedDate?.withDayOfMonth(1)
-        val dayOfWeek = firstOfMonth?.dayOfWeek?.value
-
-        for (i in 1..42) {
-
-            if (i <= dayOfWeek!! || i > daysInMonth + dayOfWeek) {
-                daysInMonthArray.add(null)
-            } else {
-                daysInMonthArray.add(CalendarConstants.selectedDate?.let {
-                    LocalDate.of(
-                        it.year,
-                        CalendarConstants.selectedDate?.month,
-                        i - dayOfWeek
-                    )
-                })
-            }
-
-        }
-
-        return daysInMonthArray
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun monthYearFromDate(date: LocalDate?): String {
-
-        val formatter = DateTimeFormatter.ofPattern("MMMM yyyy")
-
-        return date!!.format(formatter)
-    }
-
 
 }

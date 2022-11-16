@@ -32,4 +32,5 @@
     <dimen name="begin_guideLine2_calendarLayout">395dp</dimen>
     <dimen name="textSize_bienvenido_calendarFragment">20sp</dimen>
     <dimen name="marginSize_extraSmall">5dp</dimen>
+    <dimen name="congratsSize">16sp</dimen>
 </resources>
