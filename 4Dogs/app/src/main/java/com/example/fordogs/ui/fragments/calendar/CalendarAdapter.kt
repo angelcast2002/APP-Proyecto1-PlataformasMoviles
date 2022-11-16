@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fordogs.R
-import com.example.fordogs.ui.util.CalendarConstants.Companion.selectedDate
+import com.example.fordogs.ui.fragments.calendar.CalendarConstants.Companion.selectedDate
 import java.time.LocalDate
 import kotlin.collections.ArrayList
 

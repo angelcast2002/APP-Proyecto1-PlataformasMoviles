@@ -1,10 +1,9 @@
-package com.example.fordogs.ui.fragments.calendar
+package com.example.fordogs.ui.fragments.editProfile
 
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
@@ -12,9 +11,8 @@ import coil.load
 import coil.request.CachePolicy
 import coil.transform.CircleCropTransformation
 import com.example.fordogs.R
-import com.example.fordogs.data.local.entity.userPerro
+import com.example.fordogs.data.local.entity.UserPerro
 import com.example.fordogs.databinding.EditProfileLayoutBinding
-import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel
 import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel.Status.*
 import com.example.fordogs.ui.util.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,7 +23,7 @@ import kotlinx.coroutines.launch
 class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
 
     private val EditProfileViewModel: EditProfileViewModel by viewModels()
-    private lateinit var userPerroInfo: userPerro
+    private lateinit var userPerroInfo: UserPerro
 
     override fun getViewBinding() = EditProfileLayoutBinding.inflate(layoutInflater)
 
@@ -36,7 +34,6 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
         setObservables()
         hideNavBar()
         setListeners()
-
     }
 
     private fun getData() {
@@ -71,7 +68,7 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
     }
 
     private fun savedChanges(){
-        userPerroInfo = userPerro(
+        userPerroInfo = UserPerro(
                 "0",
                 binding.textInputNombreTextEditProfilelayoutEditText.text.toString(),
                 binding.textInputRazaTextEditProfilelayoutEditText.text.toString(),
@@ -130,7 +127,7 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
             Loading -> {
                 binding.apply {
                     imgPetEditProfileLayout.visibility = View.VISIBLE
-                    petNameEdtiProfileLayout.visibility = View.VISIBLE
+                    petNameEdtiProfileLayout.visibility = View.GONE
                     textInputRazaTextEditProfileLayout.visibility = View.GONE
                     textInputPesoTextEditProfileLayout.visibility = View.GONE
                     textInputColorTextEditProfileLayout.visibility = View.GONE

@@ -1,4 +1,4 @@
-package com.example.fordogs.ui.util
+package com.example.fordogs.ui.fragments.login
 
 class LogInConstants {
 

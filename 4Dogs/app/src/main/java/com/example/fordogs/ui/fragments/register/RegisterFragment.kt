@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import com.example.fordogs.data.local.entity.userPerro
+import com.example.fordogs.data.local.entity.UserPerro
 import com.example.fordogs.databinding.RegisterLayoutBinding
 import com.example.fordogs.ui.util.BaseFragment
 import kotlinx.coroutines.flow.collectLatest
@@ -17,8 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
 
-    private val RegisterFragmentViewModel: RegisterFragmentViewModel by viewModels()
-    private lateinit var userPerroInfo: userPerro
+    private val registerFragmentViewModel: RegisterFragmentViewModel by viewModels()
+    private lateinit var userPerroInfo: UserPerro
 
     override fun getViewBinding() = RegisterLayoutBinding.inflate(layoutInflater)
 
@@ -32,7 +32,7 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
 
     private fun setObservables() {
         lifecycleScope.launch{
-            RegisterFragmentViewModel.status.collectLatest { status ->
+            registerFragmentViewModel.status.collectLatest { status ->
                 handleStatus(status)
             }
         }
@@ -57,7 +57,7 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
                     status.message,
                     Toast.LENGTH_LONG
                 ).show()
-                RegisterFragmentViewModel.setDefault()
+                registerFragmentViewModel.setDefault()
             }
             Status.Loading -> {
                 binding.apply {
@@ -76,7 +76,7 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
                     status.message,
                     Toast.LENGTH_LONG
                 ).show()
-                RegisterFragmentViewModel.setDefault()
+                registerFragmentViewModel.setDefault()
             }
         }
     }
@@ -88,7 +88,7 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
 
         binding.btRegistraseRegisterLayout.setOnClickListener{
             savedChanges()
-            RegisterFragmentViewModel.saveChanges(userPerroInfo)
+            registerFragmentViewModel.saveChanges(userPerroInfo)
             requireView().findNavController().navigate(
                 RegisterFragmentDirections.actionRegisterFragmentToEditProfileFragment()
             )
@@ -96,8 +96,8 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
     }
 
     private fun savedChanges() {
-        userPerroInfo = userPerro(
-            "",
+        userPerroInfo = UserPerro(
+            "0",
             binding.textInputUserTextRegisterLayoutEditText.text.toString(),
             "",
             0,

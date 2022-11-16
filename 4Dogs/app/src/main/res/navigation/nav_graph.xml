@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.example.fordogs.ui.fragments.calendar.EditProfileFragment"
+        android:name="com.example.fordogs.ui.fragments.editProfile.EditProfileFragment"
         android:label="edit_profile_layout"
         tools:layout="@layout/edit_profile_layout" >
         <action

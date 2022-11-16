@@ -5,17 +5,23 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.fordogs.R
+import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
 import com.example.fordogs.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+    @Inject
+    lateinit var repository: UserPerroRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,6 +82,13 @@ class MainActivity : AppCompatActivity() {
                         setMessage(getString(R.string.text_mensaje_cerrarSesion))
                         setPositiveButton(getString(R.string.text_Si)
                         ) { _, _ ->
+                            lifecycleScope.launch {
+                                val data = repository.getUserPerroInfo().data
+                                if (data != null) {
+                                    repository.logOut(data)
+                                }
+
+                            }
                             navController.popBackStack()
                             navController.navigate(R.id.loginFragment)
                         }
