@@ -6,6 +6,14 @@ import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.entity.UserPerro
 import com.example.fordogs.data.repository.perroTipsRepo.PerroTipsRepository
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
+import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.ALTO
+import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.COLOR
+import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.COMIDA_FAV
+import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.IMG_PERRO
+import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.LARGO
+import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.NOMBRE
+import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.PESO
+import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.RAZA
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -64,6 +72,15 @@ class EditProfileViewModel @Inject constructor(
         _status.value = Status.Default
     }
     fun setEditing(){
-        getData()
+        _status.value = Status.Editing(UserPerro(
+            nombre = NOMBRE,
+            raza = RAZA,
+            peso = PESO,
+            color = COLOR,
+            alto = ALTO,
+            largo = LARGO,
+            comidaFav = COMIDA_FAV,
+            imagen = IMG_PERRO)
+        )
     }
 }
