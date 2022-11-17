@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.entity.PerroTips
+import com.example.fordogs.data.remote.dto.PerroTipsRecyclerView
 import com.example.fordogs.data.repository.perroTipsRepo.PerroTipsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
