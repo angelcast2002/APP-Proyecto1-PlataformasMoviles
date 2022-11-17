@@ -15,6 +15,7 @@ import com.example.fordogs.data.local.entity.Event
 import com.example.fordogs.databinding.FragmentCalendarBinding
 import com.example.fordogs.ui.MainActivity
 import com.example.fordogs.ui.fragments.addevents.EventsManagementViewModel
+import com.example.fordogs.ui.fragments.calendar.eventRecyclerView.EmptyDataObserver
 import com.example.fordogs.ui.fragments.calendar.eventRecyclerView.EventOptionsListener
 import com.example.fordogs.ui.fragments.calendar.eventRecyclerView.EventsAdapter
 import com.example.fordogs.ui.util.BaseFragment
@@ -38,7 +39,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
         setObservables()
         initWidgets()
         showNavBar()
-        setUpAdapter()
+        setUpViews()
     }
 
     //Implementar estados
@@ -99,14 +100,19 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
         }
     }
 
-    private fun setUpAdapter() {
+    private fun setUpViews() {
+
         eventAdapter = EventsAdapter(context = MainActivity(),this, events, this)
         recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = eventAdapter
         }
+        // Here
+        val emptyDataObserver = EmptyDataObserver(recyclerView,
+            view?.findViewById(R.id.emptyCalendarLayout)
+        )
+        eventAdapter.registerAdapterDataObserver(emptyDataObserver)
     }
-
 
     private fun initWidgets() {
         recyclerView = binding.calendarRecyclerView

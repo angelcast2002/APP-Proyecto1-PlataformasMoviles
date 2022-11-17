@@ -14,6 +14,7 @@ import android.widget.DatePicker
 import android.widget.TimePicker
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.example.fordogs.R
 import com.example.fordogs.data.local.entity.Event
 import com.example.fordogs.databinding.FragmentAddEventBinding
@@ -23,7 +24,7 @@ import java.util.*
 
 class AddEventBottomSheetFragment : BottomSheetDialogFragment() {
 
-    private val eventsVM: EventsManagementViewModel by viewModels()
+    private lateinit var eventsVM: EventsManagementViewModel
     private lateinit var binding: FragmentAddEventBinding
     private lateinit var alarmManager: AlarmManager
     private lateinit var event: Event
@@ -48,7 +49,8 @@ class AddEventBottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val activity = requireActivity()
+        eventsVM = ViewModelProvider(activity)[EventsManagementViewModel::class.java]
         //setObservables()
         setListeners()
 
