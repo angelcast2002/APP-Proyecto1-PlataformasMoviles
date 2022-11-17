@@ -31,7 +31,7 @@ class ProfileViewModel @Inject constructor(
         viewModelScope.launch {
             _status.value = Status.Loading
             when(val perroInfoResult = repository.getUserPerroInfo()){
-                is Resource.Succes -> {
+                is Resource.Success -> {
                     _status.value = Status.Succes(perroInfoResult.data!!)
                 }
                 is Resource.Error -> {

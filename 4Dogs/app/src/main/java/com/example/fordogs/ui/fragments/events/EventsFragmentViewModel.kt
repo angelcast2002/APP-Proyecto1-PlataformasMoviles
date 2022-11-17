@@ -6,7 +6,6 @@ import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.entity.PerroTips
 import com.example.fordogs.data.remote.dto.PerroTipsRecyclerView
 import com.example.fordogs.data.repository.perroTipsRepo.PerroTipsRepository
-import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -34,7 +33,7 @@ class EventsFragmentViewModel @Inject constructor(
                 is Resource.Error -> {
                     _statusTips.value = StatusTips.Error(resultado.message!!)
                 }
-                is Resource.Succes -> {
+                is Resource.Success -> {
                     _statusTips.value = StatusTips.Succes(resultado.data!!)
                 }
             }

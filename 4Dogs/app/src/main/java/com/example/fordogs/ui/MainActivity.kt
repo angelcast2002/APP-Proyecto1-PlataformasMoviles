@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import com.example.fordogs.R
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
 import com.example.fordogs.databinding.ActivityMainBinding
+import com.example.fordogs.ui.fragments.addevents.AddEventBottomSheetFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -108,7 +109,8 @@ class MainActivity: AppCompatActivity() {
         }
 
         binding.mainActivityFAB.setOnClickListener {
-            navController.navigate(R.id.addEventFragment)
+            val addEventBottomSheetFragment = AddEventBottomSheetFragment()
+            addEventBottomSheetFragment.show(supportFragmentManager, addEventBottomSheetFragment.tag)
         }
 
     }

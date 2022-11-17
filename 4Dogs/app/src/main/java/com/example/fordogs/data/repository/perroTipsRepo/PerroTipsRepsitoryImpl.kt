@@ -4,9 +4,7 @@ import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.dao.perroTips.PerroTipsDao
 import com.example.fordogs.data.local.entity.PerroTips
 import com.example.fordogs.data.remote.DogsApi
-import com.example.fordogs.data.remote.dto.PerroTipsDto
 import com.example.fordogs.data.remote.dto.mapToEntity
-import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
 
 class PerroTipsRepsitoryImpl(
     private val perroTipsDao: PerroTipsDao,
@@ -21,10 +19,10 @@ class PerroTipsRepsitoryImpl(
                     Resource.Error(message = "No hay información de la raza")
                 } else {
                     val mappedPerroTips = remoteTips.mapToEntity()
-                    Resource.Succes(data = mappedPerroTips)
+                    Resource.Success(data = mappedPerroTips)
                 }
             } else {
-                Resource.Succes(data = localTips)
+                Resource.Success(data = localTips)
             }
         }catch (e: Exception) {
             Resource.Error(message = "No hay información de la raza")
