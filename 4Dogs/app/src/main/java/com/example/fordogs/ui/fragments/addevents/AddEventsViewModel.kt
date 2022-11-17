@@ -6,7 +6,6 @@ import com.example.fordogs.data.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import com.example.fordogs.data.repository.eventosRepo.EventRepository
-import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -30,7 +29,7 @@ class AddEventsViewModel @Inject constructor(
         viewModelScope.launch {
             _status.value = Status.Loading
             when (val result = repository.getEvents()){
-                is Resource.Succes -> {
+                is Resource.Success -> {
                     _status.value = Status.Succes(result.data!!.toString())
                 }
                 is Resource.Error -> {
