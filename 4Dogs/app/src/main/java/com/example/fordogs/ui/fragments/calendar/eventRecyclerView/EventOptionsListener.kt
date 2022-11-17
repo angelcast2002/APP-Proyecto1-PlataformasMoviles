@@ -4,8 +4,4 @@ interface EventOptionsListener {
 
     fun deleteEventFromId(eventId: Int)
 
-    fun updateEventFromId(eventId: Int)
-
-    fun completeEventFromId(eventId: Int)
-
 }

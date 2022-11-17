@@ -33,4 +33,9 @@
     <dimen name="textSize_bienvenido_calendarFragment">20sp</dimen>
     <dimen name="marginSize_extraSmall">5dp</dimen>
     <dimen name="congratsSize">16sp</dimen>
+    <dimen name="dayText_Card">18sp</dimen>
+    <dimen name="dateText_Card">24sp</dimen>
+    <dimen name="eventTitle_Card">20sp</dimen>
+    <dimen name="moreOptions_size">30dp</dimen>
+    <dimen name="eventState_size">12sp</dimen>
 </resources>

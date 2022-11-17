@@ -15,10 +15,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fordogs.R
 import com.example.fordogs.data.local.entity.Event
 import com.example.fordogs.databinding.EventCardBinding
+import com.example.fordogs.ui.MainActivity
+import com.example.fordogs.ui.fragments.addevents.AddEventBottomSheetFragment
 import com.example.fordogs.ui.fragments.calendar.CalendarFragment
 
 class EventsAdapter(
-    private val context: CalendarFragment,
+    private val context: MainActivity,
+    private val fragmentContext: CalendarFragment,
     private val eventsList: List<Event>,
     private val listener: EventOptionsListener
 ) : RecyclerView.Adapter<EventViewHolder>() {
@@ -45,7 +48,7 @@ class EventsAdapter(
             when (item.itemId) {
                 R.id.menuDelete -> {
                     val alertDialogBuilder = AlertDialog.Builder(
-                        context.requireContext(), R.style.AppTheme_Dialog
+                        fragmentContext.requireContext(), R.style.AppTheme_Dialog
                     )
                     alertDialogBuilder.setTitle(R.string.eliminar_confirmacion)
                         .setMessage(R.string.sureToDelete)
@@ -57,26 +60,23 @@ class EventsAdapter(
                         .setNegativeButton(R.string.text_Cancelar) { dialog: DialogInterface, _: Int -> dialog.cancel() }
                         .show()
                 }
-                /*
                 R.id.menuUpdate -> {
                     val createEventBottomSheetFragment = AddEventBottomSheetFragment()
-                    createEventBottomSheetFragment.setEventId(event.eventId, true, context, context)
+                    //createEventBottomSheetFragment.setEventId(event.eventId, true)
                     createEventBottomSheetFragment.show(
                         context.supportFragmentManager,
                         createEventBottomSheetFragment.tag
                     )
                 }
-                */
                 R.id.menuComplete -> {
                     val completeAlertDialog = AlertDialog.Builder(
-                        context.requireContext(), R.style.AppTheme_Dialog
+                        fragmentContext.requireContext(), R.style.AppTheme_Dialog
                     )
                     completeAlertDialog.setTitle(R.string.confirmation)
                         .setMessage(R.string.sureToMarkAsComplete)
                         .setPositiveButton(R.string.text_Si) { _: DialogInterface?, _: Int ->
                             showCompleteDialog(
-                                event.eventId,
-                                position
+                                event.eventId
                             )
                         }
                         .setNegativeButton(R.string.text_Cancelar) { dialog: DialogInterface, which: Int -> dialog.cancel() }
@@ -88,11 +88,12 @@ class EventsAdapter(
         popupMenu.show()
     }
 
-    private fun showCompleteDialog(eventId: Int, position: Int) {
-        val dialog = Dialog(context.requireContext())
+    private fun showCompleteDialog(eventId: Int) {
+        val dialog = Dialog(fragmentContext.requireContext())
         dialog.setContentView(R.layout.event_completed_dialog)
         val close = dialog.findViewById<Button>(R.id.closeButton)
         close.setOnClickListener {
+            listener.deleteEventFromId(eventId)
             dialog.dismiss()
         }
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

@@ -1,11 +1,8 @@
 package com.example.fordogs.ui.fragments.calendar
 
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +13,8 @@ import coil.transform.CircleCropTransformation
 import com.example.fordogs.R
 import com.example.fordogs.data.local.entity.Event
 import com.example.fordogs.databinding.FragmentCalendarBinding
-import com.example.fordogs.ui.fragments.addevents.AddEventsViewModel
+import com.example.fordogs.ui.MainActivity
+import com.example.fordogs.ui.fragments.addevents.EventsManagementViewModel
 import com.example.fordogs.ui.fragments.calendar.eventRecyclerView.EventOptionsListener
 import com.example.fordogs.ui.fragments.calendar.eventRecyclerView.EventsAdapter
 import com.example.fordogs.ui.util.BaseFragment
@@ -27,7 +25,7 @@ import kotlinx.coroutines.flow.collectLatest
 class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsListener {
 
     private val calendarVM: CalendarViewModel by viewModels()
-    private val eventsVM: AddEventsViewModel by viewModels()
+    private val eventsVM: EventsManagementViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
     private lateinit var eventAdapter: EventsAdapter
     private var events : List<Event> = ArrayList<Event>()
@@ -47,13 +45,36 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
     private fun setObservables() {
         lifecycleScope.launchWhenStarted {
             calendarVM.status.collectLatest { status ->
-                handleState(status)
+                handlePerroInfoState(status)
+            }
+            calendarVM.eventStatus.collectLatest { status ->
+                handleEventState(status)
+            }
+        }
+    }
+
+    private fun handleEventState(eventStatus: CalendarViewModel.EventStatus) {
+        when (eventStatus) {
+            is CalendarViewModel.EventStatus.Error -> {
+                Toast.makeText(
+                    requireContext(),
+                    eventStatus.message,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            CalendarViewModel.EventStatus.Loading -> {
+                binding.calendarRecyclerView.visibility = View.GONE
+            }
+            is CalendarViewModel.EventStatus.Success -> {
+                binding.calendarRecyclerView.visibility = View.VISIBLE
+                events = eventStatus.data
             }
         }
     }
 
 
-    private fun handleState(status: CalendarViewModel.Status) {
+    private fun handlePerroInfoState(status: CalendarViewModel.Status) {
+
         when(status) { //implementar stados
             is CalendarViewModel.Status.Error -> {
                 Toast.makeText(
@@ -79,7 +100,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
     }
 
     private fun setUpAdapter() {
-        eventAdapter = EventsAdapter(this, events, this)
+        eventAdapter = EventsAdapter(context = MainActivity(),this, events, this)
         recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = eventAdapter
@@ -102,15 +123,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
     }
 
     override fun deleteEventFromId(eventId: Int) {
-        TODO("Not yet implemented")
-    }
-
-    override fun updateEventFromId(eventId: Int) {
-        TODO("Not yet implemented")
-    }
-
-    override fun completeEventFromId(eventId: Int) {
-        TODO("Not yet implemented")
+        calendarVM.deleteEvent(eventId)
     }
 
 
