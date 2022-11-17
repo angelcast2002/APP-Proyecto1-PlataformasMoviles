@@ -8,6 +8,34 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fordogs.R
 import com.example.fordogs.data.remote.dto.PerroTipsRecyclerView
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.ALEGRIA_1
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.ALEGRIA_2
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.ALEGRIA_3
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.ASEO_1
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.ASEO_2
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.ASEO_3
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.ENERGIA_1
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.ENERGIA_2
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.ENERGIA_3
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.ENTRENABILIDAD_1
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.ENTRENABILIDAD_2
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.ENTRENABILIDAD_3
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.NINOS_1
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.NINOS_2
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.NINOS_3
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.PERROS_1
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.PERROS_2
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.PERROS_3
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.PROTECTOR_1
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.PROTECTOR_2
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.PROTECTOR_3
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.TITULO_ALEGRIA
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.TITULO_ASEO
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.TITULO_ENERGIA
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.TITULO_ENTRENABILIDAD
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.TITULO_NINOS
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.TITULO_PERROS
+import com.example.fordogs.ui.fragments.events.recyclerView.RecyclerTipsConstants.Companion.TITULO_PROTECTOR
 
 class PlaceAdapter(
     private val dataSet: MutableList<PerroTipsRecyclerView>
@@ -24,85 +52,118 @@ class PlaceAdapter(
             this.place = place
             when(place.index) {
                 0 -> {
-                    atribute.text = "Bueno con los niños"
-                    if (place.data in 0..1) {
-                        text.text = "No acerque su perro a los niños"
-                    } else if (place.data in 2..3) {
-                        text.text = "Tenga precuación cuando los niños se acerquen a su perro"
-                    }
-                    else {
-                        text.text = "A su perro le gusta estar con niños!"
+                    atribute.text = TITULO_NINOS
+                    when (place.data) {
+                        in 0..1 -> {
+                            text.text = NINOS_1
+                        }
+                        in 2..3 -> {
+                            text.text = NINOS_2
+                        }
+                        else -> {
+                            text.text = NINOS_3
+                        }
                     }
                 }
                 1 -> {
-                    atribute.text = "Bueno con otros perros"
-                    if (place.data in 0..1) {
-                        text.text = "No acerque su perro a los niños"
-                    } else if (place.data in 2..3) {
+                    atribute.text = TITULO_PERROS
+                    when (place.data) {
+                        in 0..1 -> {
+                            text.text = PERROS_1
+                        }
+                        in 2..3 -> {
+                            text.text = PERROS_2
 
-                    }
-                    else {
+                        }
+                        else -> {
+                            text.text = PERROS_3
 
+                        }
                     }
 
                 }
                 2 -> {
-                    atribute.text = "Alegría"
-                    if (place.data in 0..1) {
-                        text.text = "No acerque su perro a los niños"
-                    } else if (place.data in 2..3) {
+                    atribute.text = TITULO_ALEGRIA
+                    when (place.data) {
+                        in 0..1 -> {
+                            text.text = ALEGRIA_1
+                        }
+                        in 2..3 -> {
+                            text.text = ALEGRIA_2
 
-                    }
-                    else {
+                        }
+                        else -> {
+                            text.text = ALEGRIA_3
 
+                        }
                     }
 
                 }
                 3 -> {
-                    atribute.text = "Protector"
-                    if (place.data in 0..1) {
-                        text.text = "No acerque su perro a los niños"
-                    } else if (place.data in 2..3) {
+                    atribute.text = TITULO_PROTECTOR
+                    when (place.data) {
+                        in 0..1 -> {
+                            text.text = PROTECTOR_1
+                        }
+                        in 2..3 -> {
+                            text.text = PROTECTOR_2
 
-                    }
-                    else {
+                        }
+                        else -> {
+                            text.text = PROTECTOR_3
 
+                        }
                     }
 
                 }
                 4 -> {
-                    atribute.text = "Entrenabilidad"
-                    if (place.data in 0..1) {
-                        text.text = "No acerque su perro a los niños"
-                    } else if (place.data in 2..3) {
+                    atribute.text = TITULO_ENTRENABILIDAD
+                    when (place.data) {
+                        in 0..1 -> {
+                            text.text = ENTRENABILIDAD_1
+                        }
+                        in 2..3 -> {
+                            text.text = ENTRENABILIDAD_2
 
-                    }
-                    else {
+                        }
+                        else -> {
+                            text.text = ENTRENABILIDAD_3
 
+                        }
                     }
 
                 }
                 5 -> {
-                    atribute.text = "Energia"
-                    if (place.data in 0..1) {
-                        text.text = "No acerque su perro a los niños"
-                    } else if (place.data in 2..3) {
+                    atribute.text = TITULO_ENERGIA
+                    when (place.data) {
+                        in 0..1 -> {
+                            text.text = ENERGIA_1
+                        }
+                        in 2..3 -> {
+                            text.text = ENERGIA_2
 
-                    }
-                    else {
+                        }
+                        else -> {
+                            text.text = ENERGIA_3
 
+                        }
                     }
 
                 }
                 6 -> {
-                    atribute.text = "Necesidad de aseo"
-                    if (place.data in 0..1) {
-                        text.text = "No acerque su perro a los niños"
-                    } else if (place.data in 2..3) {
+                    atribute.text = TITULO_ASEO
+                    when (place.data) {
+                        in 0..1 -> {
+                            text.text = ASEO_1
+                        }
+                        in 2..3 -> {
+                            text.text = ASEO_2
 
-                    }
-                    else {
+                        }
+                        else -> {
+                            text.text = ASEO_3
 
+                        }
                     }
 
                 }

@@ -15,6 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_consejos_eventsFragment"
+        app:layout_constraintBottom_toTopOf="@id/recycler_recyclerActivity"
         android:layout_marginStart="@dimen/marginSize_medium"
         android:layout_marginEnd="@dimen/marginSize_medium"
         />
@@ -30,11 +31,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/divisionLine"
-
-        android:layout_margin="@dimen/marginSize_medium"/>
+        android:layout_marginVertical="@dimen/marginSize_large"
+        android:layout_marginStart="@dimen/marginSize_large"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_recyclerActivity"
+        android:layout_margin="@dimen/marginSize_small"
         android:layout_width="@dimen/ceroDp"
         android:layout_height="@dimen/ceroDp"
         app:layout_constraintStart_toStartOf="parent"
