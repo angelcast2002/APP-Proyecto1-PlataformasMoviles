@@ -3,53 +3,111 @@ package com.example.fordogs.ui.fragments.events.recyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import coil.request.CachePolicy
-import coil.transform.CircleCropTransformation
-import com.example.fordogs.data.local.entity.PerroTips
+import com.example.fordogs.R
+import com.example.fordogs.data.remote.dto.PerroTipsRecyclerView
 
 class PlaceAdapter(
-    private val dataSet: PerroTips,
-    private val placeListener: PlaceListener
+    private val dataSet: MutableList<PerroTipsRecyclerView>
 ):
-    RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
+    RecyclerView.Adapter<PlaceAdapter.ViewHolder>(){
 
-    interface PlaceListener {
-        fun onPlaceClicked(data: Character, position: Int)
-    }
-
-    class ViewHolder(private val view: View,
-                     private val listener: PlaceListener) : RecyclerView.ViewHolder(view) {
-        private val imageType: ImageView = view.findViewById(R.id.imageView_recycleViewPlace)
-        private val textName: TextView = view.findViewById(R.id.textView_recycleViewPlace_name)
-        private val textRaceStatus: TextView = view.findViewById(R.id.textView_recycleViewPlace_raceStatus)
+    class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+        private val atribute: TextView = view.findViewById(R.id.textView_attribute_recycleView)
+        private val text: TextView = view.findViewById(R.id.textView_text_recycleView)
         private val layout: ConstraintLayout = view.findViewById(R.id.layout_itemPlace)
-        private lateinit var place: Character
+        private lateinit var place: PerroTipsRecyclerView
 
-        fun setData(place: Character) {
+        fun setData(place: PerroTipsRecyclerView) {
             this.place = place
-            textName.text = place.name
-            //textRaceStatus.text = place.race + " - " + place.status
-            (place.species + " - " + place.status).also { textRaceStatus.text = it }
+            when(place.index) {
+                0 -> {
+                    atribute.text = "Bueno con los niños"
+                    if (place.data in 0..1) {
+                        text.text = "No acerque su perro a los niños"
+                    } else if (place.data in 2..3) {
+                        text.text = "Tenga precuación cuando los niños se acerquen a su perro"
+                    }
+                    else {
+                        text.text = "A su perro le gusta estar con niños!"
+                    }
+                }
+                1 -> {
+                    atribute.text = "Bueno con otros perros"
+                    if (place.data in 0..1) {
+                        text.text = "No acerque su perro a los niños"
+                    } else if (place.data in 2..3) {
 
-            imageType.load(place.image) {
-                transformations(CircleCropTransformation())
-                diskCachePolicy(CachePolicy.DISABLED)
-                memoryCachePolicy(CachePolicy.DISABLED)
-                error(R.drawable.ic_error)
-                placeholder(R.drawable.ic_download)
-            }
-            setListeners()
-        }
+                    }
+                    else {
 
-        private fun setListeners() {
-            layout.setOnClickListener {
-                listener.onPlaceClicked(place, this.adapterPosition)
+                    }
+
+                }
+                2 -> {
+                    atribute.text = "Alegría"
+                    if (place.data in 0..1) {
+                        text.text = "No acerque su perro a los niños"
+                    } else if (place.data in 2..3) {
+
+                    }
+                    else {
+
+                    }
+
+                }
+                3 -> {
+                    atribute.text = "Protector"
+                    if (place.data in 0..1) {
+                        text.text = "No acerque su perro a los niños"
+                    } else if (place.data in 2..3) {
+
+                    }
+                    else {
+
+                    }
+
+                }
+                4 -> {
+                    atribute.text = "Entrenabilidad"
+                    if (place.data in 0..1) {
+                        text.text = "No acerque su perro a los niños"
+                    } else if (place.data in 2..3) {
+
+                    }
+                    else {
+
+                    }
+
+                }
+                5 -> {
+                    atribute.text = "Energia"
+                    if (place.data in 0..1) {
+                        text.text = "No acerque su perro a los niños"
+                    } else if (place.data in 2..3) {
+
+                    }
+                    else {
+
+                    }
+
+                }
+                6 -> {
+                    atribute.text = "Necesidad de aseo"
+                    if (place.data in 0..1) {
+                        text.text = "No acerque su perro a los niños"
+                    } else if (place.data in 2..3) {
+
+                    }
+                    else {
+
+                    }
+
+                }
             }
+
         }
 
     }
@@ -58,7 +116,7 @@ class PlaceAdapter(
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_recycler_object, parent, false)
 
-        return ViewHolder(view, placeListener)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
