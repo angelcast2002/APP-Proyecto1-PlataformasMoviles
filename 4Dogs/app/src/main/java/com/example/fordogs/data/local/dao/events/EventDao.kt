@@ -1,27 +1,25 @@
 package com.example.fordogs.data.local.dao.events
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.fordogs.data.local.entity.Event
+import java.util.concurrent.Flow
 
 @Dao
 interface EventDao {
 
-    @get:Query("SELECT * FROM event")
-    val allEventsList: List<Event>
+    @Query("SELECT * FROM event")
+    suspend fun getEvents(): List<Event>
 
-    @Insert
-    fun insertDataIntoEventList(event: Event?)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertDataIntoEventList(event: Event?)
 
-    @Query("DELETE FROM event WHERE eventId = :id")
-    fun deleteEventFromId(id: Int)
+    @Delete
+    suspend fun deleteEventFromId(event: Event)
 
     @Query("SELECT * FROM event WHERE eventId = :id")
-    fun selectDataFromAnId(id: Int)
+    suspend fun selectDataFromAnId(id: Int) : Event
 
     @Update
-    fun updateEvent(event: Event?)
+    suspend fun updateEvent(event: Event?)
 
 }

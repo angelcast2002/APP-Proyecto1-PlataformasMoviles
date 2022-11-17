@@ -8,29 +8,31 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.request.CachePolicy
 import coil.transform.CircleCropTransformation
 import com.example.fordogs.R
+import com.example.fordogs.data.local.entity.Event
 import com.example.fordogs.databinding.FragmentCalendarBinding
+import com.example.fordogs.ui.fragments.addevents.AddEventsViewModel
+import com.example.fordogs.ui.fragments.calendar.eventRecyclerView.EventOptionsListener
+import com.example.fordogs.ui.fragments.calendar.eventRecyclerView.EventsAdapter
 import com.example.fordogs.ui.util.BaseFragment
-import com.example.fordogs.ui.fragments.calendar.CalendarConstants.Companion.selectedDate
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import java.time.LocalDate
 
 @AndroidEntryPoint
-class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
+class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsListener {
 
     private val calendarVM: CalendarViewModel by viewModels()
+    private val eventsVM: AddEventsViewModel by viewModels()
     private lateinit var recyclerView: RecyclerView
-    private lateinit var monthYearText: TextView
-    private lateinit var name: String
+    private lateinit var eventAdapter: EventsAdapter
+    private var events : List<Event> = ArrayList<Event>()
     override fun getViewBinding() = FragmentCalendarBinding.inflate(layoutInflater)
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -38,6 +40,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
         setObservables()
         initWidgets()
         showNavBar()
+        setUpAdapter()
     }
 
     //Implementar estados
@@ -75,6 +78,13 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
         }
     }
 
+    private fun setUpAdapter() {
+        eventAdapter = EventsAdapter(this, events, this)
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = eventAdapter
+        }
+    }
 
 
     private fun initWidgets() {
@@ -90,5 +100,18 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
             placeholder(R.drawable.ic_download)
         }
     }
+
+    override fun deleteEventFromId(eventId: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateEventFromId(eventId: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun completeEventFromId(eventId: Int) {
+        TODO("Not yet implemented")
+    }
+
 
 }

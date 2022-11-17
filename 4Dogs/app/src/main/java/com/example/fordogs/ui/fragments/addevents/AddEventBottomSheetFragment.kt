@@ -26,19 +26,11 @@ class AddEventBottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        hideNavBar()
-        setListeners()
+        binding.btnCreateEvent.setOnClickListener {
+            dismiss()
+        }
 
     }
-
-    private fun hideNavBar() {
-        val navBar : BottomAppBar = requireActivity().findViewById(R.id.bottomAppBar)
-        val fab : FloatingActionButton = requireActivity().findViewById(R.id.mainActivityFAB)
-        navBar.visibility = View.GONE
-        fab.visibility = View.GONE
-    }
-
 
     private fun setListeners() {
     }

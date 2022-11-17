@@ -74,4 +74,5 @@
     <string name="sureToMarkAsComplete">¿Seguro que quieres marcar el evento como completado?</string>
     <string name="completed_event_congrats">Has completado exitosamente tu evento</string>
     <string name="completar">Completar</string>
+    <string name="saveBtn_event">SAVE</string>
 </resources>

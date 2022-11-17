@@ -30,10 +30,10 @@ class AddEventsViewModel @Inject constructor(
         viewModelScope.launch {
             _status.value = Status.Loading
             when (val result = repository.getEvents()){
-                is Resource.Succes<*> -> {
-                    _status.value = Status.Succes(result.data!! as String)
+                is Resource.Succes -> {
+                    _status.value = Status.Succes(result.data!!.toString())
                 }
-                is Resource.Error<*> -> {
+                is Resource.Error -> {
                     _status.value = Status.Error(result.message!!)
                 }
             }

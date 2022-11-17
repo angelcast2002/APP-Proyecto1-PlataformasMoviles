@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.addevents.AddEventBottomSheetFragment"
+    android:background="@color/light_feldgrau"
     >
 
     <TextView
@@ -124,7 +125,8 @@
         android:id="@+id/btn_create_event"
         android:layout_width="0dp"
         android:layout_height="@dimen/margin50"
-        android:text="SAVE"
+        android:text="@string/saveBtn_event"
+        android:textColor="@color/white"
         android:layout_marginHorizontal="@dimen/margin80"
         android:backgroundTint="@color/color_feldgrau"
         app:layout_constraintTop_toBottomOf="@id/eventDescription_text_input_layout"
