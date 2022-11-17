@@ -36,8 +36,8 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         showNavBar()
+        eventsViewModel.getData()
         setObservables()
-        llamadaPrueba()
 
     }
 
@@ -52,8 +52,8 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>() {
 
     }
 
-    private fun llamadaPrueba() {
-        eventsViewModel.prueba("golden retriever")
+    private fun getTips(name:String) {
+        eventsViewModel.getTips(name)
         eventsViewModel.pruebaToDefault()
     }
 
@@ -65,8 +65,27 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>() {
             }
         }
 
+        lifecycleScope.launch {
+            eventsViewModel.status.collectLatest { status ->
+                handleStatusData(status)
+            }
+        }
+
     }
 
+    private fun handleStatusData(status: EventsFragmentViewModel.Status) {
+        when(status) {
+            is EventsFragmentViewModel.Status.Error -> {
+
+            }
+            EventsFragmentViewModel.Status.Loading -> {
+
+            }
+            is EventsFragmentViewModel.Status.Succes -> {
+                getTips(status.data.raza)
+            }
+        }
+    }
 
 
     private fun handleStatusTips(status: EventsFragmentViewModel.StatusTips) {
@@ -82,11 +101,7 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>() {
                 ).show()
             }
             is EventsFragmentViewModel.StatusTips.Succes -> {
-                Toast.makeText(
-                    requireContext(),
-                    status.data.name,
-                    Toast.LENGTH_LONG
-                ).show()
+
                 var dataRecyclerView = status.data
                 perroTipsRecyclerViewData(dataRecyclerView)
                 setupRecycler()

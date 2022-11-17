@@ -4,8 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.entity.PerroTips
+import com.example.fordogs.data.local.entity.UserPerro
 import com.example.fordogs.data.remote.dto.PerroTipsRecyclerView
 import com.example.fordogs.data.repository.perroTipsRepo.PerroTipsRepository
+import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,11 +16,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EventsFragmentViewModel @Inject constructor(
-    private val tips: PerroTipsRepository
+    private val tips: PerroTipsRepository,
+    private val repository: UserPerroRepository
 ): ViewModel() {
 
     private val _statusTips = MutableStateFlow<StatusTips>(StatusTips.Default)
     val statusTips: StateFlow<StatusTips> = _statusTips
+
+    private val _status = MutableStateFlow<Status>(Status.Loading)
+    val status : StateFlow<Status> = _status
 
     sealed class StatusTips{
         object Default: StatusTips()
@@ -26,7 +32,14 @@ class EventsFragmentViewModel @Inject constructor(
         class Succes(val data: PerroTips): StatusTips()
     }
 
-    fun prueba(name:String){
+    sealed class Status{
+        class Succes(val data: UserPerro): Status()
+        object Loading: Status()
+        class Error(val message: String): Status()
+    }
+
+
+    fun getTips(name:String){
         viewModelScope.launch {
 
             when(val resultado = tips.getPerroTips(name)) {
@@ -42,5 +55,23 @@ class EventsFragmentViewModel @Inject constructor(
 
     fun pruebaToDefault(){
         _statusTips.value = StatusTips.Default
+    }
+
+    fun getData(){
+        viewModelScope.launch {
+            _status.value = Status.Loading
+            when(val perroInfoResult = repository.getUserPerroInfo()){
+                is Resource.Success -> {
+                    _status.value = Status.Succes(perroInfoResult.data!!)
+                }
+                is Resource.Error -> {
+                    _status.value = Status.Error(perroInfoResult.message!!)
+                }
+            }
+        }
+    }
+
+    fun setLoading(){
+        _status.value = Status.Loading
     }
 }
