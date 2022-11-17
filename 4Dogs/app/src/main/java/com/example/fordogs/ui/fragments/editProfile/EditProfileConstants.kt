@@ -3,6 +3,7 @@ package com.example.fordogs.ui.fragments.editProfile
 class EditProfileConstants {
 
     companion object {
+        const val NOMBRE = "Chispa"
         const val RAZA = "Chihuahua"
         const val PESO = 10
         const val COLOR = "Cafe"

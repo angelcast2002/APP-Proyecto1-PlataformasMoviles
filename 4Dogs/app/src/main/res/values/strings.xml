@@ -38,7 +38,7 @@
     <string name="pmTime">PM</string>
     <string name="description">Descripción...</string>
     <string name="hora">Hora</string>
-    <string name="consejos">Consejos:</string>
+    <string name="consejos">Datos:</string>
     <string name="text_Advertencia">Advertencia</string>
     <string name="text_mensaje_cerrarSesion">¿Está seguro que desea salir?</string>
     <string name="text_Si">Ok</string>

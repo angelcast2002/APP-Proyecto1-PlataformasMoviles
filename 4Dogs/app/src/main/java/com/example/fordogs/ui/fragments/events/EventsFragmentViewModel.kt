@@ -49,8 +49,15 @@ class EventsFragmentViewModel @Inject constructor(
                 }
                 is Resource.Success -> {
                     _statusTips.value = StatusTips.Succes(resultado.data!!)
+                    saveData(resultado.data)
                 }
             }
+        }
+    }
+
+    private fun saveData(data:PerroTips){
+        viewModelScope.launch {
+            tips.savePerroTips(data)
         }
     }
 
