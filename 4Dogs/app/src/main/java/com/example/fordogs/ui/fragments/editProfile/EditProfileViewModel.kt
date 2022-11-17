@@ -3,7 +3,6 @@ package com.example.fordogs.ui.fragments.editProfile
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fordogs.data.Resource
-import com.example.fordogs.data.local.entity.PerroTips
 import com.example.fordogs.data.local.entity.UserPerro
 import com.example.fordogs.data.repository.perroTipsRepo.PerroTipsRepository
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
@@ -38,7 +37,7 @@ class EditProfileViewModel @Inject constructor(
         viewModelScope.launch {
             _status.value = Status.Loading
             when(val perroInfoResult = repository.getUserPerroInfo()){
-                is Resource.Succes -> {
+                is Resource.Success -> {
                     _status.value = Status.Editing(perroInfoResult.data!!)
                 }
                 is Resource.Error -> {
@@ -52,7 +51,7 @@ class EditProfileViewModel @Inject constructor(
         viewModelScope.launch {
             _status.value = Status.Loading
             when(val perroInfoResult = repository.updateUserPerroInfo(data)){
-                is Resource.Succes -> {
+                is Resource.Success -> {
                     delay(5000L)
                     _status.value = Status.Succes(perroInfoResult.data!!)
                 }

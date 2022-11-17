@@ -1,7 +1,5 @@
 package com.example.fordogs.ui.fragments.calendar
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fordogs.data.Resource
@@ -11,9 +9,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import java.time.LocalDate
-import java.time.YearMonth
-import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 @HiltViewModel
@@ -34,7 +29,7 @@ class CalendarViewModel @Inject constructor(
         viewModelScope.launch {
             _status.value = Status.Loading
             when(val perroInfoResult = repository.getUserPerroInfo()){
-                is Resource.Succes -> {
+                is Resource.Success -> {
                     _status.value = Status.Succes(perroInfoResult.data!!)
                 }
                 is Resource.Error -> {

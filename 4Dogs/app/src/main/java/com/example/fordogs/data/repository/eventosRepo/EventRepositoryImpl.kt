@@ -24,7 +24,7 @@ class EventRepositoryImpl (
             if (localEvents.isEmpty()) {
                 return Resource.Error(message = NO_EVENTS)
             } else (
-                Resource.Succes(localEvents)
+                Resource.Success(localEvents)
             )
 
         } catch (ex: Exception){
@@ -38,7 +38,7 @@ class EventRepositoryImpl (
             if (localEvent.eventId == 0) {
                 return Resource.Error(message = ERROR_GET_EVENT)
             } else (
-                Resource.Succes(localEvent)
+                Resource.Success(localEvent)
             )
 
         } catch (ex: Exception){
@@ -49,7 +49,7 @@ class EventRepositoryImpl (
     override suspend fun insertEvent(event: Event?) : Resource<String> {
         return try {
             eventDao.insertDataIntoEventList(event)
-            Resource.Succes(data = SUCCESS_CREATE_EVENT)
+            Resource.Success(data = SUCCESS_CREATE_EVENT)
         } catch (ex: Exception){
             Resource.Error(message = ERROR_CREATE_EVENT)
         }
@@ -62,7 +62,7 @@ class EventRepositoryImpl (
                 return Resource.Error(message = ERROR_GET_EVENT_BY_ID)
             } else {
                 eventDao.deleteEventFromId(localEvent)
-                Resource.Succes(data = SUCCESS_DELETE_EVENT)
+                Resource.Success(data = SUCCESS_DELETE_EVENT)
             }
         } catch (ex: Exception){
             Resource.Error(message = ERROR_DELETE_EVENT)
@@ -76,7 +76,7 @@ class EventRepositoryImpl (
                 return Resource.Error(message = ERROR_GET_EVENT_BY_ID)
             } else {
                 eventDao.updateEvent(event)
-                Resource.Succes(data = SUCCESS_UPDATE_EVENT)
+                Resource.Success(data = SUCCESS_UPDATE_EVENT)
             }
         } catch (ex: Exception){
             Resource.Error(message = ERROR_UPDATE_EVENT)

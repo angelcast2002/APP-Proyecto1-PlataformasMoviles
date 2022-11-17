@@ -29,7 +29,7 @@ class RegisterFragmentViewModel @Inject constructor(
         viewModelScope.launch {
             _status.value = Status.Loading
             when(val perroInfoResult = repository.setUserPerroInfo(data)){
-                is Resource.Succes -> {
+                is Resource.Success -> {
                     _status.value = Status.Succes(perroInfoResult.data!!)
                 }
                 is Resource.Error ->{
