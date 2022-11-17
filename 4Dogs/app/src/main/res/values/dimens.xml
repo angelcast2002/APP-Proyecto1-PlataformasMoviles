@@ -38,4 +38,5 @@
     <dimen name="eventTitle_Card">20sp</dimen>
     <dimen name="moreOptions_size">30dp</dimen>
     <dimen name="eventState_size">12sp</dimen>
+    <dimen name="size_textNoTips">20sp</dimen>
 </resources>

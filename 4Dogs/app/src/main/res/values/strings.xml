@@ -80,4 +80,5 @@
     <string name="eventMonth_Card">Nov</string>
     <string name="date_format_forEvent">%1$s-%2$d-%3$d</string>
     <string name="time_format_forEvent">%1$d:%2$d</string>
+    <string name="text_textView_noTips">Lo sentimos, hemos buscado mucho pero no encontramos nada sobre este tipo de raza</string>
 </resources>

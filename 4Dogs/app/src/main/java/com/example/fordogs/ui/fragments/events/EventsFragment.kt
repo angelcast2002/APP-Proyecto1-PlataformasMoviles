@@ -38,6 +38,7 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>() {
         showNavBar()
         eventsViewModel.getData()
         setObservables()
+        binding.textViewNoTipsEventsLayout.visibility = View.VISIBLE
 
     }
 
@@ -47,7 +48,7 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>() {
             recyclerRecyclerActivity.layoutManager = LinearLayoutManager(requireContext())
             recyclerRecyclerActivity.setHasFixedSize(true)
             recyclerRecyclerActivity.adapter = PlaceAdapter(dataToRecyclerView)
-            recyclerRecyclerActivity.visibility = View.VISIBLE
+            recyclerRecyclerActivity.visibility = View.GONE
         }
 
     }
@@ -94,6 +95,7 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>() {
 
             }
             is EventsFragmentViewModel.StatusTips.Error -> {
+                binding.textViewNoTipsEventsLayout.visibility = View.VISIBLE
                 Toast.makeText(
                     requireContext(),
                     status.message,
@@ -101,11 +103,15 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>() {
                 ).show()
             }
             is EventsFragmentViewModel.StatusTips.Succes -> {
-
+                binding.progressEventsLayout.visibility = View.GONE
+                binding.textViewNoTipsEventsLayout.visibility = View.GONE
                 var dataRecyclerView = status.data
                 perroTipsRecyclerViewData(dataRecyclerView)
                 setupRecycler()
                 println(status.data)
+            }
+            EventsFragmentViewModel.StatusTips.Loading -> {
+                binding.progressEventsLayout.visibility = View.VISIBLE
             }
         }
     }

@@ -28,6 +28,7 @@ class EventsFragmentViewModel @Inject constructor(
 
     sealed class StatusTips{
         object Default: StatusTips()
+        object Loading: StatusTips()
         class Error(val message: String): StatusTips()
         class Succes(val data: PerroTips): StatusTips()
     }
@@ -41,7 +42,7 @@ class EventsFragmentViewModel @Inject constructor(
 
     fun getTips(name:String){
         viewModelScope.launch {
-
+            _statusTips.value = StatusTips.Loading
             when(val resultado = tips.getPerroTips(name)) {
                 is Resource.Error -> {
                     _statusTips.value = StatusTips.Error(resultado.message!!)
