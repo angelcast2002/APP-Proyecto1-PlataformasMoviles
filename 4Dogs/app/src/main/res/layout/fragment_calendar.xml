@@ -47,6 +47,7 @@
         tools:text="Chispa"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recyclerConstraint_Layout"
         android:layout_width="@dimen/ceroDp"
         android:layout_height="@dimen/ceroDp"
         android:layout_marginTop="@dimen/margin20"

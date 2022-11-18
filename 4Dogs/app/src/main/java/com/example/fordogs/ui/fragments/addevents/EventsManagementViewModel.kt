@@ -8,6 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import com.example.fordogs.data.repository.eventosRepo.EventRepository
 import com.example.fordogs.ui.MainActivity
+import com.example.fordogs.ui.fragments.calendar.CalendarViewModel
 import com.example.fordogs.ui.fragments.register.RegisterFragmentViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -28,7 +29,24 @@ class EventsManagementViewModel @Inject constructor(
         class Error(val message: String): EventStatus()
     }
 
-    fun createEvent(event: Event) =
+    fun saveEvent(event: Event, isEditing: Boolean) {
+        viewModelScope.launch {
+            if (isEditing) {
+                when (val result = repository.updateEvent(event)) {
+                    is Resource.Success -> {
+                        _status.value = EventStatus.Success(result.data!!)
+                    }
+                    is Resource.Error -> {
+                        _status.value = EventStatus.Error(result.message!!)
+                    }
+                }
+            } else {
+                createEvent(event)
+            }
+        }
+    }
+
+    private fun createEvent(event: Event) =
         viewModelScope.launch {
             when(val result = repository.insertEvent(event)){
                 is Resource.Success -> {
@@ -40,7 +58,7 @@ class EventsManagementViewModel @Inject constructor(
             }
         }
 
-    private fun editEvent(eventId: Int) =
+    fun editEvent(eventId: Int) =
         viewModelScope.launch {
             when(val result = repository.getEventById(eventId)) {
                 is Resource.Success -> {
@@ -51,14 +69,6 @@ class EventsManagementViewModel @Inject constructor(
                 }
             }
         }
-
-    fun setEventId(eventId: Int, isEditing: Boolean) {
-        if(!isEditing) {
-            _status.value = EventStatus.Default
-        } else {
-            editEvent(eventId)
-        }
-    }
 
     fun setDefault(){
         _status.value = EventStatus.Default

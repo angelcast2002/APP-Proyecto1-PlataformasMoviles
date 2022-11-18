@@ -36,6 +36,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
         super.onViewCreated(view, savedInstanceState)
 
         calendarVM.getData()
+        calendarVM.getEvents()
         setObservables()
         initWidgets()
         showNavBar()
@@ -48,6 +49,8 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
             calendarVM.status.collectLatest { status ->
                 handlePerroInfoState(status)
             }
+        }
+        lifecycleScope.launchWhenStarted {
             calendarVM.eventStatus.collectLatest { status ->
                 handleEventState(status)
             }
@@ -57,22 +60,18 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
     private fun handleEventState(eventStatus: CalendarViewModel.EventStatus) {
         when (eventStatus) {
             is CalendarViewModel.EventStatus.Error -> {
-                Toast.makeText(
-                    requireContext(),
-                    eventStatus.message,
-                    Toast.LENGTH_SHORT
-                ).show()
+                binding.recyclerConstraintLayout.visibility = View.VISIBLE
             }
             CalendarViewModel.EventStatus.Loading -> {
-                binding.calendarRecyclerView.visibility = View.GONE
+                binding.recyclerConstraintLayout.visibility = View.GONE
             }
             is CalendarViewModel.EventStatus.Success -> {
-                binding.calendarRecyclerView.visibility = View.VISIBLE
                 events = eventStatus.data
+                setUpViews()
+                binding.recyclerConstraintLayout.visibility = View.VISIBLE
             }
         }
     }
-
 
     private fun handlePerroInfoState(status: CalendarViewModel.Status) {
 
@@ -101,8 +100,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
     }
 
     private fun setUpViews() {
-
-        eventAdapter = EventsAdapter(context = MainActivity(),this, events, this)
+        eventAdapter = EventsAdapter(activity as MainActivity,this, events, this)
         recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = eventAdapter

@@ -114,6 +114,7 @@ class MainActivity: AppCompatActivity() {
 
         binding.mainActivityFAB.setOnClickListener {
             val addEventBottomSheetFragment = AddEventBottomSheetFragment()
+            addEventBottomSheetFragment.setEventId(0, false)
             addEventBottomSheetFragment.show(supportFragmentManager, addEventBottomSheetFragment.tag)
         }
 

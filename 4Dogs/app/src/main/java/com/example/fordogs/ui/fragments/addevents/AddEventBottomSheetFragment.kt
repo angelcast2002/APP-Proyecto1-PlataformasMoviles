@@ -13,10 +13,11 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.TimePicker
 import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.fordogs.R
 import com.example.fordogs.data.local.entity.Event
+import com.example.fordogs.databinding.EventCardBinding
 import com.example.fordogs.databinding.FragmentAddEventBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.util.*
@@ -27,7 +28,7 @@ class AddEventBottomSheetFragment : BottomSheetDialogFragment() {
     private lateinit var eventsVM: EventsManagementViewModel
     private lateinit var binding: FragmentAddEventBinding
     private lateinit var alarmManager: AlarmManager
-    private lateinit var event: Event
+    private lateinit var eventItem: Event
     var eventId: Int = 0
     var isEditing: Boolean = false
     private lateinit var timePickerDialog: TimePickerDialog
@@ -51,9 +52,8 @@ class AddEventBottomSheetFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         val activity = requireActivity()
         eventsVM = ViewModelProvider(activity)[EventsManagementViewModel::class.java]
-        //setObservables()
+        setObservables()
         setListeners()
-
     }
 
     private fun validateFields(): Boolean {
@@ -71,6 +71,14 @@ class AddEventBottomSheetFragment : BottomSheetDialogFragment() {
             false
         } else {
             true
+        }
+    }
+
+    private fun setObservables() {
+        lifecycleScope.launchWhenStarted {
+            eventsVM.eventStatus.collect { status ->
+                handleStatus(status)
+            }
         }
     }
 
@@ -115,6 +123,59 @@ class AddEventBottomSheetFragment : BottomSheetDialogFragment() {
             true
         })
 
+        binding.btnCreateEvent.setOnClickListener {
+            if (validateFields()) {
+                saveEvent()
+            }
+        }
+    }
+
+    private fun handleStatus(eventStatus: EventsManagementViewModel.EventStatus) {
+        when (eventStatus) {
+            is EventsManagementViewModel.EventStatus.Success -> {
+                Toast.makeText(activity, "Evento agregado exitosamente", Toast.LENGTH_SHORT).show()
+                dismiss()
+            }
+            is EventsManagementViewModel.EventStatus.Error -> {
+                Toast.makeText(activity, "Error agregando evento", Toast.LENGTH_SHORT).show()
+                eventsVM.setDefault()
+            }
+            is EventsManagementViewModel.EventStatus.Editing -> {
+                val details = eventStatus.event
+                binding.apply {
+                    addEventTitle.text = getString(R.string.modificarEvento_title)
+                    eventTitleEditText.setText(details.eventTitle)
+                    eventDescriptionEditText.setText(details.eventDescription)
+                    eventDateEditText.setText(details.eventDate)
+                    eventHourEditText.setText(details.lastAlarm)
+                }
+            }
+            is EventsManagementViewModel.EventStatus.Default -> {
+                binding.apply{
+                    addEventTitle.text = getString(R.string.nuevo_recordatorio)
+                    eventTitleEditText.setText("")
+                    eventDescriptionEditText.setText("")
+                    eventDateEditText.setText("")
+                    eventHourEditText.setText("")
+                }
+            }
+        }
+    }
+
+    private fun saveEvent() {
+        eventItem = Event(
+            eventTitle = binding.eventTitleEditText.text.toString(),
+            eventDescription = binding.eventDescriptionEditText.text.toString(),
+            eventDate = binding.eventDateEditText.text.toString(),
+            lastAlarm = binding.eventHourEditText.text.toString(),
+            eventId = eventId
+        )
+        eventsVM.saveEvent(eventItem, isEditing)
+    }
+
+    fun setEventId(eventId: Int, isEditing: Boolean) {
+        this.eventId = eventId
+        this.isEditing = isEditing
     }
 
 }

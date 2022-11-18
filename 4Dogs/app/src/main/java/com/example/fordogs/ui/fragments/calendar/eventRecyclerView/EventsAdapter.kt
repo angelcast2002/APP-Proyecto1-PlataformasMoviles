@@ -18,6 +18,8 @@ import com.example.fordogs.databinding.EventCardBinding
 import com.example.fordogs.ui.MainActivity
 import com.example.fordogs.ui.fragments.addevents.AddEventBottomSheetFragment
 import com.example.fordogs.ui.fragments.calendar.CalendarFragment
+import java.text.SimpleDateFormat
+import java.util.*
 
 class EventsAdapter(
     private val context: MainActivity,
@@ -38,7 +40,10 @@ class EventsAdapter(
     {
         holder.setData(eventsList[position])
         holder.binding.options.setOnClickListener { view: View? -> showPopupMenu(view, position) }
+
     }
+
+    override fun getItemCount(): Int = eventsList.size
 
     private fun showPopupMenu(view: View?, position: Int) {
         val event = eventsList[position]
@@ -62,7 +67,7 @@ class EventsAdapter(
                 }
                 R.id.menuUpdate -> {
                     val createEventBottomSheetFragment = AddEventBottomSheetFragment()
-                    //createEventBottomSheetFragment.setEventId(event.eventId, true)
+                    createEventBottomSheetFragment.setEventId(event.eventId, true)
                     createEventBottomSheetFragment.show(
                         context.supportFragmentManager,
                         createEventBottomSheetFragment.tag
@@ -99,7 +104,5 @@ class EventsAdapter(
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
     }
-
-    override fun getItemCount(): Int = eventsList.size
 
 }
