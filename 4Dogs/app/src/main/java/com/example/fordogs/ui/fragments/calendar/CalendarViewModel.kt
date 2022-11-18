@@ -36,6 +36,7 @@ class CalendarViewModel @Inject constructor(
     sealed class EventStatus {
         object Loading: EventStatus()
         class Success(val data: List<Event>): EventStatus()
+        class Deleted(val message: String): EventStatus()
         class Error(val message: String): EventStatus()
     }
 
@@ -69,7 +70,14 @@ class CalendarViewModel @Inject constructor(
 
     fun deleteEvent(eventId: Int) =
         viewModelScope.launch {
-            eventRepository.deleteEvent(eventId)
+            when(val eventsResult = eventRepository.deleteEvent(eventId)){
+                is Resource.Success -> {
+                    _eventStatus.value = EventStatus.Deleted(eventsResult.data!!)
+                }
+                is Resource.Error -> {
+                    _eventStatus.value = EventStatus.Error(eventsResult.message!!)
+                }
+            }
         }
 
 }

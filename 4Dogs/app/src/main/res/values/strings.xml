@@ -31,7 +31,7 @@
     <string name="textLargo">Largo</string>
     <string name="textComidaFavorita">Comida Favorita</string>
     <string name="bt_saveChanges_editProfileLayout">save changes</string>
-    <string name="nuevo_recordatorio">Nuevo Recordatorio</string>
+    <string name="nuevo_evento_title">Nuevo Evento</string>
     <string name="tituloEvento">Título</string>
     <string name="eventDate">Fecha</string>
     <string name="amTime">AM</string>
@@ -80,6 +80,7 @@
     <string name="eventMonth_Card">Nov</string>
     <string name="date_format_forEvent">%1$s-%2$d-%3$d</string>
     <string name="time_format_forEvent">%1$d:%2$d</string>
+    <string name="timeandData_format">%1$s, %2$s</string>
     <string name="title_emtpydata">Woof... No hay nada por aquí</string>
     <string name="subtitle_emptydata">Parece que no has añadido eventos aún.</string>
     <string name="modificarEvento_title">Modificar Recordatorio</string>
