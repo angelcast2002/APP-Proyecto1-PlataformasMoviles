@@ -4,10 +4,10 @@
 
     <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/magic_mint</item>
-        <item name="colorPrimaryDark">@color/dark_magic_mint</item>
-        <item name="colorAccent">@color/color_feldgrau</item>
-        <item name="android:textColor">@color/light_magic_mint</item>
+        <item name="colorPrimary">@color/color_feldgrau</item>
+        <item name="colorAccent">@color/dark_magic_mint</item>
+        <item name="android:textColor">@color/color_feldgrau</item>
+        <item name="backgroundColor">@color/white</item>
     </style>
 
 </resources>

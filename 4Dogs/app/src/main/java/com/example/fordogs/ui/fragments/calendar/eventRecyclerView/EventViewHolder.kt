@@ -6,7 +6,7 @@ import com.example.fordogs.databinding.EventCardBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-class EventViewHolder(val binding: EventCardBinding, ) : RecyclerView.ViewHolder(binding.root) {
+class EventViewHolder(val binding: EventCardBinding) : RecyclerView.ViewHolder(binding.root) {
 
     var dateFormat = SimpleDateFormat("EE dd MMM yyyy", Locale.US)
     var inputDateFormat = SimpleDateFormat("dd-M-yyyy", Locale.US)
@@ -18,19 +18,18 @@ class EventViewHolder(val binding: EventCardBinding, ) : RecyclerView.ViewHolder
         binding.title.text = event.eventTitle
         binding.description.text = event.eventDescription
         binding.time.text = event.lastAlarm
-        binding.status!!.text = if (event.isComplete) "COMPLETADO" else "PENDIENTE"
+        binding.status.text = if (event.isComplete) "COMPLETADO" else "PENDIENTE"
 
         try {
-            val copyOutputDateString: String? = outputDateString
-            date = inputDateFormat.parse(event.eventDate)
-            outputDateString = dateFormat.format(date)
-            val items1 = copyOutputDateString?.split(" ")?.toTypedArray()
+            date = event.eventDate?.let { inputDateFormat.parse(it) }
+            outputDateString = date?.let { dateFormat.format(it) }
+            val items1 = outputDateString?.split(" ")?.toTypedArray()
             val day = items1?.get(0)
             val dd = items1?.get(1)
             val month = items1?.get(2)
-            binding.day!!.text = day
-            binding.date!!.text = dd
-            binding.month!!.text = month
+            binding.day.text = day
+            binding.date.text = dd
+            binding.month.text = month
         } catch (e: Exception) {
             e.printStackTrace()
         }

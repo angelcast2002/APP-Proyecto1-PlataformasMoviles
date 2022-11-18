@@ -47,6 +47,7 @@
         tools:text="Chispa"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recyclerConstraint_Layout"
         android:layout_width="@dimen/ceroDp"
         android:layout_height="@dimen/ceroDp"
         android:layout_marginTop="@dimen/margin20"
@@ -64,6 +65,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <include
+            android:id="@+id/emptyCalendarLayout"
+            layout="@layout/item_empty_events"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

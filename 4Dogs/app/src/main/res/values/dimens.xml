@@ -15,7 +15,7 @@
     <dimen name="size_imgLogo_loginLayout">200dp</dimen>
     <dimen name="sizeText_petName">24sp</dimen>
     <dimen name="margin8">8dp</dimen>
-    <dimen name="cardHeight">130dp</dimen>
+    <dimen name="cardHeight">150dp</dimen>
     <dimen name="consejosSize">30sp</dimen>
     <dimen name="cornerRadius">10dp</dimen>
     <dimen name="margin20">20dp</dimen>
@@ -38,5 +38,9 @@
     <dimen name="eventTitle_Card">20sp</dimen>
     <dimen name="moreOptions_size">30dp</dimen>
     <dimen name="eventState_size">12sp</dimen>
+    <dimen name="emptySubtitle_size">5dp</dimen>
+    <dimen name="emptyTitle_padding">10dp</dimen>
+    <dimen name="searchDog_size">200dp</dimen>
+    <dimen name="card_elevationDimen">5dp</dimen>
     <dimen name="size_textNoTips">20sp</dimen>
 </resources>
