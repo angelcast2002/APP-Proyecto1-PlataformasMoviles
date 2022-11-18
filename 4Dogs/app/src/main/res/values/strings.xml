@@ -36,9 +36,9 @@
     <string name="eventDate">Fecha</string>
     <string name="amTime">AM</string>
     <string name="pmTime">PM</string>
-    <string name="description">Descripción...</string>
+    <string name="description">Descripción…</string>
     <string name="hora">Hora</string>
-    <string name="consejos">Datos:</string>
+    <string name="consejos">Curiosidades sobre la raza de su perro:</string>
     <string name="text_Advertencia">Advertencia</string>
     <string name="text_mensaje_cerrarSesion">¿Está seguro que desea salir?</string>
     <string name="text_Si">Ok</string>
@@ -83,5 +83,6 @@
     <string name="title_emtpydata">Woof... No hay nada por aquí</string>
     <string name="subtitle_emptydata">Parece que no has añadido eventos aún.</string>
     <string name="modificarEvento_title">Modificar Recordatorio</string>
-    <string name="text_textView_noTips">Lo sentimos, hemos buscado mucho pero no encontramos nada sobre este tipo de raza</string>
+    <string name="text_textView_noTips">Lo sentimos, hemos buscado mucho pero no encontramos nada sobre este tipo de raza.</string>
+    <string name="text_urlImagen_editProfile">URL de la imagen</string>
 </resources>

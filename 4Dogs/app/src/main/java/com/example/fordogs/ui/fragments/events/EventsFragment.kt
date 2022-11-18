@@ -39,6 +39,7 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>() {
         eventsViewModel.getData()
         setObservables()
         binding.textViewNoTipsEventsLayout.visibility = View.GONE
+        binding.imageNoTips.visibility = View.GONE
 
     }
 
@@ -94,15 +95,18 @@ class EventsFragment : BaseFragment<FragmentEventsBinding>() {
             EventsFragmentViewModel.StatusTips.Default -> {
                 binding.textViewNoTipsEventsLayout.visibility = View.GONE
                 binding.progressEventsLayout.visibility = View.GONE
+                binding.imageNoTips.visibility = View.GONE
 
             }
             is EventsFragmentViewModel.StatusTips.Error -> {
                 binding.textViewNoTipsEventsLayout.visibility = View.VISIBLE
+                binding.imageNoTips.visibility = View.VISIBLE
                 binding.progressEventsLayout.visibility = View.GONE
             }
             is EventsFragmentViewModel.StatusTips.Succes -> {
                 binding.progressEventsLayout.visibility = View.GONE
                 binding.textViewNoTipsEventsLayout.visibility = View.GONE
+                binding.imageNoTips.visibility = View.GONE
                 var dataRecyclerView = status.data
                 perroTipsRecyclerViewData(dataRecyclerView)
                 setupRecycler()

@@ -127,7 +127,7 @@
         android:layout_height="@dimen/margin50"
         android:text="@string/saveBtn_event"
         android:textColor="@color/white"
-        android:layout_marginHorizontal="@dimen/margin80"
+        android:layout_marginHorizontal="@dimen/margin60"
         android:backgroundTint="@color/color_feldgrau"
         app:layout_constraintTop_toBottomOf="@id/eventDescription_text_input_layout"
         app:layout_constraintStart_toStartOf="parent"
