@@ -14,7 +14,7 @@ class PerroTipsRepsitoryImpl(
     override suspend fun getPerroTips(name:String): Resource<PerroTips> {
         val localTips = perroTipsDao.getPerroTips()
         return try {
-            if (localTips == null || localTips.name != name) {
+            if (localTips == null || localTips.name.lowercase() != name.lowercase()) {
                 val remoteTips = api.getDogsTips(name)[0]
                 if (remoteTips == null) {
                     Resource.Error(message = MENSAJE_ERROR)
