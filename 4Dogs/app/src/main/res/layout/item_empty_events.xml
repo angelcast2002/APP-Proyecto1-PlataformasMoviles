@@ -12,7 +12,7 @@
     tools:ignore="RtlHardcoded">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageNoTips"
         android:layout_width="@dimen/searchDog_size"
         android:layout_height="@dimen/searchDog_size"
         android:layout_marginBottom="@dimen/margin50"
@@ -34,7 +34,7 @@
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageNoTips" />
 
     <TextView
         android:id="@+id/sub_title"

@@ -30,22 +30,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="visible"
+        android:visibility="gone"
         />
+
+    <ImageView
+        android:id="@+id/imageNoTips"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_width="@dimen/searchDog_size"
+        android:layout_height="@dimen/searchDog_size"
+        app:layout_constraintBottom_toTopOf="@id/textView_noTips_eventsLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divisionLine"
+        android:src="@drawable/searchingdog"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/textView_noTips_eventsLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/divisionLine"
+        app:layout_constraintTop_toBottomOf="@+id/imageNoTips"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
 
         android:textColor="@color/color_feldgrau"
-        android:padding="@dimen/marginSize_medium"
-        android:fontFamily="@font/krub_medium"
-        android:textSize="@dimen/size_textNoTips"
+        android:paddingHorizontal="@dimen/marginSize_medium"
+        android:fontFamily="@font/krub_bold"
         android:gravity="center"
         android:text="@string/text_textView_noTips"
         android:visibility="gone"
@@ -53,6 +64,7 @@
 
     <TextView
         android:id="@+id/text_consejos_eventsFragment"
+        android:gravity="start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/krub_bold"
@@ -63,7 +75,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/divisionLine"
         android:layout_marginVertical="@dimen/marginSize_large"
-        android:layout_marginStart="@dimen/marginSize_large"
+        android:layout_marginStart="@dimen/marginSize_medium"
         />
 
     <androidx.recyclerview.widget.RecyclerView
