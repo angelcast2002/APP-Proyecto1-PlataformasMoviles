@@ -5,6 +5,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -14,7 +16,6 @@ import com.example.fordogs.R
 import com.example.fordogs.data.local.entity.Event
 import com.example.fordogs.databinding.FragmentCalendarBinding
 import com.example.fordogs.ui.MainActivity
-import com.example.fordogs.ui.fragments.addevents.EventsManagementViewModel
 import com.example.fordogs.ui.fragments.calendar.eventRecyclerView.EmptyDataObserver
 import com.example.fordogs.ui.fragments.calendar.eventRecyclerView.EventOptionsListener
 import com.example.fordogs.ui.fragments.calendar.eventRecyclerView.EventsAdapter
@@ -26,7 +27,7 @@ import kotlinx.coroutines.flow.collectLatest
 class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsListener {
 
     private val calendarVM: CalendarViewModel by viewModels()
-    private val eventsVM: EventsManagementViewModel by viewModels()
+    private lateinit var navController: NavController
     private lateinit var recyclerView: RecyclerView
     private lateinit var eventAdapter: EventsAdapter
     private var events : List<Event> = ArrayList<Event>()
@@ -34,7 +35,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        navController = findNavController()
         calendarVM.getData()
         calendarVM.getEvents()
         setObservables()
@@ -64,6 +65,10 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
             }
             CalendarViewModel.EventStatus.Loading -> {
                 binding.recyclerConstraintLayout.visibility = View.GONE
+            }
+            is CalendarViewModel.EventStatus.Deleted -> {
+                val message = eventStatus.message
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
             }
             is CalendarViewModel.EventStatus.Success -> {
                 events = eventStatus.data

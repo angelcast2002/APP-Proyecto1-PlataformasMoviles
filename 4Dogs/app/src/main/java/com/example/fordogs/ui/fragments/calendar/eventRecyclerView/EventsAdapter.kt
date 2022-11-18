@@ -53,7 +53,7 @@ class EventsAdapter(
             when (item.itemId) {
                 R.id.menuDelete -> {
                     val alertDialogBuilder = AlertDialog.Builder(
-                        fragmentContext.requireContext(), R.style.AppTheme_Dialog
+                        fragmentContext.requireContext()
                     )
                     alertDialogBuilder.setTitle(R.string.eliminar_confirmacion)
                         .setMessage(R.string.sureToDelete)
@@ -75,7 +75,7 @@ class EventsAdapter(
                 }
                 R.id.menuComplete -> {
                     val completeAlertDialog = AlertDialog.Builder(
-                        fragmentContext.requireContext(), R.style.AppTheme_Dialog
+                        fragmentContext.requireContext()
                     )
                     completeAlertDialog.setTitle(R.string.confirmation)
                         .setMessage(R.string.sureToMarkAsComplete)
