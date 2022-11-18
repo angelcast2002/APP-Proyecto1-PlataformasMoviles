@@ -4,10 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:cardUseCompatPadding="true"
-    app:cardElevation="5dp"
-    app:cardCornerRadius="10dp"
-    app:contentPadding="10dp"
-    android:layout_height="150dp">
+    app:cardElevation="@dimen/card_elevationDimen"
+    app:cardCornerRadius="@dimen/margin10"
+    app:contentPadding="@dimen/margin10"
+    android:layout_height="@dimen/cardHeight"
+    android:backgroundTint="@color/white"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

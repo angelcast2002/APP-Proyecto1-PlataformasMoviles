@@ -15,6 +15,7 @@ import com.example.fordogs.data.local.entity.Event
 import com.example.fordogs.databinding.FragmentCalendarBinding
 import com.example.fordogs.ui.MainActivity
 import com.example.fordogs.ui.fragments.addevents.EventsManagementViewModel
+import com.example.fordogs.ui.fragments.calendar.eventRecyclerView.EmptyDataObserver
 import com.example.fordogs.ui.fragments.calendar.eventRecyclerView.EventOptionsListener
 import com.example.fordogs.ui.fragments.calendar.eventRecyclerView.EventsAdapter
 import com.example.fordogs.ui.util.BaseFragment
@@ -35,10 +36,11 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
         super.onViewCreated(view, savedInstanceState)
 
         calendarVM.getData()
+        calendarVM.getEvents()
         setObservables()
         initWidgets()
         showNavBar()
-        setUpAdapter()
+        setUpViews()
     }
 
     //Implementar estados
@@ -47,6 +49,8 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
             calendarVM.status.collectLatest { status ->
                 handlePerroInfoState(status)
             }
+        }
+        lifecycleScope.launchWhenStarted {
             calendarVM.eventStatus.collectLatest { status ->
                 handleEventState(status)
             }
@@ -56,22 +60,18 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
     private fun handleEventState(eventStatus: CalendarViewModel.EventStatus) {
         when (eventStatus) {
             is CalendarViewModel.EventStatus.Error -> {
-                Toast.makeText(
-                    requireContext(),
-                    eventStatus.message,
-                    Toast.LENGTH_SHORT
-                ).show()
+                binding.recyclerConstraintLayout.visibility = View.VISIBLE
             }
             CalendarViewModel.EventStatus.Loading -> {
-                binding.calendarRecyclerView.visibility = View.GONE
+                binding.recyclerConstraintLayout.visibility = View.GONE
             }
             is CalendarViewModel.EventStatus.Success -> {
-                binding.calendarRecyclerView.visibility = View.VISIBLE
                 events = eventStatus.data
+                setUpViews()
+                binding.recyclerConstraintLayout.visibility = View.VISIBLE
             }
         }
     }
-
 
     private fun handlePerroInfoState(status: CalendarViewModel.Status) {
 
@@ -99,14 +99,18 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
         }
     }
 
-    private fun setUpAdapter() {
-        eventAdapter = EventsAdapter(context = MainActivity(),this, events, this)
+    private fun setUpViews() {
+        eventAdapter = EventsAdapter(activity as MainActivity,this, events, this)
         recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = eventAdapter
         }
+        // Here
+        val emptyDataObserver = EmptyDataObserver(recyclerView,
+            view?.findViewById(R.id.emptyCalendarLayout)
+        )
+        eventAdapter.registerAdapterDataObserver(emptyDataObserver)
     }
-
 
     private fun initWidgets() {
         recyclerView = binding.calendarRecyclerView

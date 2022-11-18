@@ -2,7 +2,6 @@ package com.example.fordogs.data.local.dao.events
 
 import androidx.room.*
 import com.example.fordogs.data.local.entity.Event
-import java.util.concurrent.Flow
 
 @Dao
 interface EventDao {
