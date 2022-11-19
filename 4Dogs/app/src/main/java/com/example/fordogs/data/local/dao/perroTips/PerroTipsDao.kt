@@ -1,10 +1,8 @@
 package com.example.fordogs.data.local.dao.perroTips
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.fordogs.data.local.entity.PerroTips
+import com.example.fordogs.data.local.entity.UserPerro
 
 @Dao
 interface PerroTipsDao {
@@ -14,4 +12,7 @@ interface PerroTipsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllPerroTips(data: PerroTips)
+
+    @Query("DELETE FROM PerroTips")
+    suspend fun deleteAll()
 }
