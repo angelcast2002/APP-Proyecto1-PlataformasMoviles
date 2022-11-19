@@ -1,5 +1,6 @@
 package com.example.fordogs.ui.fragments.login
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,7 +29,7 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        logInViewModel.checkIsLogged()
         hideNavBar()
         setListeners()
         setObservables()
@@ -38,6 +39,20 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
         lifecycleScope.launch {
             logInViewModel.status.collectLatest { status ->
                 handleStatus(status)
+
+            }
+            logInViewModel.isLogged.collectLatest { isLogged ->
+                handleIsLogged(isLogged)
+            }
+        }
+    }
+
+    private fun handleIsLogged(logged: Logged) {
+        when(logged){
+            Logged.NotLogged -> {
+
+            }
+            Logged.Succes -> {
 
             }
         }
