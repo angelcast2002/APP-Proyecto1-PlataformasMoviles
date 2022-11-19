@@ -56,3 +56,8 @@ fun PerroTipsDto.mapToEntity(): PerroTips = PerroTips(
     min_weight_male,
     min_weight_female
 )
+
+data class PerroTipsRecyclerView(
+    val index: Int,
+    val data: Int
+)
