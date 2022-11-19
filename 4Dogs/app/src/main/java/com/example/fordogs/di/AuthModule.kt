@@ -1,8 +1,8 @@
 package com.example.fordogs.di
 
-import com.example.fordogs.data.remote.AuthApi
-import com.example.fordogs.data.repository.authFirebase.AuthRepository
-import com.example.fordogs.data.repository.authFirebase.AuthRepositoryImplementation
+import com.example.fordogs.data.remote.FirebaseApi
+import com.example.fordogs.data.repository.Firebase.FirebaseRepository
+import com.example.fordogs.data.repository.Firebase.FirebaseRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -22,11 +22,11 @@ object AuthModule {
 
     @Provides
     @Singleton
-    fun provideAuthApi(auth: FirebaseAuth) : AuthApi = AuthRepositoryImplementation(auth)
+    fun provideAuthApi(auth: FirebaseAuth) : FirebaseApi = FirebaseRepositoryImpl(auth)
 
     @Provides
     @Singleton
-    fun provideAuthRepository(api: AuthApi) : AuthRepository = AuthRepositoryImplementation(api)
+    fun provideAuthRepository(api: FirebaseApi) : FirebaseRepository = FirebaseRepositoryImpl(api)
 
     @Provides
     @Singleton

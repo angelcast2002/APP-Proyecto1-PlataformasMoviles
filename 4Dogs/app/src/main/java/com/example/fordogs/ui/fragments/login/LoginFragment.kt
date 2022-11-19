@@ -6,8 +6,8 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import com.example.fordogs.data.repository.authFirebase.AuthRepository
-import com.example.fordogs.data.repository.authFirebase.AuthRepositoryImplementation
+import com.example.fordogs.data.repository.Firebase.FirebaseRepository
+import com.example.fordogs.data.repository.Firebase.FirebaseRepositoryImpl
 import com.example.fordogs.databinding.LoginLayoutBinding
 import com.example.fordogs.ui.util.BaseFragment
 import com.example.fordogs.ui.fragments.login.LoginViewModel.*
@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 class LoginFragment: BaseFragment<LoginLayoutBinding>(){
     private val logInViewModel: LoginViewModel by viewModels()
 
-    private lateinit var authRepository: AuthRepository
+    private lateinit var firebaseRepository: FirebaseRepository
     private lateinit var email: String
     private lateinit var password: String
     override fun getViewBinding() = LoginLayoutBinding.inflate(layoutInflater)
@@ -27,7 +27,7 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        authRepository=AuthRepositoryImplementation(
+        firebaseRepository=FirebaseRepositoryImpl(
             api = FirebaseAuthApiImplementation()
         )
 
@@ -100,7 +100,7 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
             logInViewModel.loading(email, password)
 
             lifecycleScope.launch() {
-                val id = authRepository.signInWithEmailAndPasword(email, password)
+                val id = firebaseRepository.signInWithEmailAndPasword(email, password)
                 if(id != null){
                     Toast.makeText(activity, status.message,
                         Toast.LENGTH_LONG)
