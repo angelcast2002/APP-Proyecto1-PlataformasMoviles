@@ -51,6 +51,18 @@ dependencies {
     implementation 'androidx.datastore:datastore-preferences:1.0.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
 
+    //Firebase version declaration
+    implementation platform('com.google.firebase:firebase-bom:31.0.1')
+
+    //Firebase authentication
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    
+    //Firebase Firestore
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+
+    //Using corioutines with firebase
+    implementation'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4'
+
     def nav_version = "2.5.3"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"

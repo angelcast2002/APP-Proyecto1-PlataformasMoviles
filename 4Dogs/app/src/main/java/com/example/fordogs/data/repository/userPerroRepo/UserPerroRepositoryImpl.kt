@@ -13,7 +13,8 @@ import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepoConstants.
 
 class UserPerroRepositoryImpl (
     private val userPerroDao: UserPerroDao,
-    //API
+
+
 ) : UserPerroRepository {
     override suspend fun getUserPerroInfo(): Resource<UserPerro> {
         return try {
@@ -21,7 +22,7 @@ class UserPerroRepositoryImpl (
             if (localInfo.id.isEmpty()) {
                 return Resource.Error(message = ERROR_GET_USER_PERRO_INFO)
             } else (
-                Resource.Succes(localInfo)
+                Resource.Success(localInfo)
             )
 
         } catch (ex: Exception){
@@ -32,7 +33,7 @@ class UserPerroRepositoryImpl (
     override suspend fun setUserPerroInfo(data: UserPerro): Resource<String> {
         return try {
             userPerroDao.insertAll(data)
-            Resource.Succes(data = SUCCES_SET_USER_PERRO_INFO)
+            Resource.Success(data = SUCCES_SET_USER_PERRO_INFO)
         } catch (ex: Exception){
             Resource.Error(message = ERROR_SET_USER_PERRO_INFO)
         }
@@ -41,7 +42,7 @@ class UserPerroRepositoryImpl (
     override suspend fun updateUserPerroInfo(data: UserPerro): Resource<String> {
         return try {
             userPerroDao.update(data)
-            Resource.Succes(data = SUCCES_UPDATE_USER_PERRO_INFO)
+            Resource.Success(data = SUCCES_UPDATE_USER_PERRO_INFO)
         } catch (ex: Exception){
             Resource.Error(message = ERROR_UPDATE_USER_PERRO_INFO)
         }
@@ -50,7 +51,7 @@ class UserPerroRepositoryImpl (
     override suspend fun logOut(data: UserPerro): Resource<String> {
         return try {
             userPerroDao.delete(data)
-            Resource.Succes(SUCCES_LOG_OUT_USER_PERRO_INFO)
+            Resource.Success(SUCCES_LOG_OUT_USER_PERRO_INFO)
         } catch (ex: Exception) {
             Resource.Error(ERROR_LOG_OUT_USER_PERRO_INFO)
         }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "773155935194",
+    "project_id": "dogs-7c646",
+    "storage_bucket": "dogs-7c646.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773155935194:android:8cb034195dc2dc70ac66e3",
+        "android_client_info": {
+          "package_name": "com.example.fordogs.data.repository.authFirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773155935194-fuoanhtn0ph4ir7b1pfsnlrmefl280tt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArR3eQjTNrFHXaZ1a5exUlftWSU7_jtZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773155935194-fuoanhtn0ph4ir7b1pfsnlrmefl280tt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
