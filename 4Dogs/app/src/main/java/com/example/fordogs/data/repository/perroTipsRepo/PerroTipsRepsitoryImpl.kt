@@ -3,6 +3,7 @@ package com.example.fordogs.data.repository.perroTipsRepo
 import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.dao.perroTips.PerroTipsDao
 import com.example.fordogs.data.local.entity.PerroTips
+import com.example.fordogs.data.local.entity.UserPerro
 import com.example.fordogs.data.remote.DogsApi
 import com.example.fordogs.data.remote.dto.mapToEntity
 import com.example.fordogs.data.repository.perroTipsRepo.TipsRepoImplConstants.Companion.MENSAJE_ERROR
@@ -31,7 +32,21 @@ class PerroTipsRepsitoryImpl(
     }
 
     override suspend fun savePerroTips(data: PerroTips){
-        perroTipsDao.insertAllPerroTips(data)
+        try {
+            perroTipsDao.insertAllPerroTips(data)
+        } catch (ex: Exception) {
+            return println(ex)
+        }
+    }
+
+    override suspend fun logOut() {
+         try {
+            perroTipsDao.deleteAll()
+
+        } catch (ex: Exception) {
+            return println(ex)
+        }
+        
     }
 
 }
