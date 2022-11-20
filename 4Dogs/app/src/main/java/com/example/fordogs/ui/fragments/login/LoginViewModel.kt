@@ -12,6 +12,8 @@ import com.example.fordogs.ui.util.dataStore
 import com.example.fordogs.ui.util.getPreferencesValue
 import com.example.fordogs.ui.util.savePreferencesValue
 import dagger.hilt.android.internal.Contexts.getApplication
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -59,22 +61,25 @@ class LoginViewModel: ViewModel() {
     }
 
     fun checkIsLogged(context: Context){
-        viewModelScope.launch{
+        CoroutineScope(Dispatchers.IO).launch {
             val isLogged = context.dataStore.getPreferencesValue()
-            if (isLogged.isNullOrEmpty()){
+            if (isLogged == null){
                 _isLogged.value = Logged.NotLogged
             } else {
                 _isLogged.value = Logged.Succes
             }
         }
     }
+
     fun setDefaultLogged(){
         _isLogged.value = Logged.NotLogged
     }
 
     fun saveLog(context: Context){
-        viewModelScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             context.dataStore.savePreferencesValue()
+            val isLogged = context.dataStore.getPreferencesValue()
+            println(isLogged)
         }
     }
 }

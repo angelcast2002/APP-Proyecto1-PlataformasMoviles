@@ -74,8 +74,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/divisionLine"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginVertical="@dimen/marginSize_large"
-        android:layout_marginStart="@dimen/marginSize_medium"
         />
 
     <androidx.recyclerview.widget.RecyclerView

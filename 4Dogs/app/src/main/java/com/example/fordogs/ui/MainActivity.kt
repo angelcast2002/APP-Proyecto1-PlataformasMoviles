@@ -21,6 +21,8 @@ import com.example.fordogs.ui.fragments.addevents.EventsManagementViewModel
 import com.example.fordogs.ui.util.dataStore
 import com.example.fordogs.ui.util.removePreferencesValue
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -95,12 +97,12 @@ class MainActivity: AppCompatActivity() {
                         setMessage(getString(R.string.text_mensaje_cerrarSesion))
                         setPositiveButton(getString(R.string.text_Si)
                         ) { _, _ ->
+                            logOut()
                             lifecycleScope.launch {
+                                userPerroTips.logOut()
                                 val data = repository.getUserPerroInfo().data
                                 if (data != null) {
-                                    logOut()
                                     repository.logOut(data)
-                                    userPerroTips.logOut()
                                 }
 
                             }
@@ -131,7 +133,7 @@ class MainActivity: AppCompatActivity() {
     }
 
     private fun logOut() {
-        lifecycleScope.launch{
+        CoroutineScope(Dispatchers.IO).launch {
             dataStore.removePreferencesValue()
         }
     }

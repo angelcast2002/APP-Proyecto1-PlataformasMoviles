@@ -32,12 +32,14 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
 
     private fun setObservables() {
         lifecycleScope.launch {
+            logInViewModel.isLogged.collectLatest { isLogged ->
+                handleIsLogged(isLogged)
+            }
+        }
+        lifecycleScope.launchWhenStarted {
             logInViewModel.status.collectLatest { status ->
                 handleStatus(status)
 
-            }
-            logInViewModel.isLogged.collectLatest { isLogged ->
-                handleIsLogged(isLogged)
             }
         }
     }
