@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.entity.UserPerro
+import com.example.fordogs.data.repository.Firebase.FirebaseRepository
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
 import com.example.fordogs.ui.fragments.login.LogInConstants
 import com.example.fordogs.ui.fragments.login.LoginViewModel
@@ -16,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RegisterFragmentViewModel @Inject constructor(
-    private val repository: UserPerroRepository
+    private val repository: UserPerroRepository,
+    private val repo: FirebaseRepository
 ): ViewModel(){
     private val _status = MutableStateFlow<Status>(Status.Default)
     val status: StateFlow<Status> = _status

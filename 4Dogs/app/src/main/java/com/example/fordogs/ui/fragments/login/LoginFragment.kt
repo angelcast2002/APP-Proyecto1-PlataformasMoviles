@@ -50,7 +50,7 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
         }
     }
 
-    private fun handleStatus(status: LoginViewModel.Status) {
+    private fun handleStatus(status: Status) {
         when(status){
             Status.Default -> {
                 binding.apply {
@@ -85,15 +85,11 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
                     progressLoginLayout.visibility = View.VISIBLE
                 }
             }
-            Status.Succes -> {
-
+            is Status.Succes -> {
                 requireView().findNavController().navigate(
                     LoginFragmentDirections.actionLoginFragmentToCalendarFragment()
                 )
-
-
             }
-            else -> {}
         }
     }
 

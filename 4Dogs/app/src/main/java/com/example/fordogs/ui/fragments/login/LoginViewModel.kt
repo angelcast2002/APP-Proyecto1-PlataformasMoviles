@@ -10,14 +10,17 @@ import com.example.fordogs.data.repository.Firebase.FirebaseRepository
 import com.example.fordogs.ui.fragments.login.LogInConstants.Companion.ERROR
 import com.example.fordogs.ui.fragments.login.LogInConstants.Companion.PASSWORD
 import com.example.fordogs.ui.fragments.login.LogInConstants.Companion.USER
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
-class LoginViewModel @Inject constructor(private val repo: FirebaseRepository): ViewModel() {
+@HiltViewModel
+class LoginViewModel @Inject constructor(
+    private val repo: FirebaseRepository
+    ): ViewModel() {
 
     private val _status = MutableStateFlow<Status>(Status.Default)
     val status : StateFlow<Status> = _status
@@ -25,27 +28,8 @@ class LoginViewModel @Inject constructor(private val repo: FirebaseRepository): 
     sealed class Status{
         object Default: Status()
         object Loading: Status()
-        object Succes: Status()
         class Error(val message: String): Status()
-        class UserId(val userId: String): Status()
-    }
-
-    fun loading(User: String,Password: String){
-        viewModelScope.launch {
-            _status.value = Status.Loading
-            delay(2000L)
-            logIn(User, Password)
-        }
-    }
-
-     private fun logIn(User: String, Password: String) {
-        if (User == USER && Password == PASSWORD) {
-            _status.value = Status.Succes
-        }
-
-        else {
-            _status.value = Status.Error(ERROR)
-        }
+        class Succes(val userId: String): Status()
     }
 
 
@@ -53,11 +37,9 @@ class LoginViewModel @Inject constructor(private val repo: FirebaseRepository): 
     fun firebaseLogingIn(User: String, Password: String){
         viewModelScope.launch {
             _status.value = Status.Loading
-            delay(2000L)
-
             val userId = repo.signInWithEmailAndPasword(User, Password)
             if (userId != null){
-                _status.value = Status.UserId(userId)
+                _status.value = Status.Succes(userId)
             }
             else{
                 _status.value = Status.Error(ERROR)
@@ -68,11 +50,10 @@ class LoginViewModel @Inject constructor(private val repo: FirebaseRepository): 
     fun firebaseSignUp(User: String, Password: String){
         viewModelScope.launch {
             _status.value = Status.Loading
-            delay(2000L)
 
             val userId = repo.signUpWithEmailAndPasword(User, Password)
             if (userId != null){
-                _status.value = Status.UserId(userId)
+                _status.value = Status.Succes(userId)
             }
             else{
                 _status.value = Status.Error(ERROR)
