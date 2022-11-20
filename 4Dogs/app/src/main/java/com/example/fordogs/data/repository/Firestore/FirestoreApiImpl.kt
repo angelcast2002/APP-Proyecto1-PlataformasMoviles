@@ -7,9 +7,9 @@ import kotlinx.coroutines.tasks.await
 
 class FirestoreApiImpl(private val db: FirebaseFirestore) : FirestoreApi {
 
-    override suspend fun getUserPerroInfo(data: UserPerro): Resource<UserPerro> {
+    override suspend fun getUserPerroInfo(): Resource<UserPerro> {
         return try {
-            val response = db.collection("users").document(data.id).get().await()
+            val response = db.collection("users").document().get().await()
             val userPerro = response.toObject(UserPerro::class.java)
             if (userPerro != null)
                 Resource.Success(data = userPerro)
