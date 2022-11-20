@@ -86,4 +86,7 @@
     <string name="modificarEvento_title">Modificar Recordatorio</string>
     <string name="text_textView_noTips">Lo sentimos, hemos buscado mucho pero no encontramos nada sobre este tipo de raza.</string>
     <string name="text_urlImagen_editProfile">URL de la imagen</string>
+    <string name="completarEvent">Completar</string>
+    <string name="editarEvent">Editar</string>
+    <string name="eliminarEvent">Eliminar</string>
 </resources>

@@ -10,6 +10,7 @@ import com.example.fordogs.data.local.entity.UserPerro
 import com.example.fordogs.data.repository.eventosRepo.EventRepository
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -70,6 +71,7 @@ class CalendarViewModel @Inject constructor(
 
     fun deleteEvent(eventId: Int) =
         viewModelScope.launch {
+            _eventStatus.value = EventStatus.Loading
             when(val eventsResult = eventRepository.deleteEvent(eventId)){
                 is Resource.Success -> {
                     _eventStatus.value = EventStatus.Deleted(eventsResult.data!!)
