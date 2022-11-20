@@ -4,17 +4,17 @@
 
     <item
         android:id="@+id/menuDelete"
-        android:title="Delete"
+        android:title="@string/eliminarEvent"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/menuUpdate"
-        android:title="Update"
+        android:title="@string/editarEvent"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/menuComplete"
-        android:title="Complete"
+        android:title="@string/completarEvent"
         app:showAsAction="ifRoom" />
 
 </menu>

@@ -16,6 +16,7 @@ import com.example.fordogs.R
 import com.example.fordogs.data.local.entity.Event
 import com.example.fordogs.databinding.FragmentCalendarBinding
 import com.example.fordogs.ui.MainActivity
+import com.example.fordogs.ui.fragments.addevents.EventsManagementViewModel
 import com.example.fordogs.ui.fragments.calendar.eventRecyclerView.EmptyDataObserver
 import com.example.fordogs.ui.fragments.calendar.eventRecyclerView.EventOptionsListener
 import com.example.fordogs.ui.fragments.calendar.eventRecyclerView.EventsAdapter
@@ -27,10 +28,11 @@ import kotlinx.coroutines.flow.collectLatest
 class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsListener {
 
     private val calendarVM: CalendarViewModel by viewModels()
+    private val eventsVM: EventsManagementViewModel by viewModels()
     private lateinit var navController: NavController
     private lateinit var recyclerView: RecyclerView
     private lateinit var eventAdapter: EventsAdapter
-    private var events : List<Event> = ArrayList<Event>()
+    private var events : List<Event> = ArrayList()
     override fun getViewBinding() = FragmentCalendarBinding.inflate(layoutInflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,19 +63,35 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
     private fun handleEventState(eventStatus: CalendarViewModel.EventStatus) {
         when (eventStatus) {
             is CalendarViewModel.EventStatus.Error -> {
-                binding.recyclerConstraintLayout.visibility = View.VISIBLE
-            }
-            CalendarViewModel.EventStatus.Loading -> {
-                binding.recyclerConstraintLayout.visibility = View.GONE
-            }
-            is CalendarViewModel.EventStatus.Deleted -> {
+                binding.apply {
+                    eventListProgressBar.visibility = View.GONE
+                    recyclerConstraintLayout.visibility = View.VISIBLE
+                }
                 val message = eventStatus.message
                 Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
             }
+            CalendarViewModel.EventStatus.Loading -> {
+                binding.apply {
+                    eventListProgressBar.visibility = View.VISIBLE
+                    recyclerConstraintLayout.visibility = View.GONE
+                }
+            }
+            is CalendarViewModel.EventStatus.Deleted -> {
+                binding.apply {
+                    eventListProgressBar.visibility = View.GONE
+                    recyclerConstraintLayout.visibility = View.VISIBLE
+                }
+                val message = eventStatus.message
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                refreshFragment()
+            }
             is CalendarViewModel.EventStatus.Success -> {
+                binding.apply{
+                    eventListProgressBar.visibility = View.GONE
+                    recyclerConstraintLayout.visibility = View.VISIBLE
+                }
                 events = eventStatus.data
                 setUpViews()
-                binding.recyclerConstraintLayout.visibility = View.VISIBLE
             }
         }
     }
@@ -129,6 +147,11 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
             error(R.drawable.ic_error)
             placeholder(R.drawable.ic_download)
         }
+    }
+
+    private fun refreshFragment() {
+        navController.popBackStack()
+        navController.navigate(R.id.calendarFragment)
     }
 
     override fun deleteEventFromId(eventId: Int) {
