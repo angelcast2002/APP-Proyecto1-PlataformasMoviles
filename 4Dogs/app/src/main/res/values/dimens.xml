@@ -13,10 +13,10 @@
     <dimen name="textSize_textInputText">15sp</dimen>
     <dimen name="pawIconSize">40dp</dimen>
     <dimen name="size_imgLogo_loginLayout">200dp</dimen>
-    <dimen name="sizeText_petName">30sp</dimen>
+    <dimen name="sizeText_petName">24sp</dimen>
     <dimen name="margin8">8dp</dimen>
-    <dimen name="cardHeight">150dp</dimen>
-    <dimen name="consejosSize">20sp</dimen>
+    <dimen name="cardHeight">130dp</dimen>
+    <dimen name="consejosSize">30sp</dimen>
     <dimen name="cornerRadius">10dp</dimen>
     <dimen name="margin20">20dp</dimen>
     <dimen name="defaultTitleSize">20sp</dimen>
@@ -24,7 +24,7 @@
     <dimen name="small10marginSize">10dp</dimen>
     <dimen name="margin30">30dp</dimen>
     <dimen name="margin50">50dp</dimen>
-    <dimen name="margin60">60dp</dimen>
+    <dimen name="margin80">80dp</dimen>
     <dimen name="clockMargin25">25dp</dimen>
     <dimen name="checkBoxesHeight">40dp</dimen>
     <dimen name="margin125">125dp</dimen>
@@ -32,20 +32,4 @@
     <dimen name="begin_guideLine2_calendarLayout">395dp</dimen>
     <dimen name="textSize_bienvenido_calendarFragment">20sp</dimen>
     <dimen name="marginSize_extraSmall">5dp</dimen>
-    <dimen name="congratsSize">16sp</dimen>
-    <dimen name="dayText_Card">18sp</dimen>
-    <dimen name="dateText_Card">24sp</dimen>
-    <dimen name="eventTitle_Card">20sp</dimen>
-    <dimen name="moreOptions_size">30dp</dimen>
-    <dimen name="eventState_size">12sp</dimen>
-    <dimen name="emptySubtitle_size">5dp</dimen>
-    <dimen name="emptyTitle_padding">10dp</dimen>
-    <dimen name="searchDog_size">200dp</dimen>
-    <dimen name="card_elevationDimen">5dp</dimen>
-    <dimen name="size_textNoTips">20sp</dimen>
-    <dimen name="size_imgDog">125dp</dimen>
-    <dimen name="size_textRecyclerTipsText">15sp</dimen>
-    <dimen name="size_atributteRecyclerTips">20sp</dimen>
-    <dimen name="size_imgProfileLayout">150dp</dimen>
-    <dimen name="size_textProfileLayout">20sp</dimen>
 </resources>

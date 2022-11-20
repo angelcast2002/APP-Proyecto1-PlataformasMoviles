@@ -5,8 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.entity.UserPerro
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
-import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants
-import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -43,19 +41,7 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
-
-    fun setSucces(){
-        _status.value = Status.Succes(
-            UserPerro(
-                nombre = EditProfileConstants.NOMBRE,
-                raza = EditProfileConstants.RAZA,
-                peso = EditProfileConstants.PESO,
-                color = EditProfileConstants.COLOR,
-                alto = EditProfileConstants.ALTO,
-                largo = EditProfileConstants.LARGO,
-                comidaFav = EditProfileConstants.COMIDA_FAV,
-                imagen = EditProfileConstants.IMG_PERRO
-            )
-        )
+    fun setLoading(){
+        _status.value = Status.Loading
     }
 }

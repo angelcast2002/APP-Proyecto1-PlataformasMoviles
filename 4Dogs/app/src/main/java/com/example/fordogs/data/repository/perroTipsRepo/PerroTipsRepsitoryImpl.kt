@@ -5,7 +5,6 @@ import com.example.fordogs.data.local.dao.perroTips.PerroTipsDao
 import com.example.fordogs.data.local.entity.PerroTips
 import com.example.fordogs.data.remote.DogsApi
 import com.example.fordogs.data.remote.dto.mapToEntity
-import com.example.fordogs.data.repository.perroTipsRepo.TipsRepoImplConstants.Companion.MENSAJE_ERROR
 
 class PerroTipsRepsitoryImpl(
     private val perroTipsDao: PerroTipsDao,
@@ -14,10 +13,10 @@ class PerroTipsRepsitoryImpl(
     override suspend fun getPerroTips(name:String): Resource<PerroTips> {
         val localTips = perroTipsDao.getPerroTips()
         return try {
-            if (localTips == null || localTips.name.lowercase() != name.lowercase()) {
-                val remoteTips = api.getDogsTips(name)[0]
+            if (localTips == null) {
+                val remoteTips = api.getDogsTips(name)
                 if (remoteTips == null) {
-                    Resource.Error(message = MENSAJE_ERROR)
+                    Resource.Error(message = "No hay información de la raza")
                 } else {
                     val mappedPerroTips = remoteTips.mapToEntity()
                     Resource.Success(data = mappedPerroTips)
@@ -26,12 +25,12 @@ class PerroTipsRepsitoryImpl(
                 Resource.Success(data = localTips)
             }
         }catch (e: Exception) {
-            Resource.Error(message = MENSAJE_ERROR)
+            Resource.Error(message = "Error inesperado")
         }
     }
 
-    override suspend fun savePerroTips(data: PerroTips){
-        perroTipsDao.insertAllPerroTips(data)
+    override suspend fun savePerroTips(data: List<PerroTips>): Resource<String> {
+        TODO("Not yet implemented")
     }
 
 }

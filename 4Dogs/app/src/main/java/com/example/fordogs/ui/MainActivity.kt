@@ -5,15 +5,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.fordogs.R
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
 import com.example.fordogs.databinding.ActivityMainBinding
-import com.example.fordogs.ui.fragments.addevents.AddEventBottomSheetFragment
-import com.example.fordogs.ui.fragments.addevents.EventsManagementViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,7 +20,6 @@ class MainActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    private lateinit var eventsVM:EventsManagementViewModel
     @Inject
     lateinit var repository: UserPerroRepository
 
@@ -31,7 +27,6 @@ class MainActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        eventsVM = ViewModelProvider(this)[EventsManagementViewModel::class.java]
 
         binding.bottomNavigationView.background = null
         binding.bottomNavigationView.menu.getItem(2).isEnabled = false
@@ -113,9 +108,7 @@ class MainActivity: AppCompatActivity() {
         }
 
         binding.mainActivityFAB.setOnClickListener {
-            val addEventBottomSheetFragment = AddEventBottomSheetFragment()
-            addEventBottomSheetFragment.setEventId(0, false)
-            addEventBottomSheetFragment.show(supportFragmentManager, addEventBottomSheetFragment.tag)
+            navController.navigate(R.id.addEventFragment)
         }
 
     }

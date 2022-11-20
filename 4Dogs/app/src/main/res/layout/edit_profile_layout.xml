@@ -1,351 +1,304 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    tools:context=".ui.fragments.editProfile.EditProfileFragment"
+    android:background="@drawable/app_background_with_gradient">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/ceroDp"
-        tools:context=".ui.fragments.editProfile.EditProfileFragment"
-        android:background="@drawable/app_background_with_gradient">
+    <ImageView
+        android:id="@+id/img_pet_editProfileLayout"
 
-        <ImageView
-            android:id="@+id/img_pet_editProfileLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/petName_edtiProfileLayout"
 
-            android:layout_width="@dimen/size_imgDog"
-            android:layout_height="@dimen/size_imgDog"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/urlImage_edtiProfileLayout"
+        android:layout_marginTop="@dimen/marginSize_large"
+        tools:srcCompat="@tools:sample/avatars"
+        />
 
-            android:layout_marginTop="@dimen/marginSize_extraLarge"
-            tools:srcCompat="@tools:sample/avatars"
-            />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/petName_edtiProfileLayout"
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/urlImage_edtiProfileLayout"
+        android:layout_width="@dimen/ceroDp"
+        android:layout_height="wrap_content"
 
-            android:layout_width="@dimen/ceroDp"
-            android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/marginSize_large"
 
-            android:layout_marginHorizontal="@dimen/marginSize_large"
+        app:layout_constraintTop_toBottomOf="@+id/img_pet_editProfileLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
 
-            app:layout_constraintTop_toBottomOf="@+id/img_pet_editProfileLayout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/petName_edtiProfileLayout"
+        android:hint="@string/petName_EditProfile"
+        app:boxStrokeColor="@color/color_morningBlue"
+        android:textColorHint="@color/color_feldgrau"
+        android:textSize="@dimen/textSize_loginLayout"
 
-            android:hint="@string/text_urlImagen_editProfile"
-            app:boxStrokeColor="@color/color_morningBlue"
-            android:textColorHint="@color/color_feldgrau"
-            android:textSize="@dimen/textSize_loginLayout"
-
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_marginTop="@dimen/marginSize_large"
-            app:layout_constraintVertical_chainStyle="packed"
-            >
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="@dimen/marginSize_small"
+        app:layout_constraintVertical_chainStyle="packed"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:textColor="@color/color_feldgrau"
-            android:id="@+id/textInput_urlImage_editProfilelayout_editText"
+            android:id="@+id/textInput_nombreText_editProfilelayout_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
             android:textSize="@dimen/textSize_textInputText"
             android:fontFamily="@font/krub_medium"
             />
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/petName_edtiProfileLayout"
+    </com.google.android.material.textfield.TextInputLayout>
 
-            android:layout_width="@dimen/ceroDp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInput_razaText_editProfileLayout"
+
+        android:layout_width="@dimen/ceroDp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="@dimen/marginSize_large"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/petName_edtiProfileLayout"
+        app:layout_constraintBottom_toTopOf="@id/textInput_pesoText_editProfileLayout"
+
+        android:hint="@string/textRaza"
+        app:boxStrokeColor="@color/color_morningBlue"
+        android:textColorHint="@color/color_feldgrau"
+        android:textSize="@dimen/textSize_loginLayout"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="@dimen/marginSize_small"
+        app:layout_constraintVertical_chainStyle="packed"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:textColor="@color/color_feldgrau"
+            android:id="@+id/textInput_razaText_editProfilelayout_editText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_marginHorizontal="@dimen/marginSize_large"
-
-            app:layout_constraintTop_toBottomOf="@+id/urlImage_edtiProfileLayout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/textInput_razaText_editProfileLayout"
-
-            android:hint="@string/petName_EditProfile"
-            app:boxStrokeColor="@color/color_morningBlue"
-            android:textColorHint="@color/color_feldgrau"
-            android:textSize="@dimen/textSize_loginLayout"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_marginTop="@dimen/marginSize_medium"
-            app:layout_constraintVertical_chainStyle="packed"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:textColor="@color/color_feldgrau"
-                android:id="@+id/textInput_nombreText_editProfilelayout_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:textSize="@dimen/textSize_textInputText"
-                android:fontFamily="@font/krub_medium"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInput_razaText_editProfileLayout"
-
-            android:layout_width="@dimen/ceroDp"
-            android:layout_height="wrap_content"
-
-            android:layout_marginHorizontal="@dimen/marginSize_large"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/petName_edtiProfileLayout"
-            app:layout_constraintBottom_toTopOf="@id/textInput_pesoText_editProfileLayout"
-
-            android:hint="@string/textRaza"
-            app:boxStrokeColor="@color/color_morningBlue"
-            android:textColorHint="@color/color_feldgrau"
-            android:textSize="@dimen/textSize_loginLayout"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_marginTop="@dimen/marginSize_medium"
-            app:layout_constraintVertical_chainStyle="packed"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:textColor="@color/color_feldgrau"
-                android:id="@+id/textInput_razaText_editProfilelayout_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:textSize="@dimen/textSize_textInputText"
-                android:fontFamily="@font/krub_medium"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInput_pesoText_editProfileLayout"
-
-            android:layout_width="@dimen/ceroDp"
-            android:layout_height="wrap_content"
-
-            android:layout_marginHorizontal="@dimen/marginSize_large"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInput_razaText_editProfileLayout"
-            app:layout_constraintBottom_toTopOf="@id/textInput_colorText_editProfileLayout"
-
-            android:hint="@string/textPeso"
-            app:boxStrokeColor="@color/color_morningBlue"
-            android:textColorHint="@color/color_feldgrau"
-            android:textSize="@dimen/textSize_loginLayout"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_marginTop="@dimen/marginSize_medium"
-            app:layout_constraintVertical_chainStyle="packed"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:textColor="@color/color_feldgrau"
-                android:id="@+id/textInput_pesoText_editProfilelayout_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:textSize="@dimen/textSize_textInputText"
-                android:fontFamily="@font/krub_medium"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInput_colorText_editProfileLayout"
-
-            android:layout_width="@dimen/ceroDp"
-            android:layout_height="wrap_content"
-
-            android:layout_marginHorizontal="@dimen/marginSize_large"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInput_pesoText_editProfileLayout"
-            app:layout_constraintBottom_toTopOf="@id/textInput_alturaText_editProfileLayout"
-
-            android:hint="@string/textColor"
-            app:boxStrokeColor="@color/color_morningBlue"
-            android:textColorHint="@color/color_feldgrau"
-            android:textSize="@dimen/textSize_loginLayout"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_marginTop="@dimen/marginSize_medium"
-            app:layout_constraintVertical_chainStyle="packed"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:textColor="@color/color_feldgrau"
-                android:id="@+id/textInput_colorText_editProfilelayout_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:textSize="@dimen/textSize_textInputText"
-                android:fontFamily="@font/krub_medium"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <ProgressBar
-            android:id="@+id/progress_editLayout"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:visibility="visible"
+            android:textSize="@dimen/textSize_textInputText"
+            android:fontFamily="@font/krub_medium"
             />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInput_alturaText_editProfileLayout"
+    </com.google.android.material.textfield.TextInputLayout>
 
-            android:layout_width="@dimen/ceroDp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInput_pesoText_editProfileLayout"
+
+        android:layout_width="@dimen/ceroDp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="@dimen/marginSize_large"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInput_razaText_editProfileLayout"
+        app:layout_constraintBottom_toTopOf="@id/textInput_colorText_editProfileLayout"
+
+        android:hint="@string/textPeso"
+        app:boxStrokeColor="@color/color_morningBlue"
+        android:textColorHint="@color/color_feldgrau"
+        android:textSize="@dimen/textSize_loginLayout"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="@dimen/marginSize_small"
+        app:layout_constraintVertical_chainStyle="packed"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:textColor="@color/color_feldgrau"
+            android:id="@+id/textInput_pesoText_editProfilelayout_editText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_marginHorizontal="@dimen/marginSize_large"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInput_colorText_editProfileLayout"
-            app:layout_constraintBottom_toTopOf="@id/textInput_largoText_editProfileLayout"
-
-            android:hint="@string/textAlto"
-            app:boxStrokeColor="@color/color_morningBlue"
-            android:textColorHint="@color/color_feldgrau"
-            android:textSize="@dimen/textSize_loginLayout"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_marginTop="@dimen/marginSize_medium"
-            app:layout_constraintVertical_chainStyle="packed"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:textColor="@color/color_feldgrau"
-                android:id="@+id/textInput_alturaText_editProfilelayout_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-
-                android:textSize="@dimen/textSize_textInputText"
-                android:fontFamily="@font/krub_medium"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInput_largoText_editProfileLayout"
-
-            android:layout_width="@dimen/ceroDp"
-            android:layout_height="wrap_content"
-
-            android:layout_marginHorizontal="@dimen/marginSize_large"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInput_alturaText_editProfileLayout"
-            app:layout_constraintBottom_toTopOf="@id/textInput_comidaFavText_editProfileLayout"
-
-            android:hint="@string/textLargo"
-            app:boxStrokeColor="@color/color_morningBlue"
-            android:textColorHint="@color/color_feldgrau"
-            android:textSize="@dimen/textSize_loginLayout"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_marginTop="@dimen/marginSize_medium"
-            app:layout_constraintVertical_chainStyle="packed"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:textColor="@color/color_feldgrau"
-                android:id="@+id/textInput_largoText_editProfilelayout_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-
-                android:textSize="@dimen/textSize_textInputText"
-                android:fontFamily="@font/krub_medium"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInput_comidaFavText_editProfileLayout"
-
-            android:layout_width="@dimen/ceroDp"
-            android:layout_height="wrap_content"
-
-            android:layout_marginHorizontal="@dimen/marginSize_large"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textInput_largoText_editProfileLayout"
-            app:layout_constraintBottom_toTopOf="@id/bt_saveData_editProfile"
-
-            android:hint="@string/textComidaFavorita"
-            app:boxStrokeColor="@color/color_morningBlue"
-            android:textColorHint="@color/color_feldgrau"
-            android:textSize="@dimen/textSize_loginLayout"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_marginTop="@dimen/marginSize_medium"
-            app:layout_constraintVertical_chainStyle="packed"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:textColor="@color/color_feldgrau"
-                android:id="@+id/textInput_comidaFavText_editProfilelayout_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:textSize="@dimen/textSize_textInputText"
-                android:fontFamily="@font/krub_medium"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/bt_saveData_editProfile"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/bt_saveChanges_editProfileLayout"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textInput_comidaFavText_editProfileLayout"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:paddingHorizontal="@dimen/paddingHorizontal_bt_logIn_loginLayout"
-            android:paddingVertical="@dimen/marginSize_small"
-
-            android:backgroundTint="@color/color_feldgrau"
-            android:textColor="@color/white"
-            android:fontFamily="@font/krub_bold"
-
-            android:layout_marginTop="@dimen/marginSize_large"
+            android:textSize="@dimen/textSize_textInputText"
+            android:fontFamily="@font/krub_medium"
             />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-</ScrollView>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInput_colorText_editProfileLayout"
 
+        android:layout_width="@dimen/ceroDp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="@dimen/marginSize_large"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInput_pesoText_editProfileLayout"
+        app:layout_constraintBottom_toTopOf="@id/textInput_alturaText_editProfileLayout"
+
+        android:hint="@string/textColor"
+        app:boxStrokeColor="@color/color_morningBlue"
+        android:textColorHint="@color/color_feldgrau"
+        android:textSize="@dimen/textSize_loginLayout"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="@dimen/marginSize_small"
+        app:layout_constraintVertical_chainStyle="packed"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:textColor="@color/color_feldgrau"
+            android:id="@+id/textInput_colorText_editProfilelayout_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textSize="@dimen/textSize_textInputText"
+            android:fontFamily="@font/krub_medium"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_editLayout"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="visible"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInput_alturaText_editProfileLayout"
+
+        android:layout_width="@dimen/ceroDp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="@dimen/marginSize_large"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInput_colorText_editProfileLayout"
+        app:layout_constraintBottom_toTopOf="@id/textInput_largoText_editProfileLayout"
+
+        android:hint="@string/textAlto"
+        app:boxStrokeColor="@color/color_morningBlue"
+        android:textColorHint="@color/color_feldgrau"
+        android:textSize="@dimen/textSize_loginLayout"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="@dimen/marginSize_small"
+        app:layout_constraintVertical_chainStyle="packed"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:textColor="@color/color_feldgrau"
+            android:id="@+id/textInput_alturaText_editProfilelayout_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textSize="@dimen/textSize_textInputText"
+            android:fontFamily="@font/krub_medium"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInput_largoText_editProfileLayout"
+
+        android:layout_width="@dimen/ceroDp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="@dimen/marginSize_large"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInput_alturaText_editProfileLayout"
+        app:layout_constraintBottom_toTopOf="@id/textInput_comidaFavText_editProfileLayout"
+
+        android:hint="@string/textLargo"
+        app:boxStrokeColor="@color/color_morningBlue"
+        android:textColorHint="@color/color_feldgrau"
+        android:textSize="@dimen/textSize_loginLayout"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="@dimen/marginSize_small"
+        app:layout_constraintVertical_chainStyle="packed"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:textColor="@color/color_feldgrau"
+            android:id="@+id/textInput_largoText_editProfilelayout_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textSize="@dimen/textSize_textInputText"
+            android:fontFamily="@font/krub_medium"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInput_comidaFavText_editProfileLayout"
+
+        android:layout_width="@dimen/ceroDp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="@dimen/marginSize_large"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInput_largoText_editProfileLayout"
+        app:layout_constraintBottom_toTopOf="@id/bt_saveData_editProfale"
+
+        android:hint="@string/textComidaFavorita"
+        app:boxStrokeColor="@color/color_morningBlue"
+        android:textColorHint="@color/color_feldgrau"
+        android:textSize="@dimen/textSize_loginLayout"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="@dimen/marginSize_small"
+        app:layout_constraintVertical_chainStyle="packed"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:textColor="@color/color_feldgrau"
+            android:id="@+id/textInput_comidaFavText_editProfilelayout_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textSize="@dimen/textSize_textInputText"
+            android:fontFamily="@font/krub_medium"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/bt_saveData_editProfale"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bt_saveChanges_editProfileLayout"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInput_comidaFavText_editProfileLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingHorizontal="@dimen/paddingHorizontal_bt_logIn_loginLayout"
+
+        android:backgroundTint="@color/color_feldgrau"
+        android:textColor="@color/white"
+        android:fontFamily="@font/krub_bold"
+
+        android:layout_marginTop="@dimen/marginSize_small"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
