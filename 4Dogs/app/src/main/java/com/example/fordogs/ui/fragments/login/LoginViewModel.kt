@@ -1,5 +1,8 @@
 package com.example.fordogs.ui.fragments.login
 
+import android.app.Application
+import android.content.Context
+import androidx.datastore.dataStore
 import android.content.Intent
 import android.widget.Toast
 import androidx.core.os.bundleOf
@@ -10,6 +13,12 @@ import com.example.fordogs.data.repository.Firebase.FirebaseRepository
 import com.example.fordogs.ui.fragments.login.LogInConstants.Companion.ERROR
 import com.example.fordogs.ui.fragments.login.LogInConstants.Companion.PASSWORD
 import com.example.fordogs.ui.fragments.login.LogInConstants.Companion.USER
+import com.example.fordogs.ui.util.dataStore
+import com.example.fordogs.ui.util.getPreferencesValue
+import com.example.fordogs.ui.util.savePreferencesValue
+import dagger.hilt.android.internal.Contexts.getApplication
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -64,5 +73,36 @@ class LoginViewModel @Inject constructor(
 
     fun setDefault(){
         _status.value = Status.Default
+    }
+
+    private val _isLogged = MutableStateFlow<Logged>(Logged.NotLogged)
+    val isLogged : StateFlow<Logged> = _isLogged
+
+    sealed class Logged{
+        object Succes: Logged()
+        object NotLogged: Logged()
+    }
+
+    fun checkIsLogged(context: Context){
+        CoroutineScope(Dispatchers.IO).launch {
+            val isLogged = context.dataStore.getPreferencesValue()
+            if (isLogged == null){
+                _isLogged.value = Logged.NotLogged
+            } else {
+                _isLogged.value = Logged.Succes
+            }
+        }
+    }
+
+    fun setDefaultLogged(){
+        _isLogged.value = Logged.NotLogged
+    }
+
+    fun saveLog(context: Context){
+        CoroutineScope(Dispatchers.IO).launch {
+            context.dataStore.savePreferencesValue()
+            val isLogged = context.dataStore.getPreferencesValue()
+            println(isLogged)
+        }
     }
 }

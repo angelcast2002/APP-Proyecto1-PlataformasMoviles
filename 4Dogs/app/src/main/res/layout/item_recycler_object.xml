@@ -17,9 +17,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/textView_text_recycleView"
-        android:layout_marginHorizontal="@dimen/marginSize_small"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/marginSize_small"
         android:textSize="@dimen/size_atributteRecyclerTips"
+
 
         tools:text="Amigable con los demas perros"/>
     <TextView
@@ -28,7 +29,6 @@
         android:fontFamily="@font/krub_medium"
         android:textColor="@color/color_feldgrau"
 
-        android:layout_marginHorizontal="@dimen/marginSize_small"
         android:layout_marginBottom="@dimen/marginSize_small"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,6 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:text="Su perro es bueno con las demas personas"
+        android:gravity="center"
         android:textSize="@dimen/size_textRecyclerTipsText"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

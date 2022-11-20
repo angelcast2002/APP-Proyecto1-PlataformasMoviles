@@ -13,8 +13,7 @@ import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepoConstants.
 
 class UserPerroRepositoryImpl (
     private val userPerroDao: UserPerroDao,
-
-
+    //API
 ) : UserPerroRepository {
     override suspend fun getUserPerroInfo(): Resource<UserPerro> {
         return try {
@@ -32,8 +31,14 @@ class UserPerroRepositoryImpl (
 
     override suspend fun setUserPerroInfo(data: UserPerro): Resource<String> {
         return try {
-            userPerroDao.insertAll(data)
-            Resource.Success(data = SUCCES_SET_USER_PERRO_INFO)
+            if(data.nombre == ""){
+                Resource.Error(message = ERROR_SET_USER_PERRO_INFO)
+            } else {
+                userPerroDao.insertAll(data)
+                Resource.Success(data = SUCCES_SET_USER_PERRO_INFO)
+            }
+
+
         } catch (ex: Exception){
             Resource.Error(message = ERROR_SET_USER_PERRO_INFO)
         }

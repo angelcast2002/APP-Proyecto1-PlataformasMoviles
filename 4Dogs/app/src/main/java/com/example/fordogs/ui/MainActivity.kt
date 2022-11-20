@@ -1,5 +1,6 @@
 package com.example.fordogs.ui
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
@@ -17,7 +18,11 @@ import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
 import com.example.fordogs.databinding.ActivityMainBinding
 import com.example.fordogs.ui.fragments.addevents.AddEventBottomSheetFragment
 import com.example.fordogs.ui.fragments.addevents.EventsManagementViewModel
+import com.example.fordogs.ui.util.dataStore
+import com.example.fordogs.ui.util.removePreferencesValue
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -92,11 +97,12 @@ class MainActivity: AppCompatActivity() {
                         setMessage(getString(R.string.text_mensaje_cerrarSesion))
                         setPositiveButton(getString(R.string.text_Si)
                         ) { _, _ ->
+                            logOut()
                             lifecycleScope.launch {
+                                userPerroTips.logOut()
                                 val data = repository.getUserPerroInfo().data
                                 if (data != null) {
                                     repository.logOut(data)
-                                    userPerroTips.logOut()
                                 }
 
                             }
@@ -124,6 +130,12 @@ class MainActivity: AppCompatActivity() {
             addEventBottomSheetFragment.show(supportFragmentManager, addEventBottomSheetFragment.tag)
         }
 
+    }
+
+    private fun logOut() {
+        CoroutineScope(Dispatchers.IO).launch {
+            dataStore.removePreferencesValue()
+        }
     }
 
     private fun replaceFragment(fragment: Fragment) {

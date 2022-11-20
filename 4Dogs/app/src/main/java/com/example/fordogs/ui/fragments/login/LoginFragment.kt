@@ -1,11 +1,9 @@
 package com.example.fordogs.ui.fragments.login
 
+import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
@@ -34,8 +32,7 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
+        logInViewModel.checkIsLogged(obtainContext())
         hideNavBar()
         setListeners()
         setObservables()
@@ -43,6 +40,11 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
 
     private fun setObservables() {
         lifecycleScope.launch {
+            logInViewModel.isLogged.collectLatest { isLogged ->
+                handleIsLogged(isLogged)
+            }
+        }
+        lifecycleScope.launchWhenStarted {
             logInViewModel.status.collectLatest { status ->
                 handleStatus(status)
 
@@ -50,7 +52,21 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
         }
     }
 
-    private fun handleStatus(status: Status) {
+    private fun handleIsLogged(logged: Logged) {
+        when(logged){
+            Logged.NotLogged -> {
+
+            }
+            Logged.Succes -> {
+                requireView().findNavController().navigate(
+                    LoginFragmentDirections.actionLoginFragmentToCalendarFragment()
+                )
+                logInViewModel.setDefaultLogged()
+            }
+        }
+    }
+
+    private fun handleStatus(status: LoginViewModel.Status) {
         when(status){
             Status.Default -> {
                 binding.apply {
@@ -86,11 +102,17 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
                 }
             }
             is Status.Succes -> {
+                obtainContext()
+                logInViewModel.saveLog(obtainContext())
                 requireView().findNavController().navigate(
                     LoginFragmentDirections.actionLoginFragmentToCalendarFragment()
                 )
             }
         }
+    }
+
+    private fun obtainContext(): Context {
+        return requireContext().applicationContext
     }
 
     private fun setListeners() {

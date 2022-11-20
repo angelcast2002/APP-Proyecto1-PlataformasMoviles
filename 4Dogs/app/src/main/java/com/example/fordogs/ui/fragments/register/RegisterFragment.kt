@@ -1,5 +1,6 @@
 package com.example.fordogs.ui.fragments.register
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -57,7 +58,7 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
                 Toast.makeText(
                     requireContext(),
                     status.message,
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
                 registerFragmentViewModel.setDefault()
             }
@@ -76,8 +77,12 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
                 Toast.makeText(
                     requireContext(),
                     status.message,
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
+                registerFragmentViewModel.saveLog(obtainContext())
+                requireView().findNavController().navigate(
+                    RegisterFragmentDirections.actionRegisterFragmentToEditProfileFragment()
+                )
                 registerFragmentViewModel.setDefault()
             }
         }
@@ -100,6 +105,10 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
 
 
         }
+    }
+
+    private fun obtainContext(): Context {
+        return requireContext().applicationContext
     }
 
     private fun savedChanges() {
