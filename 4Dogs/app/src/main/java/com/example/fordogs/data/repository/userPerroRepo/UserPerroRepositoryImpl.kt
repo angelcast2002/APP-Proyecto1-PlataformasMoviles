@@ -13,8 +13,7 @@ import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepoConstants.
 
 class UserPerroRepositoryImpl (
     private val userPerroDao: UserPerroDao,
-
-
+    //API
 ) : UserPerroRepository {
     override suspend fun getUserPerroInfo(): Resource<UserPerro> {
         return try {
