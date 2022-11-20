@@ -3,6 +3,7 @@ package com.example.fordogs.data.repository.eventosRepo
 import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.dao.events.EventDao
 import com.example.fordogs.data.local.entity.Event
+import com.example.fordogs.data.repository.eventosRepo.EventRepoConstants.Companion.ERROR_COMPLETE_EVENT
 import com.example.fordogs.data.repository.eventosRepo.EventRepoConstants.Companion.ERROR_CREATE_EVENT
 import com.example.fordogs.data.repository.eventosRepo.EventRepoConstants.Companion.ERROR_DELETE_EVENT
 import com.example.fordogs.data.repository.eventosRepo.EventRepoConstants.Companion.ERROR_GET_EVENT
@@ -10,6 +11,7 @@ import com.example.fordogs.data.repository.eventosRepo.EventRepoConstants.Compan
 import com.example.fordogs.data.repository.eventosRepo.EventRepoConstants.Companion.ERROR_GET_EVENT_BY_ID
 import com.example.fordogs.data.repository.eventosRepo.EventRepoConstants.Companion.ERROR_UPDATE_EVENT
 import com.example.fordogs.data.repository.eventosRepo.EventRepoConstants.Companion.NO_EVENTS
+import com.example.fordogs.data.repository.eventosRepo.EventRepoConstants.Companion.SUCCESS_COMPLETE_EVENT
 import com.example.fordogs.data.repository.eventosRepo.EventRepoConstants.Companion.SUCCESS_CREATE_EVENT
 import com.example.fordogs.data.repository.eventosRepo.EventRepoConstants.Companion.SUCCESS_DELETE_EVENT
 import com.example.fordogs.data.repository.eventosRepo.EventRepoConstants.Companion.SUCCESS_UPDATE_EVENT
@@ -80,6 +82,20 @@ class EventRepositoryImpl (
             }
         } catch (ex: Exception){
             Resource.Error(message = ERROR_UPDATE_EVENT)
+        }
+    }
+
+    override suspend fun completeEvent(id: Int): Resource<String> {
+        return try {
+            val localEvent = eventDao.selectDataFromAnId(id)
+            if (localEvent.eventId == 0) {
+                return Resource.Error(message = ERROR_COMPLETE_EVENT)
+            } else {
+                eventDao.deleteEventFromId(localEvent)
+                Resource.Success(data = SUCCESS_COMPLETE_EVENT)
+            }
+        } catch (ex: Exception){
+            Resource.Error(message = ERROR_COMPLETE_EVENT)
         }
     }
 

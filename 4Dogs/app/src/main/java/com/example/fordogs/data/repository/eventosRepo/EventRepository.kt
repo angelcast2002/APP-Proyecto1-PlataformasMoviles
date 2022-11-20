@@ -15,4 +15,6 @@ interface EventRepository {
 
     suspend fun updateEvent(event: Event?) : Resource<String>
 
+    suspend fun completeEvent(id: Int) : Resource<String>
+
 }

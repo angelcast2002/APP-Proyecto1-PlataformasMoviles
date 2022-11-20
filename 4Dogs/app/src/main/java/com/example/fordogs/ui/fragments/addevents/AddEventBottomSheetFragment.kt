@@ -32,7 +32,6 @@ class AddEventBottomSheetFragment : BottomSheetDialogFragment() {
 
     private lateinit var eventsVM: EventsManagementViewModel
     private lateinit var binding: FragmentAddEventBinding
-    private lateinit var alarmManager: AlarmManager
     private lateinit var eventItem: Event
     private var isEditing: Boolean = false
     private lateinit var timePickerDialog: TimePickerDialog
@@ -44,7 +43,6 @@ class AddEventBottomSheetFragment : BottomSheetDialogFragment() {
     var mDay = 0
     var mHour = 0
     var mMinute = 0
-    var count = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -73,16 +71,13 @@ class AddEventBottomSheetFragment : BottomSheetDialogFragment() {
 
     private fun validateFields(): Boolean {
         return if (binding.eventTitleEditText.text.toString().equals("", ignoreCase = true)) {
-            Toast.makeText(activity, "Please enter a valid title", Toast.LENGTH_SHORT).show()
-            false
-        } else if (binding.eventDescriptionEditText.text.toString().equals("", ignoreCase = true)) {
-            Toast.makeText(activity, "Please enter a valid description", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Por favor introduzca un título", Toast.LENGTH_SHORT).show()
             false
         } else if (binding.eventDateEditText.text.toString().equals("", ignoreCase = true)) {
-            Toast.makeText(activity, "Please enter date", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Por favor introduzca una fecha ", Toast.LENGTH_SHORT).show()
             false
         } else if (binding.eventHourEditText.text.toString().equals("", ignoreCase = true)) {
-            Toast.makeText(activity, "Please enter time", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Por favor introduzca una hora", Toast.LENGTH_SHORT).show()
             false
         } else {
             true
@@ -129,7 +124,15 @@ class AddEventBottomSheetFragment : BottomSheetDialogFragment() {
                 timePickerDialog = TimePickerDialog(
                     activity,
                     { _: TimePicker?, hourOfDay: Int, minute: Int ->
-                        binding.eventHourEditText.setText(getString(R.string.time_format_forEvent, hourOfDay, minute))
+                        if (hourOfDay < 10 && minute < 10) {
+                            binding.eventHourEditText.setText(getString(R.string.time_format_forEvent_Units, hourOfDay, minute))
+                        } else if (hourOfDay < 10) {
+                            binding.eventHourEditText.setText(getString(R.string.time_format_forEvent_HourUnit, hourOfDay, minute))
+                        } else if (minute < 10) {
+                            binding.eventHourEditText.setText(getString(R.string.time_format_forEvent_MinuteUnit, hourOfDay, minute))
+                        } else {
+                            binding.eventHourEditText.setText(getString(R.string.time_format_forEvent, hourOfDay, minute))
+                        }
                         timePickerDialog.dismiss()
                     }, mHour, mMinute, false
                 )

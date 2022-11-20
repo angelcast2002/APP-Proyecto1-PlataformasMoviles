@@ -158,5 +158,9 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
         calendarVM.deleteEvent(eventId)
     }
 
+    override fun completeEventFromId(eventId: Int) {
+        calendarVM.completeEvent(eventId)
+    }
+
 
 }

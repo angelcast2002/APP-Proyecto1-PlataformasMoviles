@@ -80,6 +80,9 @@
     <string name="eventMonth_Card">Nov</string>
     <string name="date_format_forEvent">%1$s-%2$d-%3$d</string>
     <string name="time_format_forEvent">%1$d:%2$d</string>
+    <string name="time_format_forEvent_HourUnit">0%1$d:%2$d</string>
+    <string name="time_format_forEvent_MinuteUnit">%1$d:0%2$d</string>
+    <string name="time_format_forEvent_Units">0%1$d:0%2$d</string>
     <string name="timeandData_format">%1$s, %2$s</string>
     <string name="title_emtpydata">Woof... No hay nada por aquí</string>
     <string name="subtitle_emptydata">Parece que no has añadido eventos aún.</string>
