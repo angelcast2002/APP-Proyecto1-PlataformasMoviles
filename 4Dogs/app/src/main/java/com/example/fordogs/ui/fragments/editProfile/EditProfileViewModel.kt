@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.entity.UserPerro
+import com.example.fordogs.data.repository.Firestore.FirestoreRepository
 import com.example.fordogs.data.repository.perroTipsRepo.PerroTipsRepository
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
 import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.ALTO
@@ -23,7 +24,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EditProfileViewModel @Inject constructor(
-    private val repository: UserPerroRepository
+    private val repository: UserPerroRepository ,
+    private val repo:FirestoreRepository
 ) : ViewModel() {
 
 

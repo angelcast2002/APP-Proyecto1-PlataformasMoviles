@@ -3,6 +3,7 @@ package com.example.fordogs.data.repository.userPerroRepo
 import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.dao.userPerroInfo.UserPerroDao
 import com.example.fordogs.data.local.entity.UserPerro
+import com.example.fordogs.data.repository.Firestore.FirestoreRepository
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepoConstants.Companion.ERROR_GET_USER_PERRO_INFO
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepoConstants.Companion.ERROR_LOG_OUT_USER_PERRO_INFO
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepoConstants.Companion.ERROR_SET_USER_PERRO_INFO
@@ -13,13 +14,21 @@ import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepoConstants.
 
 class UserPerroRepositoryImpl (
     private val userPerroDao: UserPerroDao,
-    //API
+    private val firestoreRepository: FirestoreRepository
 ) : UserPerroRepository {
     override suspend fun getUserPerroInfo(): Resource<UserPerro> {
         return try {
+
             val localInfo = userPerroDao.getInfoForUserPerro()
             if (localInfo.id.isEmpty()) {
-                return Resource.Error(message = ERROR_GET_USER_PERRO_INFO)
+                val remoteInfo = firestoreRepository.getUserPerroInfo().data
+                if (remoteInfo != null) {
+                    userPerroDao.update(remoteInfo)
+                    Resource.Success(data = remoteInfo)
+                } else {
+                    Resource.Error(message = ERROR_GET_USER_PERRO_INFO)
+                }
+
             } else (
                 Resource.Success(localInfo)
             )
@@ -42,6 +51,11 @@ class UserPerroRepositoryImpl (
         } catch (ex: Exception){
             Resource.Error(message = ERROR_SET_USER_PERRO_INFO)
         }
+        try{
+            firestoreRepository.setUserPerroInfo(data)
+        }catch (ex: Exception){
+
+        }
     }
 
     override suspend fun updateUserPerroInfo(data: UserPerro): Resource<String> {
@@ -50,6 +64,11 @@ class UserPerroRepositoryImpl (
             Resource.Success(data = SUCCES_UPDATE_USER_PERRO_INFO)
         } catch (ex: Exception){
             Resource.Error(message = ERROR_UPDATE_USER_PERRO_INFO)
+        }
+        try{
+            firestoreRepository.setUserPerroInfo(data)
+        }catch (ex: Exception){
+
         }
     }
 
