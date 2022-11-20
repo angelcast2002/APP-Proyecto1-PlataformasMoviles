@@ -51,25 +51,23 @@ class UserPerroRepositoryImpl (
         } catch (ex: Exception){
             Resource.Error(message = ERROR_SET_USER_PERRO_INFO)
         }
-        try{
-            firestoreRepository.setUserPerroInfo(data)
-        }catch (ex: Exception){
 
-        }
     }
 
     override suspend fun updateUserPerroInfo(data: UserPerro): Resource<String> {
+        try{
+            firestoreRepository.setUserPerroInfo(data)
+        }catch (_: Exception){
+
+
+        }
         return try {
             userPerroDao.update(data)
             Resource.Success(data = SUCCES_UPDATE_USER_PERRO_INFO)
         } catch (ex: Exception){
             Resource.Error(message = ERROR_UPDATE_USER_PERRO_INFO)
         }
-        try{
-            firestoreRepository.setUserPerroInfo(data)
-        }catch (ex: Exception){
 
-        }
     }
 
     override suspend fun logOut(data: UserPerro): Resource<String> {
