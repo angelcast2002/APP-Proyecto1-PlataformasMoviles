@@ -1,5 +1,6 @@
 package com.example.fordogs.ui
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
@@ -14,6 +15,8 @@ import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
 import com.example.fordogs.databinding.ActivityMainBinding
 import com.example.fordogs.ui.fragments.addevents.AddEventBottomSheetFragment
 import com.example.fordogs.ui.fragments.addevents.EventsManagementViewModel
+import com.example.fordogs.ui.util.dataStore
+import com.example.fordogs.ui.util.removePreferencesValue
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -90,6 +93,7 @@ class MainActivity: AppCompatActivity() {
                             lifecycleScope.launch {
                                 val data = repository.getUserPerroInfo().data
                                 if (data != null) {
+                                    logOut()
                                     repository.logOut(data)
                                 }
 
@@ -118,6 +122,10 @@ class MainActivity: AppCompatActivity() {
             addEventBottomSheetFragment.show(supportFragmentManager, addEventBottomSheetFragment.tag)
         }
 
+    }
+
+    private suspend fun logOut() {
+        dataStore.removePreferencesValue()
     }
 
     private fun replaceFragment(fragment: Fragment) {
