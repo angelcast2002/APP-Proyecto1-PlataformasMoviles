@@ -64,14 +64,13 @@
         android:id="@+id/text_dato_razaText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/margin30"
         android:layout_marginEnd="@dimen/margin60"
         android:textSize="@dimen/size_textProfileLayout"
         android:fontFamily="@font/krub_regular"
         android:text="@string/text_chispa_editLayout"
         android:textColor="@color/color_feldgrau"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/petName_ProfileLayout" />
+        app:layout_constraintTop_toTopOf="@id/text_razaText_ProfileLayout" />
 
     <TextView
         android:id="@+id/text_pesoText_ProfileLayout"
@@ -90,10 +89,9 @@
         android:id="@+id/text_dato_pesoText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin10"
         android:textSize="@dimen/size_textProfileLayout"
         app:layout_constraintStart_toStartOf="@+id/text_dato_razaText_ProfileLayout"
-        app:layout_constraintTop_toBottomOf="@+id/text_dato_razaText_ProfileLayout"
+        app:layout_constraintTop_toTopOf="@id/text_pesoText_ProfileLayout"
         android:text="@string/text_35lb_editLayout"
         android:fontFamily="@font/krub_regular"
         android:textColor="@color/color_feldgrau"/>
@@ -114,10 +112,9 @@
         android:id="@+id/text_dato_colorText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin10"
         android:textSize="@dimen/size_textProfileLayout"
         app:layout_constraintStart_toStartOf="@+id/text_dato_pesoText_ProfileLayout"
-        app:layout_constraintTop_toBottomOf="@+id/text_dato_pesoText_ProfileLayout"
+        app:layout_constraintTop_toTopOf="@id/text_colorText_ProfileLayout"
         android:text="@string/text_cafe_editLayout"
         android:fontFamily="@font/krub_regular"
         android:textColor="@color/color_feldgrau"/>
@@ -138,10 +135,9 @@
         android:id="@+id/text_dato_largoText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin10"
         android:textSize="@dimen/size_textProfileLayout"
         app:layout_constraintStart_toStartOf="@+id/text_dato_colorText_ProfileLayout"
-        app:layout_constraintTop_toBottomOf="@+id/text_dato_colorText_ProfileLayout"
+        app:layout_constraintTop_toTopOf="@id/text_largoText_ProfileLayout"
         android:text="@string/text_35cm_editLayout"
         android:fontFamily="@font/krub_regular"
         android:textColor="@color/color_feldgrau"/>
@@ -162,10 +158,9 @@
         android:id="@+id/text_dato_altoText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin10"
         android:textSize="@dimen/size_textProfileLayout"
         app:layout_constraintStart_toStartOf="@+id/text_dato_largoText_ProfileLayout"
-        app:layout_constraintTop_toBottomOf="@+id/text_dato_largoText_ProfileLayout"
+        app:layout_constraintTop_toTopOf="@id/text_altoText_ProfileLayout"
         android:text="@string/text_25cm_editLayout"
         android:fontFamily="@font/krub_regular"
         android:textColor="@color/color_feldgrau"/>
@@ -186,10 +181,9 @@
         android:id="@+id/text_dato_comidaFavText_ProfileLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin10"
         android:textSize="@dimen/size_textProfileLayout"
         app:layout_constraintStart_toStartOf="@+id/text_dato_altoText_ProfileLayout"
-        app:layout_constraintTop_toBottomOf="@+id/text_dato_altoText_ProfileLayout"
+        app:layout_constraintTop_toTopOf="@id/text_comidaFavText_ProfileLayout"
         android:text="@string/text_pizza_editLayout"
         android:fontFamily="@font/krub_regular"
         android:textColor="@color/color_feldgrau"/>
