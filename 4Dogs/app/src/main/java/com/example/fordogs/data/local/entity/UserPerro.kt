@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class UserPerro (
 
-    @PrimaryKey val id: String = "0",
+    @PrimaryKey var id: String = "0",
     var nombre: String = "Nombre",
     var raza: String = "Raza",
     var peso: Int = 0,

@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a586cdb-1a8d-458a-bcb6-1d08d1c54399" name="Changes" comment="" />
+    <list default="true" id="0a586cdb-1a8d-458a-bcb6-1d08d1c54399" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4Dogs/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/4Dogs/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4Dogs/app/src/main/java/com/example/fordogs/data/repository/Firebase/FirebaseApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/4Dogs/app/src/main/java/com/example/fordogs/data/repository/Firebase/FirebaseApi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4Dogs/app/src/main/java/com/example/fordogs/data/repository/Firebase/FirebaseApiImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/4Dogs/app/src/main/java/com/example/fordogs/data/repository/Firebase/FirebaseApiImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4Dogs/app/src/main/java/com/example/fordogs/data/repository/Firebase/FirebaseRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/4Dogs/app/src/main/java/com/example/fordogs/data/repository/Firebase/FirebaseRepositoryImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4Dogs/app/src/main/java/com/example/fordogs/di/AuthModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/4Dogs/app/src/main/java/com/example/fordogs/di/AuthModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4Dogs/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/4Dogs/build.gradle" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

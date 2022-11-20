@@ -23,6 +23,7 @@ import kotlinx.coroutines.launch
 class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
 
     private val EditProfileViewModel: EditProfileViewModel by viewModels()
+    private lateinit var Id : String
     private lateinit var userPerroInfo: UserPerro
 
     override fun getViewBinding() = EditProfileLayoutBinding.inflate(layoutInflater)
@@ -69,15 +70,15 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
 
     private fun savedChanges(){
         userPerroInfo = UserPerro(
-                "0", //Hay que cambiarlo
-                binding.textInputNombreTextEditProfilelayoutEditText.text.toString(),
-                binding.textInputRazaTextEditProfilelayoutEditText.text.toString(),
-                binding.textInputPesoTextEditProfilelayoutEditText.text.toString().toInt(),
-                binding.textInputColorTextEditProfilelayoutEditText.text.toString(),
-                binding.textInputAlturaTextEditProfilelayoutEditText.text.toString().toInt(),
-                binding.textInputLargoTextEditProfilelayoutEditText.text.toString().toInt(),
-                binding.textInputComidaFavTextEditProfilelayoutEditText.text.toString(),
-                binding.textInputUrlImageEditProfilelayoutEditText.text.toString()
+            id = Id,
+            nombre = binding.textInputNombreTextEditProfilelayoutEditText.text.toString(),
+            raza = binding.textInputRazaTextEditProfilelayoutEditText.text.toString(),
+            peso = binding.textInputPesoTextEditProfilelayoutEditText.text.toString().toInt(),
+            color = binding.textInputColorTextEditProfilelayoutEditText.text.toString(),
+            alto = binding.textInputAlturaTextEditProfilelayoutEditText.text.toString().toInt(),
+            largo = binding.textInputLargoTextEditProfilelayoutEditText.text.toString().toInt(),
+            comidaFav = binding.textInputComidaFavTextEditProfilelayoutEditText.text.toString(),
+            imagen = binding.textInputUrlImageEditProfilelayoutEditText.text.toString()
         )
 
     }
@@ -86,6 +87,7 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
         when(status){
             is Editing -> {
                 val datos = status.data
+                Id = datos.id
                 binding.apply {
                     imgPetEditProfileLayout.visibility = View.VISIBLE
                     setImgUser(datos.imagen)

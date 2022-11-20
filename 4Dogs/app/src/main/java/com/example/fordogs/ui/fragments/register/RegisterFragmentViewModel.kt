@@ -5,13 +5,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.entity.UserPerro
+import com.example.fordogs.data.repository.Firebase.FirebaseRepository
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
 import com.example.fordogs.ui.util.dataStore
 import com.example.fordogs.ui.util.getPreferencesValue
 import com.example.fordogs.ui.util.savePreferencesValue
+import com.example.fordogs.ui.fragments.login.LogInConstants
+import com.example.fordogs.ui.fragments.login.LoginViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -19,7 +23,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RegisterFragmentViewModel @Inject constructor(
-    private val repository: UserPerroRepository
+    private val repository: UserPerroRepository,
+    private val repo: FirebaseRepository
 ): ViewModel(){
     private val _status = MutableStateFlow<Status>(Status.Default)
     val status: StateFlow<Status> = _status
@@ -44,6 +49,20 @@ class RegisterFragmentViewModel @Inject constructor(
             }
         }
 
+    }
+    fun firebaseSignUp(User: String, Password: String, Userperro: UserPerro){
+        viewModelScope.launch {
+
+            val userId = repo.signUpWithEmailAndPasword(User, Password)
+            if (userId != null){
+
+                Userperro.id = userId
+                saveChanges(Userperro)
+            }
+            else{
+                _status.value = Status.Error(LogInConstants.ERROR)
+            }
+        }
     }
 
     fun saveLog(context: Context){

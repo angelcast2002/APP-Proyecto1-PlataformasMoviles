@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.fordogs.data.local.entity.UserPerro
 import com.example.fordogs.databinding.RegisterLayoutBinding
+import com.example.fordogs.ui.fragments.login.LoginViewModel
 import com.example.fordogs.ui.util.BaseFragment
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -19,6 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
 
     private val registerFragmentViewModel: RegisterFragmentViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels()
     private lateinit var userPerroInfo: UserPerro
 
     override fun getViewBinding() = RegisterLayoutBinding.inflate(layoutInflater)
@@ -93,8 +95,11 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
 
         binding.btRegistraseRegisterLayout.setOnClickListener{
             savedChanges()
-            registerFragmentViewModel.saveChanges(userPerroInfo)
 
+            var user= binding.textInputCorreoTextRegisterLayoutEditText.text.toString()
+            var password= binding.textInputPasswordTextRegisterLayoutEditText.text.toString()
+
+            registerFragmentViewModel.firebaseSignUp(user, password, userPerroInfo)
         }
     }
 
