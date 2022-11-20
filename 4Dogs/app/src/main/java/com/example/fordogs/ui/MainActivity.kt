@@ -130,8 +130,10 @@ class MainActivity: AppCompatActivity() {
 
     }
 
-    private suspend fun logOut() {
-        dataStore.removePreferencesValue()
+    private fun logOut() {
+        lifecycleScope.launch{
+            dataStore.removePreferencesValue()
+        }
     }
 
     private fun replaceFragment(fragment: Fragment) {
