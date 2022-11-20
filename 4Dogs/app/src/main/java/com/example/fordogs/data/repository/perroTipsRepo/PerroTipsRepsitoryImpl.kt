@@ -29,8 +29,8 @@ class PerroTipsRepsitoryImpl(
         }
     }
 
-    override suspend fun savePerroTips(data: List<PerroTips>): Resource<String> {
-        TODO("Not yet implemented")
+    override suspend fun savePerroTips(data: PerroTips){
+        perroTipsDao.insertAllPerroTips(data)
     }
 
 }
