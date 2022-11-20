@@ -21,7 +21,16 @@ class FirebaseRepositoryImpl(private val api: FirebaseApi) : FirebaseRepository 
     }
 
     override suspend fun signUpWithEmailAndPasword(email: String, password: String): String? {
-        TODO("Not yet implemented")
+        val authResponse = api.signUpWithEmailAndPasword(email, password)
+        return try {
+            if (authResponse is Resource.Success) {
+                authResponse.data!!
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            null
+        }
     }
 
 }

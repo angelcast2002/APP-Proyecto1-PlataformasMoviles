@@ -9,17 +9,22 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.fordogs.R
+import com.example.fordogs.data.repository.Firebase.FirebaseRepository
 import com.example.fordogs.databinding.LoginLayoutBinding
 import com.example.fordogs.ui.util.BaseFragment
 import com.example.fordogs.ui.fragments.login.LoginViewModel.*
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LoginFragment: BaseFragment<LoginLayoutBinding>(){
     private val logInViewModel: LoginViewModel by viewModels()
+    lateinit var  firebaseRepository: FirebaseRepository
 
 
     private lateinit var correo: String
@@ -28,6 +33,8 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
 
         hideNavBar()
         setListeners()
@@ -84,19 +91,26 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
                     LoginFragmentDirections.actionLoginFragmentToCalendarFragment()
                 )
 
-                logInViewModel.setDefault()
 
             }
+            else -> {}
         }
     }
 
     private fun setListeners() {
-        binding.btIniciarSesionLoginLayout.setOnClickListener{
+        binding.btIniciarSesionLoginLayout.setOnClickListener {
 
             correo = binding.textInputCorreoTextLoginlayoutEditText.text.toString()
             password = binding.textInputPasswordTextLoginLayoutEditText.text.toString()
-            logInViewModel.loading(correo, password)
+
+
+            logInViewModel.firebaseLogingIn(correo, password)
+
+
+
         }
+
+
 
         binding.btSignUpLoginLayout.setOnClickListener {
             requireView().findNavController().navigate(

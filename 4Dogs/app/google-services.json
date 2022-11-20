@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:773155935194:android:8cb034195dc2dc70ac66e3",
+        "mobilesdk_app_id": "1:773155935194:android:4d0a1e86fc644ac9ac66e3",
         "android_client_info": {
-          "package_name": "com.example.fordogs.data.repository.authFirebase"
+          "package_name": "com.example.fordogs"
         }
       },
       "oauth_client": [

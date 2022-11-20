@@ -5,7 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.entity.UserPerro
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
+import com.example.fordogs.ui.fragments.login.LogInConstants
+import com.example.fordogs.ui.fragments.login.LoginViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -39,6 +42,7 @@ class RegisterFragmentViewModel @Inject constructor(
         }
 
     }
+
 
     fun setDefault(){
         _status.value = Status.Default
