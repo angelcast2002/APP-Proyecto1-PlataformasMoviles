@@ -123,7 +123,7 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
                 Toast.makeText(
                     requireContext(),
                     status.message,
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
                 EditProfileViewModel.setEditing()
             }
@@ -146,7 +146,7 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
                 Toast.makeText(
                     requireContext(),
                     status.message,
-                    Toast.LENGTH_LONG
+                    Toast.LENGTH_SHORT
                 ).show()
 
                 requireView().findNavController().navigate(

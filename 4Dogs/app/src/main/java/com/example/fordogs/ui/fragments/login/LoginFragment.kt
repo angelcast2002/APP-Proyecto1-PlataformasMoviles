@@ -1,20 +1,15 @@
 package com.example.fordogs.ui.fragments.login
 
+import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import com.example.fordogs.R
 import com.example.fordogs.databinding.LoginLayoutBinding
 import com.example.fordogs.ui.util.BaseFragment
 import com.example.fordogs.ui.fragments.login.LoginViewModel.*
-import com.google.android.material.bottomappbar.BottomAppBar
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -29,6 +24,7 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        logInViewModel.checkIsLogged(obtainContext())
         hideNavBar()
         setListeners()
         setObservables()
@@ -36,9 +32,28 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
 
     private fun setObservables() {
         lifecycleScope.launch {
+            logInViewModel.isLogged.collectLatest { isLogged ->
+                handleIsLogged(isLogged)
+            }
+        }
+        lifecycleScope.launchWhenStarted {
             logInViewModel.status.collectLatest { status ->
                 handleStatus(status)
 
+            }
+        }
+    }
+
+    private fun handleIsLogged(logged: Logged) {
+        when(logged){
+            Logged.NotLogged -> {
+
+            }
+            Logged.Succes -> {
+                requireView().findNavController().navigate(
+                    LoginFragmentDirections.actionLoginFragmentToCalendarFragment()
+                )
+                logInViewModel.setDefaultLogged()
             }
         }
     }
@@ -79,7 +94,8 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
                 }
             }
             Status.Succes -> {
-
+                obtainContext()
+                logInViewModel.saveLog(obtainContext())
                 requireView().findNavController().navigate(
                     LoginFragmentDirections.actionLoginFragmentToCalendarFragment()
                 )
@@ -88,6 +104,10 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
 
             }
         }
+    }
+
+    private fun obtainContext(): Context {
+        return requireContext().applicationContext
     }
 
     private fun setListeners() {

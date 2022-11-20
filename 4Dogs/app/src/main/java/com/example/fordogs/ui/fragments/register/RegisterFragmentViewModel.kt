@@ -1,11 +1,17 @@
 package com.example.fordogs.ui.fragments.register
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.entity.UserPerro
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
+import com.example.fordogs.ui.util.dataStore
+import com.example.fordogs.ui.util.getPreferencesValue
+import com.example.fordogs.ui.util.savePreferencesValue
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -38,6 +44,14 @@ class RegisterFragmentViewModel @Inject constructor(
             }
         }
 
+    }
+
+    fun saveLog(context: Context){
+        CoroutineScope(Dispatchers.IO).launch {
+            context.dataStore.savePreferencesValue()
+            val isLogged = context.dataStore.getPreferencesValue()
+            println(isLogged)
+        }
     }
 
     fun setDefault(){
