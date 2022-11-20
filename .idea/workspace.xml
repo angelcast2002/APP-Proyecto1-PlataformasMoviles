@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a586cdb-1a8d-458a-bcb6-1d08d1c54399" name="Changes" comment="" />
+    <list default="true" id="0a586cdb-1a8d-458a-bcb6-1d08d1c54399" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/4Dogs/app/src/main/java/com/example/fordogs/ui/fragments/login/LoginViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/4Dogs/app/src/main/java/com/example/fordogs/ui/fragments/login/LoginViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4Dogs/app/src/main/java/com/example/fordogs/ui/fragments/register/RegisterFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/4Dogs/app/src/main/java/com/example/fordogs/ui/fragments/register/RegisterFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4Dogs/app/src/main/java/com/example/fordogs/ui/fragments/register/RegisterFragmentViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/4Dogs/app/src/main/java/com/example/fordogs/ui/fragments/register/RegisterFragmentViewModel.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

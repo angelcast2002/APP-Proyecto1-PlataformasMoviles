@@ -56,19 +56,7 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun firebaseSignUp(User: String, Password: String){
-        viewModelScope.launch {
-            _status.value = Status.Loading
 
-            val userId = repo.signUpWithEmailAndPasword(User, Password)
-            if (userId != null){
-                _status.value = Status.Succes(userId)
-            }
-            else{
-                _status.value = Status.Error(ERROR)
-            }
-        }
-    }
 
 
     fun setDefault(){

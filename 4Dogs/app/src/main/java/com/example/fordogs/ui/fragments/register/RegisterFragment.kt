@@ -96,14 +96,10 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
         binding.btRegistraseRegisterLayout.setOnClickListener{
             savedChanges()
 
-            registerFragmentViewModel.saveChanges(userPerroInfo)
+            var user= binding.textInputCorreoTextRegisterLayoutEditText.text.toString()
+            var password= binding.textInputPasswordTextRegisterLayoutEditText.text.toString()
 
-
-            requireView().findNavController().navigate(
-                RegisterFragmentDirections.actionRegisterFragmentToEditProfileFragment()
-            )
-
-
+            registerFragmentViewModel.firebaseSignUp(user, password, userPerroInfo)
         }
     }
 

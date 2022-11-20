@@ -50,6 +50,20 @@ class RegisterFragmentViewModel @Inject constructor(
         }
 
     }
+    fun firebaseSignUp(User: String, Password: String, Userperro: UserPerro){
+        viewModelScope.launch {
+
+            val userId = repo.signUpWithEmailAndPasword(User, Password)
+            if (userId != null){
+
+                Userperro.id = userId
+                saveChanges(Userperro)
+            }
+            else{
+                _status.value = Status.Error(LogInConstants.ERROR)
+            }
+        }
+    }
 
     fun saveLog(context: Context){
         CoroutineScope(Dispatchers.IO).launch {
