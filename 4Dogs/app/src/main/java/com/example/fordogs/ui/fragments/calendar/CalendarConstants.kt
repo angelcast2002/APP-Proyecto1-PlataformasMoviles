@@ -8,8 +8,7 @@ import java.util.*
 class CalendarConstants {
 
     companion object {
-        @RequiresApi(Build.VERSION_CODES.O)
-        var selectedDate: LocalDate? = LocalDate.now()
+        const val COMPLETE_EVENT = "Evento completado"
     }
 
 }

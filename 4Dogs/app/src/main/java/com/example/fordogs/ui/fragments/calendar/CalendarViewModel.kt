@@ -82,4 +82,17 @@ class CalendarViewModel @Inject constructor(
             }
         }
 
+    fun completeEvent(eventId: Int) =
+        viewModelScope.launch {
+            _eventStatus.value = EventStatus.Loading
+            when(val eventsResult = eventRepository.completeEvent(eventId)){
+                is Resource.Success -> {
+                    _eventStatus.value = EventStatus.Deleted(eventsResult.data!!)
+                }
+                is Resource.Error -> {
+                    _eventStatus.value = EventStatus.Error(eventsResult.message!!)
+                }
+            }
+        }
+
 }

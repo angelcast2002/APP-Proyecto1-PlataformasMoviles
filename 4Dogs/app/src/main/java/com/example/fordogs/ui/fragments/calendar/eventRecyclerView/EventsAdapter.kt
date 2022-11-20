@@ -98,7 +98,7 @@ class EventsAdapter(
         dialog.setContentView(R.layout.event_completed_dialog)
         val close = dialog.findViewById<Button>(R.id.closeButton)
         close.setOnClickListener {
-            listener.deleteEventFromId(eventId)
+            listener.completeEventFromId(eventId)
             dialog.dismiss()
         }
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
