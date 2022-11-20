@@ -10,6 +10,7 @@ import com.example.fordogs.ui.fragments.login.LogInConstants.Companion.PASSWORD
 import com.example.fordogs.ui.fragments.login.LogInConstants.Companion.USER
 import com.example.fordogs.ui.util.dataStore
 import com.example.fordogs.ui.util.getPreferencesValue
+import com.example.fordogs.ui.util.savePreferencesValue
 import dagger.hilt.android.internal.Contexts.getApplication
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +18,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class LoginViewModel: ViewModel() {
-    private val context = getApplication<>().applicationContext
     private val _status = MutableStateFlow<Status>(Status.Default)
     val status : StateFlow<Status> = _status
 
@@ -66,6 +66,15 @@ class LoginViewModel: ViewModel() {
             } else {
                 _isLogged.value = Logged.Succes
             }
+        }
+    }
+    fun setDefaultLogged(){
+        _isLogged.value = Logged.NotLogged
+    }
+
+    fun saveLog(context: Context){
+        viewModelScope.launch {
+            context.dataStore.savePreferencesValue()
         }
     }
 }
