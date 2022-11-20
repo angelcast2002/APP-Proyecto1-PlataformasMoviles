@@ -1,10 +1,7 @@
-package com.example.fordogs.data.remote.firebase
+package com.example.fordogs.data.repository.Firebase
 
 import com.example.fordogs.data.Resource
-import com.example.fordogs.data.remote.FirebaseApi
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
 
 class FirebaseApiImpl(private val api: FirebaseAuth): FirebaseApi {

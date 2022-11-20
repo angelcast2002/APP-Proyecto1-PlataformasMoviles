@@ -1,7 +1,6 @@
 package com.example.fordogs.data.repository.Firebase
 
 import com.example.fordogs.data.Resource
-import com.example.fordogs.data.remote.FirebaseApi
 
 class FirebaseRepositoryImpl(private val api: FirebaseApi) : FirebaseRepository {
 

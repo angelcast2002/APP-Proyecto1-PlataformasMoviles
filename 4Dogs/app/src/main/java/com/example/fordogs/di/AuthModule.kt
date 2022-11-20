@@ -1,7 +1,7 @@
 package com.example.fordogs.di
 
-import com.example.fordogs.data.remote.FirebaseApi
-import com.example.fordogs.data.remote.firebase.FirebaseApiImpl
+import com.example.fordogs.data.repository.Firebase.FirebaseApi
+import com.example.fordogs.data.repository.Firebase.FirebaseApiImpl
 import com.example.fordogs.data.repository.Firebase.FirebaseRepository
 import com.example.fordogs.data.repository.Firebase.FirebaseRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
