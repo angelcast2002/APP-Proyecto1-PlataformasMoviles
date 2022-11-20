@@ -61,7 +61,7 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
     }
 
     private fun setListeners() {
-        binding.btSaveDataEditProfile.setOnClickListener{
+        binding.btSaveDataEditProfale.setOnClickListener{
             savedChanges()
             EditProfileViewModel.saveChanges(userPerroInfo)
         }
@@ -69,15 +69,15 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
 
     private fun savedChanges(){
         userPerroInfo = UserPerro(
-                "0", //Hay que cambiarlo
+                "0",
                 binding.textInputNombreTextEditProfilelayoutEditText.text.toString(),
                 binding.textInputRazaTextEditProfilelayoutEditText.text.toString(),
                 binding.textInputPesoTextEditProfilelayoutEditText.text.toString().toInt(),
                 binding.textInputColorTextEditProfilelayoutEditText.text.toString(),
                 binding.textInputAlturaTextEditProfilelayoutEditText.text.toString().toInt(),
                 binding.textInputLargoTextEditProfilelayoutEditText.text.toString().toInt(),
-                binding.textInputComidaFavTextEditProfilelayoutEditText.text.toString(),
-                binding.textInputUrlImageEditProfilelayoutEditText.text.toString()
+                binding.textInputComidaFavTextEditProfilelayoutEditText.text.toString()
+         //""//Hay que cambiarlo
         )
 
     }
@@ -111,10 +111,7 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
                     textInputComidaFavTextEditProfileLayout.visibility  = View.VISIBLE
                     textInputComidaFavTextEditProfilelayoutEditText.setText(datos.comidaFav)
 
-                    textInputUrlImageEditProfilelayoutEditText.visibility  = View.VISIBLE
-                    textInputUrlImageEditProfilelayoutEditText.setText(datos.imagen)
-
-                    btSaveDataEditProfile.visibility = View.VISIBLE
+                    btSaveDataEditProfale.visibility = View.VISIBLE
 
                     progressEditLayout.visibility = View.GONE
                 }
@@ -130,7 +127,6 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
             Loading -> {
                 binding.apply {
                     imgPetEditProfileLayout.visibility = View.VISIBLE
-                    imgPetEditProfileLayout.visibility = View.GONE
                     petNameEdtiProfileLayout.visibility = View.GONE
                     textInputRazaTextEditProfileLayout.visibility = View.GONE
                     textInputPesoTextEditProfileLayout.visibility = View.GONE
@@ -138,7 +134,7 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
                     textInputAlturaTextEditProfileLayout.visibility = View.GONE
                     textInputLargoTextEditProfileLayout.visibility = View.GONE
                     textInputComidaFavTextEditProfileLayout.visibility  = View.GONE
-                    btSaveDataEditProfile.visibility = View.GONE
+                    btSaveDataEditProfale.visibility = View.GONE
                     progressEditLayout.visibility = View.VISIBLE
                 }
             }

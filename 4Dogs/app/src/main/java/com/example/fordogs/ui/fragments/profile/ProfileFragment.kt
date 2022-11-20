@@ -56,7 +56,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(){
                     status.message,
                     Toast.LENGTH_LONG
                 ).show()
-                viewModel.setSucces()
+                viewModel.setLoading()
             }
             ProfileViewModel.Status.Loading -> {
                 binding.apply {

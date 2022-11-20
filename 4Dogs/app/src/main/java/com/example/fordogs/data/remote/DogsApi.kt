@@ -1,7 +1,6 @@
 package com.example.fordogs.data.remote
 
 import com.example.fordogs.data.remote.dto.PerroTipsDto
-import com.example.fordogs.data.remote.dto.PerroTipsResponseDto
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Headers
@@ -14,5 +13,5 @@ interface DogsApi {
     @GET("/v1/dogs")
     suspend fun getDogsTips(
         @Query("name") name: String
-    ): List<PerroTipsDto>
+    ): PerroTipsDto
 }
