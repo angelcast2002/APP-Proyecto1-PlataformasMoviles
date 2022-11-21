@@ -105,8 +105,6 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
                 obtainContext()
                 logInViewModel.saveLog(obtainContext())
 
-                logInViewModel.saveData(status.userId)
-
                 changeLayout()
 
             }

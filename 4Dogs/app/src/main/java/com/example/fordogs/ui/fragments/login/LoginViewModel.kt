@@ -33,7 +33,7 @@ class LoginViewModel @Inject constructor(
         object Default: Status()
         object Loading: Status()
         class Error(val message: String): Status()
-        class Succes(val userId: String): Status()
+        object Succes: Status()
     }
 
 
@@ -43,8 +43,8 @@ class LoginViewModel @Inject constructor(
             _status.value = Status.Loading
             val userId = repo.signInWithEmailAndPasword(User, Password)
             if (userId != null){
+                saveData(userId)
 
-                _status.value = Status.Succes(userId)
             }
             else{
                 _status.value = Status.Error(ERROR)
@@ -67,6 +67,7 @@ class LoginViewModel @Inject constructor(
 
         viewModelScope.launch {
             userdata.setUserPerroInfo(dataUserPerro)
+            _status.value = Status.Succes
         }
 
     }
