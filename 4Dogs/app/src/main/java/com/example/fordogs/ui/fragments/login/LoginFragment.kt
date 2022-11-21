@@ -104,11 +104,18 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
             is Status.Succes -> {
                 obtainContext()
                 logInViewModel.saveLog(obtainContext())
-                requireView().findNavController().navigate(
-                    LoginFragmentDirections.actionLoginFragmentToCalendarFragment()
-                )
+
+                changeLayout()
+
             }
         }
+    }
+
+    private fun changeLayout(){
+        requireView().findNavController().navigate(
+            LoginFragmentDirections.actionLoginFragmentToCalendarFragment()
+        )
+
     }
 
     private fun obtainContext(): Context {
@@ -124,10 +131,7 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
 
             logInViewModel.firebaseLogingIn(correo, password)
 
-
-
         }
-
 
 
         binding.btSignUpLoginLayout.setOnClickListener {

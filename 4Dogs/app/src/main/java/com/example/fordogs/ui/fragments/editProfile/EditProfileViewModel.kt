@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.entity.UserPerro
-import com.example.fordogs.data.repository.perroTipsRepo.PerroTipsRepository
+import com.example.fordogs.data.repository.Firestore.FirestoreUserPerroRepository
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
 import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.ALTO
 import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.COLOR
@@ -15,7 +15,6 @@ import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Compani
 import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.PESO
 import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.RAZA
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -23,7 +22,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EditProfileViewModel @Inject constructor(
-    private val repository: UserPerroRepository
+    private val repository: UserPerroRepository ,
+    private val repo: FirestoreUserPerroRepository
 ) : ViewModel() {
 
 
