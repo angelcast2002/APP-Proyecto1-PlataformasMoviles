@@ -3,7 +3,7 @@ package com.example.fordogs.data.repository.userPerroRepo
 import com.example.fordogs.data.Resource
 import com.example.fordogs.data.local.dao.userPerroInfo.UserPerroDao
 import com.example.fordogs.data.local.entity.UserPerro
-import com.example.fordogs.data.repository.Firestore.FirestoreRepository
+import com.example.fordogs.data.repository.Firestore.FirestoreUserPerroRepository
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepoConstants.Companion.ERROR_GET_USER_PERRO_INFO
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepoConstants.Companion.ERROR_LOG_OUT_USER_PERRO_INFO
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepoConstants.Companion.ERROR_SET_USER_PERRO_INFO
@@ -14,14 +14,14 @@ import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepoConstants.
 
 class UserPerroRepositoryImpl (
     private val userPerroDao: UserPerroDao,
-    private val firestoreRepository: FirestoreRepository
+    private val firestoreUserPerroRepository: FirestoreUserPerroRepository
 ) : UserPerroRepository {
     override suspend fun getUserPerroInfo(): Resource<UserPerro> {
         return try {
 
             val localInfo = userPerroDao.getInfoForUserPerro()
             if (localInfo.id.isEmpty()) {
-                val remoteInfo = firestoreRepository.getUserPerroInfo().data
+                val remoteInfo = firestoreUserPerroRepository.getUserPerroInfo().data
                 if (remoteInfo != null) {
                     userPerroDao.update(remoteInfo)
                     Resource.Success(data = remoteInfo)
@@ -56,7 +56,7 @@ class UserPerroRepositoryImpl (
 
     override suspend fun updateUserPerroInfo(data: UserPerro): Resource<String> {
         try{
-            firestoreRepository.setUserPerroInfo(data)
+            firestoreUserPerroRepository.setUserPerroInfo(data)
         }catch (_: Exception){
 
 

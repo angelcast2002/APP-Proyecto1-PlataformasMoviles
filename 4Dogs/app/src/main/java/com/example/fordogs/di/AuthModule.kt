@@ -6,8 +6,8 @@ import com.example.fordogs.data.repository.Firebase.FirebaseRepository
 import com.example.fordogs.data.repository.Firebase.FirebaseRepositoryImpl
 import com.example.fordogs.data.repository.Firestore.FirestoreApi
 import com.example.fordogs.data.repository.Firestore.FirestoreApiImpl
-import com.example.fordogs.data.repository.Firestore.FirestoreRepository
-import com.example.fordogs.data.repository.Firestore.FirestoreRepositoryImpl
+import com.example.fordogs.data.repository.Firestore.FirestoreUserPerroRepository
+import com.example.fordogs.data.repository.Firestore.FirestoreUserPerroRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -44,7 +44,8 @@ object AuthModule {
 
     @Provides
     @Singleton
-    fun providePlaceRepository(api: FirestoreApi) : FirestoreRepository = FirestoreRepositoryImpl(api)
+    fun providePlaceRepository(api: FirestoreApi) : FirestoreUserPerroRepository =
+        FirestoreUserPerroRepositoryImpl(api)
 
 
 

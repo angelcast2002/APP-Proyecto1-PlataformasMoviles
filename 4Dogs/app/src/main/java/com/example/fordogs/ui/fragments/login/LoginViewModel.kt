@@ -1,26 +1,19 @@
 package com.example.fordogs.ui.fragments.login
 
-import android.app.Application
 import android.content.Context
-import androidx.datastore.dataStore
-import android.content.Intent
-import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
+import com.example.fordogs.data.local.entity.UserPerro
 import com.example.fordogs.data.repository.Firebase.FirebaseRepository
+import com.example.fordogs.data.repository.Firestore.FirestoreUserPerroRepository
+import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
 import com.example.fordogs.ui.fragments.login.LogInConstants.Companion.ERROR
-import com.example.fordogs.ui.fragments.login.LogInConstants.Companion.PASSWORD
-import com.example.fordogs.ui.fragments.login.LogInConstants.Companion.USER
 import com.example.fordogs.ui.util.dataStore
 import com.example.fordogs.ui.util.getPreferencesValue
 import com.example.fordogs.ui.util.savePreferencesValue
-import dagger.hilt.android.internal.Contexts.getApplication
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -28,7 +21,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val repo: FirebaseRepository
+    private val repo: FirebaseRepository,
+    private val repoFirestore: FirestoreUserPerroRepository,
+    private val userdata: UserPerroRepository
     ): ViewModel() {
 
     private val _status = MutableStateFlow<Status>(Status.Default)
@@ -48,12 +43,32 @@ class LoginViewModel @Inject constructor(
             _status.value = Status.Loading
             val userId = repo.signInWithEmailAndPasword(User, Password)
             if (userId != null){
+
                 _status.value = Status.Succes(userId)
             }
             else{
                 _status.value = Status.Error(ERROR)
             }
         }
+    }
+
+    fun saveData(data: String){
+        CoroutineScope(Dispatchers.IO).launch{
+            val dataUserPerro = repoFirestore.getOneUserPerroInfo(data)
+
+            CoroutineScope(Dispatchers.Main).launch {
+                saveDataToRoom(dataUserPerro)
+
+            }
+        }
+        
+    }
+    fun saveDataToRoom(dataUserPerro: UserPerro){
+
+        viewModelScope.launch {
+            userdata.setUserPerroInfo(dataUserPerro)
+        }
+
     }
 
 

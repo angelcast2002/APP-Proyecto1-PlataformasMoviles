@@ -4,9 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.fordogs.data.local.UserPerroDb
 import com.example.fordogs.data.local.dao.userPerroInfo.UserPerroDao
-import com.example.fordogs.data.repository.Firestore.FirestoreApi
-import com.example.fordogs.data.repository.Firestore.FirestoreRepository
-import com.example.fordogs.data.repository.Firestore.FirestoreRepositoryImpl
+import com.example.fordogs.data.repository.Firestore.FirestoreUserPerroRepository
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepositoryImpl
 import dagger.Module
@@ -44,11 +42,11 @@ object UserPerroModule {
     @Singleton
     fun provideRepository(
         dao: UserPerroDao,
-        api: FirestoreRepository
+        api: FirestoreUserPerroRepository
     ): UserPerroRepository {
         return UserPerroRepositoryImpl(
             userPerroDao = dao,
-            firestoreRepository = api
+            firestoreUserPerroRepository =  api
         )
     }
 

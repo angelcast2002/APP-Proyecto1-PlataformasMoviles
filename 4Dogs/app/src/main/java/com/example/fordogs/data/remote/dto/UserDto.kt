@@ -2,8 +2,8 @@ package com.example.fordogs.data.remote.dto
 
 import com.example.fordogs.data.local.entity.UserPerro
 
-class UserDto (
-    val idUser: String = "",
+data class UserDto (
+    val id: String = "",
     val nombre: String = "",
     val raza: String = "",
     val peso: Int   = 0,
@@ -16,7 +16,7 @@ class UserDto (
 
 )
 fun UserDto.mapToEntity(): UserPerro = UserPerro(
-    id = idUser,
+    id = id,
     nombre = nombre,
     raza = raza,
     peso = peso,
