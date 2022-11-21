@@ -30,10 +30,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/textInput_correoText_loginLayout"
-
+        android:src="@drawable/fordogs_logo"
 
         android:layout_marginVertical="@dimen/marginSize_extraLarge"
-        tools:srcCompat="@tools:sample/avatars"
         />
 
     <com.google.android.material.textfield.TextInputLayout
