@@ -69,6 +69,10 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
                 }
             }
             CalendarViewModel.EventStatus.Loading -> {
+                binding.apply {
+                    eventListProgressBar.visibility = View.VISIBLE
+                    recyclerConstraintLayout.visibility = View.GONE
+                }
             }
             is CalendarViewModel.EventStatus.Deleted -> {
                 binding.apply {
