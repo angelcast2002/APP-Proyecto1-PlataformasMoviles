@@ -102,11 +102,11 @@ class MainActivity: AppCompatActivity() {
                         ) { _, _ ->
                             logOut()
                             lifecycleScope.launch {
+                                eventsRepo.deleteAllEvents()
                                 userPerroTips.logOut()
                                 val data = repository.getUserPerroInfo().data
                                 if (data != null) {
                                     repository.logOut(data)
-                                    eventsRepo.deleteAllEvents()
                                 }
 
                             }
