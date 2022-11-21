@@ -17,4 +17,6 @@ interface EventRepository {
 
     suspend fun completeEvent(id: Int) : Resource<String>
 
+    suspend fun deleteAllEvents() : Resource<String>
+
 }

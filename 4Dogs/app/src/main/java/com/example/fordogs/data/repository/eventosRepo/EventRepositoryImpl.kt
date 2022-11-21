@@ -99,4 +99,13 @@ class EventRepositoryImpl (
         }
     }
 
+    override suspend fun deleteAllEvents(): Resource<String> {
+        return try {
+            eventDao.deleteAllEvents()
+            Resource.Success(data = SUCCESS_DELETE_EVENT)
+        } catch (ex: Exception){
+            Resource.Error(message = ERROR_DELETE_EVENT)
+        }
+    }
+
 }
