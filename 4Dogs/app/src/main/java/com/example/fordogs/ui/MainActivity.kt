@@ -12,6 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.fordogs.R
 import com.example.fordogs.data.local.entity.PerroTips
+import com.example.fordogs.data.repository.eventosRepo.EventRepository
 import com.example.fordogs.data.repository.perroTipsRepo.PerroTipsRepository
 import com.example.fordogs.data.repository.perroTipsRepo.PerroTipsRepsitoryImpl
 import com.example.fordogs.data.repository.userPerroRepo.UserPerroRepository
@@ -36,6 +37,8 @@ class MainActivity: AppCompatActivity() {
     lateinit var repository: UserPerroRepository
     @Inject
     lateinit var userPerroTips: PerroTipsRepository
+    @Inject
+    lateinit var eventsRepo: EventRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,6 +106,7 @@ class MainActivity: AppCompatActivity() {
                                 val data = repository.getUserPerroInfo().data
                                 if (data != null) {
                                     repository.logOut(data)
+                                    eventsRepo.deleteAllEvents()
                                 }
 
                             }

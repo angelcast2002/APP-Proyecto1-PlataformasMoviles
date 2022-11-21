@@ -67,8 +67,6 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(), EventOptionsLi
                     eventListProgressBar.visibility = View.GONE
                     recyclerConstraintLayout.visibility = View.VISIBLE
                 }
-                val message = eventStatus.message
-                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
             }
             CalendarViewModel.EventStatus.Loading -> {
                 binding.apply {
