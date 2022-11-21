@@ -89,6 +89,8 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
                 val datos = status.data
                 Id = datos.id
                 binding.apply {
+                    urlImageEdtiProfileLayout.visibility = View.VISIBLE
+                    
                     imgPetEditProfileLayout.visibility = View.VISIBLE
                     setImgUser(datos.imagen)
 
@@ -131,7 +133,7 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
             }
             Loading -> {
                 binding.apply {
-                    imgPetEditProfileLayout.visibility = View.VISIBLE
+                    urlImageEdtiProfileLayout.visibility = View.GONE
                     imgPetEditProfileLayout.visibility = View.GONE
                     petNameEdtiProfileLayout.visibility = View.GONE
                     textInputRazaTextEditProfileLayout.visibility = View.GONE
