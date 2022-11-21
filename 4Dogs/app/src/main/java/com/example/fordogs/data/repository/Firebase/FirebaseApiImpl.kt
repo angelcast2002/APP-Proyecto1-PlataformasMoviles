@@ -1,6 +1,8 @@
 package com.example.fordogs.data.repository.Firebase
 
 import com.example.fordogs.data.Resource
+import com.example.fordogs.data.repository.Firebase.FirebaseConstants.Companion.MENSAJE
+import com.example.fordogs.data.repository.Firebase.FirebaseConstants.Companion.MENSAJE_USER_NO_CREADO
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await
 
@@ -14,9 +16,9 @@ class FirebaseApiImpl(private val api: FirebaseAuth): FirebaseApi {
             if (user != null)
                 Resource.Success(data = user.uid)
             else
-                Resource.Error(message = "User not found")
+                Resource.Error(message = MENSAJE)
         } catch (e: Exception) {
-            Resource.Error(message = "User not found")
+            Resource.Error(message = MENSAJE)
         }
 
 
@@ -31,9 +33,9 @@ class FirebaseApiImpl(private val api: FirebaseAuth): FirebaseApi {
             if (user != null)
                 Resource.Success(data = user.uid)
             else
-                Resource.Error(message = "User not created")
+                Resource.Error(message = MENSAJE_USER_NO_CREADO)
         } catch (e: Exception) {
-            Resource.Error(message = "User not created")
+            Resource.Error(message = MENSAJE_USER_NO_CREADO)
         }
 
     }

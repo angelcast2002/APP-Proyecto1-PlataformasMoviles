@@ -21,6 +21,7 @@
         android:label="login_layout"
         tools:layout="@layout/login_layout" >
         <action
+            app:popUpTo="@id/loginFragment"
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
         <action
@@ -40,6 +41,11 @@
             app:popUpToInclusive="true"
             android:id="@+id/action_registerFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"

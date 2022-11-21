@@ -90,7 +90,9 @@ class RegisterFragment: BaseFragment<RegisterLayoutBinding>(){
 
     private fun setListeners() {
         binding.btRegresar.setOnClickListener{
-            requireActivity().onBackPressed()
+            requireView().findNavController().navigate(
+                RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
+            )
         }
 
         binding.btRegistraseRegisterLayout.setOnClickListener{
