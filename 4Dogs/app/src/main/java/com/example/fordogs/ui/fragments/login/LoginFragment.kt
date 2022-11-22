@@ -126,6 +126,7 @@ class LoginFragment: BaseFragment<LoginLayoutBinding>(){
         binding.btIniciarSesionLoginLayout.setOnClickListener {
 
             correo = binding.textInputCorreoTextLoginlayoutEditText.text.toString()
+            correo = correo.replace(" ", "")
             password = binding.textInputPasswordTextLoginLayoutEditText.text.toString()
 
 
