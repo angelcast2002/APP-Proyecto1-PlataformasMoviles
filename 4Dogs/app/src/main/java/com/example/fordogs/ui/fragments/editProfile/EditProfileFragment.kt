@@ -13,6 +13,14 @@ import coil.transform.CircleCropTransformation
 import com.example.fordogs.R
 import com.example.fordogs.data.local.entity.UserPerro
 import com.example.fordogs.databinding.EditProfileLayoutBinding
+import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.ALTO
+import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.COLOR
+import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.COMIDA_FAV
+import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.IMG_PERRO
+import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.LARGO
+import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.NOMBRE
+import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.PESO
+import com.example.fordogs.ui.fragments.editProfile.EditProfileConstants.Companion.RAZA
 import com.example.fordogs.ui.fragments.editProfile.EditProfileViewModel.Status.*
 import com.example.fordogs.ui.util.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -71,14 +79,14 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
     private fun savedChanges(){
         userPerroInfo = UserPerro(
             id = Id,
-            nombre = binding.textInputNombreTextEditProfilelayoutEditText.text.toString(),
-            raza = binding.textInputRazaTextEditProfilelayoutEditText.text.toString(),
-            peso = binding.textInputPesoTextEditProfilelayoutEditText.text.toString().toInt(),
-            color = binding.textInputColorTextEditProfilelayoutEditText.text.toString(),
-            alto = binding.textInputAlturaTextEditProfilelayoutEditText.text.toString().toInt(),
-            largo = binding.textInputLargoTextEditProfilelayoutEditText.text.toString().toInt(),
-            comidaFav = binding.textInputComidaFavTextEditProfilelayoutEditText.text.toString(),
-            imagen = binding.textInputUrlImageEditProfilelayoutEditText.text.toString()
+            nombre = binding.textInputNombreTextEditProfilelayoutEditText.text.toString()?:NOMBRE,
+            raza = binding.textInputRazaTextEditProfilelayoutEditText.text.toString()?: RAZA,
+            peso = binding.textInputPesoTextEditProfilelayoutEditText.text.toString().toInt()?: PESO,
+            color = binding.textInputColorTextEditProfilelayoutEditText.text.toString()?: COLOR,
+            alto = binding.textInputAlturaTextEditProfilelayoutEditText.text.toString().toInt()?: ALTO,
+            largo = binding.textInputLargoTextEditProfilelayoutEditText.text.toString().toInt()?: LARGO,
+            comidaFav = binding.textInputComidaFavTextEditProfilelayoutEditText.text.toString()?: COMIDA_FAV,
+            imagen = binding.textInputUrlImageEditProfilelayoutEditText.text.toString()?: IMG_PERRO
         )
 
     }
