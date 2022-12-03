@@ -77,18 +77,75 @@ class EditProfileFragment: BaseFragment<EditProfileLayoutBinding>(){
     }
 
     private fun savedChanges(){
+        val nombre = binding.textInputNombreTextEditProfilelayoutEditText.text.toString()
+        val raza = binding.textInputRazaTextEditProfilelayoutEditText.text.toString()
+        val peso = binding.textInputPesoTextEditProfilelayoutEditText.text.toString()
+        val color = binding.textInputColorTextEditProfilelayoutEditText.text.toString()
+        val alto = binding.textInputAlturaTextEditProfilelayoutEditText.text.toString()
+        val largo = binding.textInputLargoTextEditProfilelayoutEditText.text.toString()
+        val comidaFav = binding.textInputComidaFavTextEditProfilelayoutEditText.text.toString()
+        val imagen = binding.textInputUrlImageEditProfilelayoutEditText.text.toString()
+        var arrayList: ArrayList<String> = arrayListOf()
+        arrayList.apply {
+            add(nombre)
+            add(raza)
+            add(peso)
+            add(color)
+            add(alto)
+            add(largo)
+            add(comidaFav)
+            add(imagen)
+        }
+        arrayList = changeNullValues(arrayList)
         userPerroInfo = UserPerro(
             id = Id,
-            nombre = binding.textInputNombreTextEditProfilelayoutEditText.text.toString()?:NOMBRE,
-            raza = binding.textInputRazaTextEditProfilelayoutEditText.text.toString()?: RAZA,
-            peso = binding.textInputPesoTextEditProfilelayoutEditText.text.toString().toInt()?: PESO,
-            color = binding.textInputColorTextEditProfilelayoutEditText.text.toString()?: COLOR,
-            alto = binding.textInputAlturaTextEditProfilelayoutEditText.text.toString().toInt()?: ALTO,
-            largo = binding.textInputLargoTextEditProfilelayoutEditText.text.toString().toInt()?: LARGO,
-            comidaFav = binding.textInputComidaFavTextEditProfilelayoutEditText.text.toString()?: COMIDA_FAV,
-            imagen = binding.textInputUrlImageEditProfilelayoutEditText.text.toString()?: IMG_PERRO
+            nombre = arrayList[0],
+            raza = arrayList[1],
+            peso = arrayList[2].toInt(),
+            color = arrayList[3],
+            alto = arrayList[4].toInt(),
+            largo = arrayList[5].toInt(),
+            comidaFav = arrayList[6],
+            imagen = arrayList[7]
         )
 
+    }
+
+    private fun changeNullValues(arrayList: ArrayList<String>): ArrayList<String>{
+        var contador = 0
+        for (value in arrayList){
+            if (value == "") {
+                when (contador) {
+                    0 -> {
+                        arrayList[contador] = NOMBRE
+                    }
+                    1 -> {
+                        arrayList[contador] = RAZA
+                    }
+                    2 -> {
+                        arrayList[contador] = PESO.toString()
+                    }
+                    3 -> {
+                        arrayList[contador] = COLOR
+                    }
+                    4 -> {
+                        arrayList[contador] = ALTO.toString()
+                    }
+                    5 -> {
+                        arrayList[contador] = LARGO.toString()
+                    }
+                    6 -> {
+                        arrayList[contador] = COMIDA_FAV
+                    }
+                    7 -> {
+                        arrayList[contador] = IMG_PERRO
+                    }
+                }
+            }
+            contador++
+
+        }
+        return arrayList
     }
 
     private fun handleStatus(status: EditProfileViewModel.Status) {
