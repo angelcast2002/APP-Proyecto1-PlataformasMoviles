@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "773155935194",
-    "project_id": "dogs-7c646",
-    "storage_bucket": "dogs-7c646.appspot.com"
+    "project_number": "211204104809",
+    "project_id": "dogs-f13d4",
+    "storage_bucket": "dogs-f13d4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:773155935194:android:4d0a1e86fc644ac9ac66e3",
+        "mobilesdk_app_id": "1:211204104809:android:8e3e55ce3bfdce1bb3b8f8",
         "android_client_info": {
           "package_name": "com.example.fordogs"
         }
       },
       "oauth_client": [
         {
-          "client_id": "773155935194-fuoanhtn0ph4ir7b1pfsnlrmefl280tt.apps.googleusercontent.com",
+          "client_id": "211204104809-0impu37fom9esrm0hua5uenjdqsppf13.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyArR3eQjTNrFHXaZ1a5exUlftWSU7_jtZk"
+          "current_key": "AIzaSyDYJx_Ka_EeRv77yMM6O8wtlZ3y0ny7ajE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "773155935194-fuoanhtn0ph4ir7b1pfsnlrmefl280tt.apps.googleusercontent.com",
+              "client_id": "211204104809-0impu37fom9esrm0hua5uenjdqsppf13.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
